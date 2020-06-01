@@ -33,7 +33,7 @@ Specify your user interface in code using controls that you are already familiar
 
         public UserPasswordWidget(BuildEnvironment environment) : base(environment)
         {
-            _current = new Model("enter your username", "this is the password");
+            _current = new Model("enter your user name", "this is the password");
         }
 
         public override Model InitState() => _current;
@@ -48,7 +48,7 @@ Specify your user interface in code using controls that you are already familiar
 
                 if (!model.IsNameValid)
                 {
-                    yield return TextView("Your input isn't valid", Dimensions.MatchMatch).SetTextColor(Color.Red).SetTextSize(ComplexUnitType.Dip, 24.0f);
+                    yield return TextView("Your username isn't valid", Dimensions.MatchMatch).SetTextColor(Color.Red).SetTextSize(ComplexUnitType.Dip, 24.0f);
                 }
 
                 yield return EditText(model.Password).InputType(InputTypes.ClassText | InputTypes.TextVariationPassword);
