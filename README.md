@@ -20,6 +20,9 @@ Code your user interface, update your state, and let Birch do the rest.
 See the Wiki for lots more information  [Wiki](https://github.com/VistianOpenSource/Birch/wiki).
 
 ## Sample Usage
+
+A simple Activity in which the UserDetails widget is created and used for the layout. 
+
 ~~~~
 [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
 public class NewMainActivity : BuildActivity
@@ -37,8 +40,15 @@ public class NewMainActivity : BuildActivity
             .Call((a, p) => a.SetPersistent(p), true);
 }
 ~~~~
+*Illustrates the usage of expression parsing for the 'Call'.*
 
 ## Sample Component
+
+* A random component that allows the user to enter a name and a password. 
+* If the name is less than 10 characters, an error message is shown. 
+* When the component is first used the **InitState** method would be called to get the initial model.
+* Upon first layout, the focus is set to the user name edit. 
+* Everytime the user makes a change the model is updated with the new username and the new model is specified through the **SetState** method.
 
 ~~~~
    public class UserPasswordWidget : StatefulContainer<UserPasswordWidget.Model>
@@ -65,25 +75,28 @@ public class NewMainActivity : BuildActivity
         {
             IEnumerable<IPrimitive> Items()
             {
-                yield return EditText(model.Name).
-                    OnCreate((Shadow<EditText> s) => { s.Item.RequestFocus(); }).
-                    OnTextChanged(OnUsernameChanged);
+                yield return EditText(model.Name)
+                            .OnCreate((Shadow<EditText> s) => { s.Item.RequestFocus(); })
+                            .OnTextChanged(OnUsernameChanged);
 
                 if (!model.IsNameValid)
                 {
-                    yield return TextView("Your username isn't valid", Dimensions.MatchMatch).SetTextColor(Color.Red).SetTextSize(ComplexUnitType.Dip, 24.0f);
+                    yield return TextView("Your username isn't valid", Dimensions.MatchMatch)
+                                .SetTextColor(Color.Red)
+                                .SetTextSize(ComplexUnitType.Dip, 24.0f);
                 }
 
-                yield return EditText(model.Password).InputType(InputTypes.ClassText | InputTypes.TextVariationPassword);
+                yield return EditText(model.Password)
+                            .InputType(InputTypes.ClassText | InputTypes.TextVariationPassword);
             };
 
-            return LinearLayout(Items(),Dimensions.MatchWrap).Orientation(Orientation.Vertical).Comparer(MyerComparer<IPrimitive>.Default);
+            return LinearLayout(Items(),Dimensions.MatchWrap)
+                  .Orientation(Orientation.Vertical);
         }
 
         private void OnUsernameChanged(TextChangedEventArgs args)
         {
             _current.Name = args.Text?.ToString();
-
             this.SetState(_current);
         }
     }
