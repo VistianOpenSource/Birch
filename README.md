@@ -2,20 +2,41 @@
 
 A platform agnostic .NET library for the creation of code first user interfaces.
 
-Specify your user interface in code using controls that you are already familiar with and let Birch do the rest.
+Code your user interface, update your state, and let Birch do the rest.
 
 ## Key Functionality
 
-* Platform agnostic, not tied to either native platforms like Android/iOS or cross platform solutions like Xamarin Forms.
-* Use the same control names, types, properties & events you are already using, no need to learn a new set of abstractions.
-* 3rd party controls e.g. maps easily onboarded, minimal additional code typically needed.
-* Create composite components for greater code reuse.
-* User Interface processing performed on background threads-UI thread only used to apply changes to UI components.
-* Linker aware, full linking supported allowing for the smallest fastest applications.
-* Extensible, customizable behaviour of core functionality e.g. error handling, comparators etc.
-* Logging & performance metrics provided through Microsoft logging abstractions, plumb in your favour logging library.
+* **Platform agnostic**-Not tied to either native platforms like Android/iOS or cross platform solutions like Xamarin Forms.
+* **Familiarlity**-Use the same control names, types, properties & events you are already using, no need to learn a new set of abstractions.
+* **3rd party controls**-Easily onboarded with typically a minimal amount of additional code.
+* **Composite components**-Greater code reuse.
+* **Responsive apps by default**-Majority of work occurs background threads;UI thread used only to apply changes.
+* **Linker aware**-Full linking supported allowing for the smaller faster applications.
+* **Extensible**-Customizable behaviour of core functionality e.g. error handling, comparators etc.
+* **Logging**-Logging provided through Microsoft logging abstractions, plumb in your favour logging library.
+* **Performance Metrics**-Observe the inner workings of you User Interface.
+* **Separation of Concerns**-Use different user interface layouts on different platforms. 
 
 See the Wiki for lots more information  [Wiki](https://github.com/VistianOpenSource/Birch/wiki).
+
+## Sample Usage
+~~~~
+[Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+public class NewMainActivity : BuildActivity
+{
+    private UserDetails _userDetails;
+
+    public override void Init(BuildEnvironment buildEnvironment)
+    {
+        _userDetails = new UserDetails(buildEnvironment);
+    }
+
+    protected override IPrimitive PerformLayout(LayoutContext layoutContext) =>
+        new Activity(this, _userDetails.Layout(layoutContext))
+            .Title("Edit User Details")
+            .Call((a, p) => a.SetPersistent(p), true);
+}
+~~~~
 
 ## Sample Component
 
