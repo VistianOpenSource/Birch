@@ -8,7 +8,7 @@ Code your user interface, update your state, and let Birch do the rest.
 
 * **Platform agnostic**-Not tied to native platforms like Android/iOS or cross platform solutions like Xamarin Forms.
 * **Familiarity**-Use the same control names, types, properties & events you are already using, no new set of abstractions to learn.
-* **3rd party controls**-Easily onboarded,often no additional code required.
+* **3rd party controls**-Easily onboarded,frequently with no additional code required.
 * **Composite components**-Greater code reuse, greater reliability.
 * **Responsive apps by default**-Majority of work occurs on background threads;UI thread used only to apply changes.
 * **Linker aware**-Full linking supported, allowing for smaller faster applications.
@@ -48,7 +48,8 @@ public class NewMainActivity : BuildActivity
 * If the name is less than 10 characters, an error message is shown. 
 * When the component is first used the **InitState** method would be called to get the initial model.
 * Upon first layout, the focus is set to the user name edit. 
-* Everytime the user makes a change the model is updated with the new username and the new model is specified through the **SetState** method.
+* Everytime the user makes a change in the user name edit, the model is updated with the new username and a new model is specified through the **SetState** method. 
+* Birch schedules the work required to perform any user interface updates everytime SetState is used.
 
 ~~~~
    public class UserPasswordWidget : StatefulContainer<UserPasswordWidget.Model>
