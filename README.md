@@ -7,7 +7,7 @@ Code your user interface, update your state, and let Birch do the rest.
 ## Key Functionality
 
 * **Platform agnostic**-Not tied to either native platforms like Android/iOS or cross platform solutions like Xamarin Forms.
-* **Familiarlity**-Use the same control names, types, properties & events you are already using, no need to learn a new set of abstractions.
+* **Familiarity**-Use the same control names, types, properties & events you are already using, no need to learn a new set of abstractions.
 * **3rd party controls**-Easily onboarded with typically a minimal amount of additional code.
 * **Composite components**-Greater code reuse.
 * **Responsive apps by default**-Majority of work occurs background threads;UI thread used only to apply changes.
