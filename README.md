@@ -15,6 +15,8 @@ Specify your user interface in code using controls that you are already familiar
 * Extensible, customizable behaviour of core functionality e.g. error handling, comparators etc.
 * Logging & performance metrics provided through Microsoft logging abstractions, plumb in your favour logging library.
 
+See the Wiki for lots more information  [Wiki](https://github.com/VistianOpenSource/Birch/wiki).
+
 ## Sample Component
 
 ~~~~
