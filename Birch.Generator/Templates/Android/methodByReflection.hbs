@@ -1,0 +1,16 @@
+{{! Template expects content to be defined by a AttributeMethodModel instance}}
+    public static partial class {{nameTidy DefiningType}}_Extensions
+    {
+        private static Expression<Action<{{DefiningType}}{{#each Arguments}}{{#if @first}}, {{/if}}{{{Type}}}{{#unless @last}}, {{/unless}}{{/each}}>> _callExpression_{{MethodName}}_{{nameTidy DefiningType}}_{{#each Arguments}}{{#if @first}}_{{/if}}{{nameTidy Type}}{{#unless @last}}_{{/unless}}{{/each}} = (view{{#each Arguments}}{{#if @first}}, {{/if}}param{{inc @index}}{{#unless @last}}, {{/unless}}{{/each}}) => view.{{MethodName}}({{#each Arguments}}param{{inc @index}}{{#unless @last}}, {{/unless}}{{/each}});
+
+        {{#if Obsolete}}
+        [Obsolete("{{{Obsolete}}}")]
+        {{/if}}
+        public static TControl {{MethodName}}<TControl>(this TControl component{{#each Arguments}}{{#if @first}}, {{/if}}{{{Type}}} p{{Name}}{{#if DefaultValue}}={{DefaultValue}}{{/if}}{{#unless @last}}, {{/unless}}{{/each}}) where TControl:IReflectedPrimitive<{{DefiningType}}>
+        {
+            var callExpression = _callExpression_{{MethodName}}_{{nameTidy DefiningType}}_{{#each Arguments}}{{#if @first}}_{{/if}}{{nameTidy Type}}{{#unless @last}}_{{/unless}}{{/each}};
+
+            Reflect<{{DefiningType}}>.ReflectionHelpers.Call(component.Attributes,callExpression{{#each Arguments}}{{#if @first}}, {{/if}}p{{Name}}{{#unless @last}}, {{/unless}}{{/each}});
+            return component;
+        }
+    }

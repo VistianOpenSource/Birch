@@ -1,0 +1,32 @@
+﻿    {{! Template expects content to be defined by a ExtensionMethodModel instance}}
+    public static partial class Primitives
+    {
+        public static AndroidView<{{Type}}> {{Name}}({{#each Arguments}}{{Type}} p{{Name}}{{#if DefaultValue}}={{DefaultValue}}{{/if}}, {{/each}}Dimensions dimensions=default,int?id=default)
+        {
+            if (Components.Primitives.NeverInclude)   
+            {
+                var instance = new {{Type}}(default);
+            }
+
+            var control = View<{{Type}}>(dimensions:dimensions,id:id);
+            {{#each Arguments}}
+            control.{{Name}}(p{{Name}});
+            {{/each}}
+            return control;
+        }    
+    }
+
+    {{! For each attribute, write out the attributes content}}
+    {{#each Attributes}}
+    {{> (lookup Template) }}
+    {{/each}}
+
+    {{! For each event, write out the event content}}
+    {{#each Events}}
+    {{> (lookup Template) }}
+    {{/each}}
+
+    {{! For each method, write out the method content}}
+    {{#each Methods}}
+    {{> (lookup Template) }}
+    {{/each}}

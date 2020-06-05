@@ -1,0 +1,458 @@
+{
+  "configuration": {
+    "namespace": "Enter your namespace here",
+    "rootTemplate": "main",
+    "templates": [
+      {
+        "name": "main",
+        "type": "Basic",
+        "source": "File",
+        "path": "Templates\\main.hbs"
+      },
+      {
+        "name": "extension",
+        "type": "Partial",
+        "source": "File",
+        "path": "Styles\\Extension\\Templates\\extension.hbs"
+      },
+      {
+        "name": "attributeByReflection",
+        "source": "File",
+        "type": "Partial",
+        "path": "Styles\\Extension\\Templates\\attributeByReflection.hbs"
+      },
+      {
+        "name": "eventByReflection",
+        "source": "File",
+        "type": "Partial",
+        "path": "Styles\\Extension\\Templates\\eventByReflection.hbs"
+      },
+      {
+        "name": "methodByReflection",
+        "source": "File",
+        "type": "Partial",
+        "path": "Styles\\Extension\\Templates\\methodByReflection.hbs"
+      }
+    ],
+    "defaultOutputType": "Extension",
+    "outputTypes": [
+      {
+        "name": "Extension",
+        "type": "Generator.XamarinForms.Styles.Extension.ModelFactory",
+        "assembly": "Generator.XamarinForms"
+      }
+    ]
+  },
+  "types": [
+    {
+      "type": "Android.Widget.TextView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "TextView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "AutoLinkMask",
+          "isCollection": false
+        },
+        {
+          "source": "BreakStrategy",
+          "isCollection": false
+        },
+        {
+          "source": "CompoundDrawablePadding",
+          "isCollection": false
+        },
+        {
+          "source": "CompoundDrawableTintBlendMode",
+          "isCollection": false
+        },
+        {
+          "source": "CompoundDrawableTintList",
+          "isCollection": false
+        },
+        {
+          "source": "CompoundDrawableTintMode",
+          "isCollection": false
+        },
+        {
+          "source": "CustomInsertionActionModeCallback",
+          "isCollection": false
+        },
+        {
+          "source": "CustomSelectionActionModeCallback",
+          "isCollection": false
+        },
+        {
+          "source": "Ellipsize",
+          "isCollection": false
+        },
+        {
+          "source": "ErrorFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Error",
+          "isCollection": false
+        },
+        {
+          "source": "FallbackLineSpacing",
+          "isCollection": false
+        },
+        {
+          "source": "FirstBaselineToTopHeight",
+          "isCollection": false
+        },
+        {
+          "source": "FontFeatureSettings",
+          "isCollection": false
+        },
+        {
+          "source": "FreezesText",
+          "isCollection": false
+        },
+        {
+          "source": "Gravity",
+          "isCollection": false
+        },
+        {
+          "source": "HintFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Hint",
+          "isCollection": false
+        },
+        {
+          "source": "HyphenationFrequency",
+          "isCollection": false
+        },
+        {
+          "source": "ImeHintLocales",
+          "isCollection": false
+        },
+        {
+          "source": "ImeOptions",
+          "isCollection": false
+        },
+        {
+          "source": "InputType",
+          "isCollection": false
+        },
+        {
+          "source": "JustificationMode",
+          "isCollection": false
+        },
+        {
+          "source": "KeyListener",
+          "isCollection": false
+        },
+        {
+          "source": "LastBaselineToBottomHeight",
+          "isCollection": false
+        },
+        {
+          "source": "LetterSpacing",
+          "isCollection": false
+        },
+        {
+          "source": "LineHeight",
+          "isCollection": false
+        },
+        {
+          "source": "LinksClickable",
+          "isCollection": false
+        },
+        {
+          "source": "MovementMethod",
+          "isCollection": false
+        },
+        {
+          "source": "PaintFlags",
+          "isCollection": false
+        },
+        {
+          "source": "PrivateImeOptions",
+          "isCollection": false
+        },
+        {
+          "source": "ShowSoftInputOnFocus",
+          "isCollection": false
+        },
+        {
+          "source": "TextFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Text",
+          "isCollection": false
+        },
+        {
+          "source": "TextClassifier",
+          "isCollection": false
+        },
+        {
+          "source": "TextCursorDrawable",
+          "isCollection": false
+        },
+        {
+          "source": "TextLocale",
+          "isCollection": false
+        },
+        {
+          "source": "TextLocales",
+          "isCollection": false
+        },
+        {
+          "source": "TextScaleX",
+          "isCollection": false
+        },
+        {
+          "source": "TextSelectHandle",
+          "isCollection": false
+        },
+        {
+          "source": "TextSelectHandleLeft",
+          "isCollection": false
+        },
+        {
+          "source": "TextSelectHandleRight",
+          "isCollection": false
+        },
+        {
+          "source": "TextSize",
+          "isCollection": false
+        },
+        {
+          "source": "TransformationMethod",
+          "isCollection": false
+        },
+        {
+          "source": "Typeface",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "AddTextChangedListener"
+        },
+        {
+          "source": "Append"
+        },
+        {
+          "source": "BeginBatchEdit"
+        },
+        {
+          "source": "ClearComposingText"
+        },
+        {
+          "source": "Debug"
+        },
+        {
+          "source": "EndBatchEdit"
+        },
+        {
+          "source": "OnBeginBatchEdit"
+        },
+        {
+          "source": "OnCommitCompletion"
+        },
+        {
+          "source": "OnCommitCorrection"
+        },
+        {
+          "source": "OnEditorAction"
+        },
+        {
+          "source": "OnEndBatchEdit"
+        },
+        {
+          "source": "OnRestoreInstanceState"
+        },
+        {
+          "source": "RemoveTextChangedListener"
+        },
+        {
+          "source": "SetAllCaps"
+        },
+        {
+          "source": "SetAutoSizeTextTypeUniformWithConfiguration"
+        },
+        {
+          "source": "SetAutoSizeTextTypeUniformWithPresetSizes"
+        },
+        {
+          "source": "SetAutoSizeTextTypeWithDefaults"
+        },
+        {
+          "source": "SetCompoundDrawables"
+        },
+        {
+          "source": "SetCompoundDrawablesRelative"
+        },
+        {
+          "source": "SetCompoundDrawablesRelativeWithIntrinsicBounds"
+        },
+        {
+          "source": "SetCompoundDrawablesWithIntrinsicBounds"
+        },
+        {
+          "source": "SetCursorVisible"
+        },
+        {
+          "source": "SetEditableFactory"
+        },
+        {
+          "source": "SetElegantTextHeight"
+        },
+        {
+          "source": "SetEms"
+        },
+        {
+          "source": "SetError"
+        },
+        {
+          "source": "SetExtractedText"
+        },
+        {
+          "source": "SetFilters"
+        },
+        {
+          "source": "SetHeight"
+        },
+        {
+          "source": "SetHighlightColor"
+        },
+        {
+          "source": "SetHint"
+        },
+        {
+          "source": "SetHintTextColor"
+        },
+        {
+          "source": "SetHorizontallyScrolling"
+        },
+        {
+          "source": "SetImeActionLabel"
+        },
+        {
+          "source": "SetIncludeFontPadding"
+        },
+        {
+          "source": "SetInputExtras"
+        },
+        {
+          "source": "SetLines"
+        },
+        {
+          "source": "SetLineSpacing"
+        },
+        {
+          "source": "SetLinkTextColor"
+        },
+        {
+          "source": "SetMarqueeRepeatLimit"
+        },
+        {
+          "source": "SetMaxEms"
+        },
+        {
+          "source": "SetMaxHeight"
+        },
+        {
+          "source": "SetMaxLines"
+        },
+        {
+          "source": "SetMaxWidth"
+        },
+        {
+          "source": "SetMinEms"
+        },
+        {
+          "source": "SetMinHeight"
+        },
+        {
+          "source": "SetMinLines"
+        },
+        {
+          "source": "SetMinWidth"
+        },
+        {
+          "source": "SetOnEditorActionListener"
+        },
+        {
+          "source": "SetPaddingRelative"
+        },
+        {
+          "source": "SetRawInputType"
+        },
+        {
+          "source": "SetScroller"
+        },
+        {
+          "source": "SetSelectAllOnFocus"
+        },
+        {
+          "source": "SetShadowLayer"
+        },
+        {
+          "source": "SetSingleLine"
+        },
+        {
+          "source": "SetSpannableFactory"
+        },
+        {
+          "source": "SetText"
+        },
+        {
+          "source": "SetTextAppearance"
+        },
+        {
+          "source": "SetTextColor"
+        },
+        {
+          "source": "SetTextCursorDrawable"
+        },
+        {
+          "source": "SetTextIsSelectable"
+        },
+        {
+          "source": "SetTextKeepState"
+        },
+        {
+          "source": "SetTextSelectHandle"
+        },
+        {
+          "source": "SetTextSelectHandleLeft"
+        },
+        {
+          "source": "SetTextSelectHandleRight"
+        },
+        {
+          "source": "SetTextSize"
+        },
+        {
+          "source": "SetTypeface"
+        },
+        {
+          "source": "SetWidth"
+        }
+      ],
+      "events": [
+        {
+          "source": "AfterTextChanged"
+        },
+        {
+          "source": "BeforeTextChanged"
+        },
+        {
+          "source": "TextChanged"
+        },
+        {
+          "source": "EditorAction"
+        }
+      ]
+    }
+  ]
+}

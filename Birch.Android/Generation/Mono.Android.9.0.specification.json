@@ -1,0 +1,3628 @@
+{
+  "configuration": {
+    "namespace": "Birch.Views",
+    "rootTemplate": "main",
+    "defaultOutputType": "Extension",
+    "outputTypes": [
+      {
+        "name": "Extension",
+        "type": "Birch.Generator.Styles.Extension.ModelFactory",
+        "assembly": "Birch.Generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      }
+    ],
+    "templates": [
+      {
+        "name": "main",
+        "type": "Basic",
+        "source": "File",
+        "path": "Templates\\main.hbs"
+      },
+      {
+        "name": "noInstance",
+        "type": "Partial",
+        "source": "File",
+        "path": "Styles\\Extension\\Templates\\noInstance.hbs"
+      },
+      {
+        "name": "layout",
+        "type": "Partial",
+        "source": "File",
+        "path": "Styles\\Extension\\Templates\\layout.hbs"
+      },
+      {
+        "name": "abstractLayout",
+        "type": "Partial",
+        "source": "File",
+        "path": "Styles\\Extension\\Templates\\abstractLayout.hbs"
+      },
+      {
+        "name": "extension",
+        "type": "Partial",
+        "source": "File",
+        "path": "Styles\\Extension\\Templates\\extension.hbs"
+      },
+      {
+        "name": "abstractExtension",
+        "type": "Partial",
+        "source": "File",
+        "path": "Styles\\Extension\\Templates\\abstractExtension.hbs"
+      },
+      {
+        "name": "attributeByReflection",
+        "source": "File",
+        "type": "Partial",
+        "path": "Styles\\Extension\\Templates\\attributeByReflection.hbs"
+      },
+      {
+        "name": "eventByReflection",
+        "source": "File",
+        "type": "Partial",
+        "path": "Styles\\Extension\\Templates\\eventByReflection.hbs"
+      },
+      {
+        "name": "methodByReflection",
+        "source": "File",
+        "type": "Partial",
+        "path": "Styles\\Extension\\Templates\\methodByReflection.hbs"
+      }
+    ],
+  },
+  "types": [
+    {
+      "type": "Android.Widget.AutoCompleteTextView",
+      "output": {
+        "methodArguments": ["Text"],
+        "methodName": "AutoCompleteTextView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Adapter",
+          "isCollection": false
+        },
+        {
+          "source": "DropDownAnchor",
+          "isCollection": false
+        },
+        {
+          "source": "DropDownHeight",
+          "isCollection": false
+        },
+        {
+          "source": "DropDownHorizontalOffset",
+          "isCollection": false
+        },
+        {
+          "source": "DropDownVerticalOffset",
+          "isCollection": false
+        },
+        {
+          "source": "DropDownWidth",
+          "isCollection": false
+        },
+        {
+          "source": "ListSelection",
+          "isCollection": false
+        },
+        {
+          "source": "OnItemClickListener",
+          "isCollection": false
+        },
+        {
+          "source": "OnItemSelectedListener",
+          "isCollection": false
+        },
+        {
+          "source": "Threshold",
+          "isCollection": false
+        },
+        {
+          "source": "Validator",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "ClearListSelection"
+        },
+        {
+          "source": "DismissDropDown"
+        },
+        {
+          "source": "OnFilterComplete"
+        },
+        {
+          "source": "PerformCompletion"
+        },
+        {
+          "source": "PerformValidation"
+        },
+        {
+          "source": "SetCompletionHint"
+        },
+        {
+          "source": "SetDropDownBackgroundDrawable"
+        },
+        {
+          "source": "SetDropDownBackgroundResource"
+        },
+        {
+          "source": "SetOnDismissListener"
+        },
+        {
+          "source": "SetText"
+        },
+        {
+          "source": "ShowDropDown"
+        }
+      ],
+      "events": [
+        {
+          "source": "ItemSelectionCleared"
+        },
+        {
+          "source": "Dismiss"
+        },
+        {
+          "source": "ItemClick"
+        },
+        {
+          "source": "ItemSelected"
+        },
+        {
+          "source": "NothingSelected"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.DatePicker",
+      "output": {
+        "methodArguments": [],
+        "methodName": "DatePicker",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "DateTime",
+          "isCollection": false
+        },
+        {
+          "source": "CalendarViewShown",
+          "isCollection": false
+        },
+        {
+          "source": "FirstDayOfWeek",
+          "isCollection": false
+        },
+        {
+          "source": "MaxDate",
+          "isCollection": false
+        },
+        {
+          "source": "MinDate",
+          "isCollection": false
+        },
+        {
+          "source": "SpinnersShown",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "Init"
+        },
+        {
+          "source": "SetOnDateChangedListener"
+        },
+        {
+          "source": "UpdateDate"
+        }
+      ],
+      "events": [
+        {
+          "source": "DateChanged"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.TextView",
+      "output": {
+        "methodArguments": ["Text"],
+        "methodName": "TextView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "AutoLinkMask",
+          "isCollection": false
+        },
+        {
+          "source": "BreakStrategy",
+          "isCollection": false
+        },
+        {
+          "source": "CompoundDrawablePadding",
+          "isCollection": false
+        },
+        {
+          "source": "CompoundDrawableTintList",
+          "isCollection": false
+        },
+        {
+          "source": "CompoundDrawableTintMode",
+          "isCollection": false
+        },
+        {
+          "source": "CustomInsertionActionModeCallback",
+          "isCollection": false
+        },
+        {
+          "source": "CustomSelectionActionModeCallback",
+          "isCollection": false
+        },
+        {
+          "source": "Ellipsize",
+          "isCollection": false
+        },
+        {
+          "source": "ErrorFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Error",
+          "isCollection": false
+        },
+        {
+          "source": "FallbackLineSpacing",
+          "isCollection": false
+        },
+        {
+          "source": "FirstBaselineToTopHeight",
+          "isCollection": false
+        },
+        {
+          "source": "FontFeatureSettings",
+          "isCollection": false
+        },
+        {
+          "source": "FreezesText",
+          "isCollection": false
+        },
+        {
+          "source": "Gravity",
+          "isCollection": false
+        },
+        {
+          "source": "HintFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Hint",
+          "isCollection": false
+        },
+        {
+          "source": "HyphenationFrequency",
+          "isCollection": false
+        },
+        {
+          "source": "ImeHintLocales",
+          "isCollection": false
+        },
+        {
+          "source": "ImeOptions",
+          "isCollection": false
+        },
+        {
+          "source": "InputType",
+          "isCollection": false
+        },
+        {
+          "source": "JustificationMode",
+          "isCollection": false
+        },
+        {
+          "source": "KeyListener",
+          "isCollection": false
+        },
+        {
+          "source": "LastBaselineToBottomHeight",
+          "isCollection": false
+        },
+        {
+          "source": "LetterSpacing",
+          "isCollection": false
+        },
+        {
+          "source": "LineHeight",
+          "isCollection": false
+        },
+        {
+          "source": "LinksClickable",
+          "isCollection": false
+        },
+        {
+          "source": "MovementMethod",
+          "isCollection": false
+        },
+        {
+          "source": "PaintFlags",
+          "isCollection": false
+        },
+        {
+          "source": "PrivateImeOptions",
+          "isCollection": false
+        },
+        {
+          "source": "ShowSoftInputOnFocus",
+          "isCollection": false
+        },
+        {
+          "source": "TextFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Text",
+          "isCollection": false
+        },
+        {
+          "source": "TextClassifier",
+          "isCollection": false
+        },
+        {
+          "source": "TextLocale",
+          "isCollection": false
+        },
+        {
+          "source": "TextLocales",
+          "isCollection": false
+        },
+        {
+          "source": "TextScaleX",
+          "isCollection": false
+        },
+        {
+          "source": "TextSize",
+          "isCollection": false
+        },
+        {
+          "source": "TransformationMethod",
+          "isCollection": false
+        },
+        {
+          "source": "Typeface",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "AddTextChangedListener"
+        },
+        {
+          "source": "Append"
+        },
+        {
+          "source": "BeginBatchEdit"
+        },
+        {
+          "source": "ClearComposingText"
+        },
+        {
+          "source": "Debug"
+        },
+        {
+          "source": "EndBatchEdit"
+        },
+        {
+          "source": "RemoveTextChangedListener"
+        },
+        {
+          "source": "SetAllCaps"
+        },
+        {
+          "source": "SetAutoSizeTextTypeUniformWithConfiguration"
+        },
+        {
+          "source": "SetAutoSizeTextTypeUniformWithPresetSizes"
+        },
+        {
+          "source": "SetAutoSizeTextTypeWithDefaults"
+        },
+        {
+          "source": "SetCompoundDrawables"
+        },
+        {
+          "source": "SetCompoundDrawablesRelative"
+        },
+        {
+          "source": "SetCompoundDrawablesRelativeWithIntrinsicBounds"
+        },
+        {
+          "source": "SetCompoundDrawablesWithIntrinsicBounds"
+        },
+        {
+          "source": "SetCursorVisible"
+        },
+        {
+          "source": "SetEditableFactory"
+        },
+        {
+          "source": "SetElegantTextHeight"
+        },
+        {
+          "source": "SetEms"
+        },
+        {
+          "source": "SetError"
+        },
+        {
+          "source": "SetExtractedText"
+        },
+        {
+          "source": "SetFilters"
+        },
+        {
+          "source": "SetHeight"
+        },
+        {
+          "source": "SetHighlightColor"
+        },
+        {
+          "source": "SetHint"
+        },
+        {
+          "source": "SetHintTextColor"
+        },
+        {
+          "source": "SetHorizontallyScrolling"
+        },
+        {
+          "source": "SetImeActionLabel"
+        },
+        {
+          "source": "SetIncludeFontPadding"
+        },
+        {
+          "source": "SetInputExtras"
+        },
+        {
+          "source": "SetLines"
+        },
+        {
+          "source": "SetLineSpacing"
+        },
+        {
+          "source": "SetLinkTextColor"
+        },
+        {
+          "source": "SetMarqueeRepeatLimit"
+        },
+        {
+          "source": "SetMaxEms"
+        },
+        {
+          "source": "SetMaxHeight"
+        },
+        {
+          "source": "SetMaxLines"
+        },
+        {
+          "source": "SetMaxWidth"
+        },
+        {
+          "source": "SetMinEms"
+        },
+        {
+          "source": "SetMinHeight"
+        },
+        {
+          "source": "SetMinLines"
+        },
+        {
+          "source": "SetMinWidth"
+        },
+        {
+          "source": "SetOnEditorActionListener"
+        },
+        {
+          "source": "SetPaddingRelative"
+        },
+        {
+          "source": "SetRawInputType"
+        },
+        {
+          "source": "SetScroller"
+        },
+        {
+          "source": "SetSelectAllOnFocus"
+        },
+        {
+          "source": "SetShadowLayer"
+        },
+        {
+          "source": "SetSingleLine"
+        },
+        {
+          "source": "SetSpannableFactory"
+        },
+        {
+          "source": "SetText"
+        },
+        {
+          "source": "SetTextAppearance"
+        },
+        {
+          "source": "SetTextColor"
+        },
+        {
+          "source": "SetTextIsSelectable"
+        },
+        {
+          "source": "SetTextKeepState"
+        },
+        {
+          "source": "SetTextSize"
+        },
+        {
+          "source": "SetTypeface"
+        },
+        {
+          "source": "SetWidth"
+        }
+      ],
+      "events": [
+        {
+          "source": "AfterTextChanged"
+        },
+        {
+          "source": "BeforeTextChanged"
+        },
+        {
+          "source": "TextChanged"
+        },
+        {
+          "source": "EditorAction"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.AbsSeekBar",
+      "output": {
+        "methodArguments": [],
+        "methodName": "AbsSeekBar",
+        "generationType": "Extension",
+	"template" : "abstractExtension"
+      },
+      "properties": [
+        {
+          "source": "KeyProgressIncrement",
+          "isCollection": false
+        },
+        {
+          "source": "SplitTrack",
+          "isCollection": false
+        },
+        {
+          "source": "ThumbOffset",
+          "isCollection": false
+        },
+        {
+          "source": "ThumbTintList",
+          "isCollection": false
+        },
+        {
+          "source": "ThumbTintMode",
+          "isCollection": false
+        },
+        {
+          "source": "TickMark",
+          "isCollection": false
+        },
+        {
+          "source": "TickMarkTintList",
+          "isCollection": false
+        },
+        {
+          "source": "TickMarkTintMode",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetThumb"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.AbsSpinner",
+      "output": {
+        "methodArguments": [],
+        "methodName": "AbsSpinner",
+        "generationType": "Extension",
+	"template" : "abstractExtension"
+      },
+      "properties": [
+        {
+          "source": "Adapter",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetSelection"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.AnalogClock",
+      "output": {
+        "methodArguments": [],
+        "methodName": "AnalogClock",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.Button",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Button",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.CalendarView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "CalendarView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Date",
+          "isCollection": false
+        },
+        {
+          "source": "DateTextAppearance",
+          "isCollection": false
+        },
+        {
+          "source": "FirstDayOfWeek",
+          "isCollection": false
+        },
+        {
+          "source": "FocusedMonthDateColor",
+          "isCollection": false
+        },
+        {
+          "source": "MaxDate",
+          "isCollection": false
+        },
+        {
+          "source": "MinDate",
+          "isCollection": false
+        },
+        {
+          "source": "SelectedDateVerticalBar",
+          "isCollection": false
+        },
+        {
+          "source": "SelectedWeekBackgroundColor",
+          "isCollection": false
+        },
+        {
+          "source": "ShowWeekNumber",
+          "isCollection": false
+        },
+        {
+          "source": "ShownWeekCount",
+          "isCollection": false
+        },
+        {
+          "source": "UnfocusedMonthDateColor",
+          "isCollection": false
+        },
+        {
+          "source": "WeekDayTextAppearance",
+          "isCollection": false
+        },
+        {
+          "source": "WeekNumberColor",
+          "isCollection": false
+        },
+        {
+          "source": "WeekSeparatorLineColor",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetDate"
+        },
+        {
+          "source": "SetOnDateChangeListener"
+        },
+        {
+          "source": "SetSelectedDateVerticalBar"
+        }
+      ],
+      "events": [
+        {
+          "source": "DateChange"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.CheckBox",
+      "output": {
+        "methodArguments": [],
+        "methodName": "CheckBox",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.CheckedTextView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "CheckedTextView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "CheckMarkTintList",
+          "isCollection": false
+        },
+        {
+          "source": "CheckMarkTintMode",
+          "isCollection": false
+        },
+        {
+          "source": "Checked",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetCheckMarkDrawable"
+        },
+        {
+          "source": "Toggle"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.Chronometer",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Chronometer",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Base",
+          "isCollection": false
+        },
+        {
+          "source": "CountDown",
+          "isCollection": false
+        },
+        {
+          "source": "Format",
+          "isCollection": false
+        },
+        {
+          "source": "OnChronometerTickListener",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "Start"
+        },
+        {
+          "source": "Stop"
+        }
+      ],
+      "events": [
+        {
+          "source": "ChronometerTick"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.CompoundButton",
+      "output": {
+        "methodArguments": [],
+        "methodName": "CompoundButton",
+        "generationType": "Extension",
+	"template" : "abstractExtension"
+      },
+      "properties": [
+        {
+          "source": "ButtonTintList",
+          "isCollection": false
+        },
+        {
+          "source": "ButtonTintMode",
+          "isCollection": false
+        },
+        {
+          "source": "Checked",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetButtonDrawable"
+        },
+        {
+          "source": "SetOnCheckedChangeListener"
+        },
+        {
+          "source": "Toggle"
+        }
+      ],
+      "events": [
+        {
+          "source": "CheckedChange"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.DigitalClock",
+      "output": {
+        "methodArguments": [],
+        "methodName": "DigitalClock",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.EditText",
+      "output": {
+        "methodArguments": ["Text"],
+        "methodName": "EditText",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [
+        {
+          "source": "ExtendSelection"
+        },
+        {
+          "source": "SelectAll"
+        },
+        {
+          "source": "SetSelection"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.ImageButton",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ImageButton",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.ImageSwitcher",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ImageSwitcher",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [
+        {
+          "source": "SetImageDrawable"
+        },
+        {
+          "source": "SetImageResource"
+        },
+        {
+          "source": "SetImageURI"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.ImageView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ImageView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "BaselineAlignBottom",
+          "isCollection": false
+        },
+        {
+          "source": "CropToPadding",
+          "isCollection": false
+        },
+        {
+          "source": "ImageAlpha",
+          "isCollection": false
+        },
+        {
+          "source": "ImageMatrix",
+          "isCollection": false
+        },
+        {
+          "source": "ImageTintList",
+          "isCollection": false
+        },
+        {
+          "source": "ImageTintMode",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "ClearColorFilter"
+        },
+        {
+          "source": "SetAdjustViewBounds"
+        },
+        {
+          "source": "SetAlpha"
+        },
+        {
+          "source": "SetBaseline"
+        },
+        {
+          "source": "SetColorFilter"
+        },
+        {
+          "source": "SetImageBitmap"
+        },
+        {
+          "source": "SetImageDrawable"
+        },
+        {
+          "source": "SetImageIcon"
+        },
+        {
+          "source": "SetImageLevel"
+        },
+        {
+          "source": "SetImageResource"
+        },
+        {
+          "source": "SetImageState"
+        },
+        {
+          "source": "SetImageURI"
+        },
+        {
+          "source": "SetMaxHeight"
+        },
+        {
+          "source": "SetMaxWidth"
+        },
+        {
+          "source": "SetScaleType"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.LinearLayout",
+      "output": {
+        "methodArguments": [],
+        "methodName": "LinearLayout",
+        "generationType": "Extension",
+	"template" : "layout"
+      },
+      "properties": [
+        {
+          "source": "BaselineAligned",
+          "isCollection": false
+        },
+        {
+          "source": "BaselineAlignedChildIndex",
+          "isCollection": false
+        },
+        {
+          "source": "DividerPadding",
+          "isCollection": false
+        },
+        {
+          "source": "MeasureWithLargestChildEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "Orientation",
+          "isCollection": false
+        },
+        {
+          "source": "ShowDividers",
+          "isCollection": false
+        },
+        {
+          "source": "WeightSum",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetDividerDrawable"
+        },
+        {
+          "source": "SetGravity"
+        },
+        {
+          "source": "SetHorizontalGravity"
+        },
+        {
+          "source": "SetVerticalGravity"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.MultiAutoCompleteTextView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "MultiAutoCompleteTextView",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [
+        {
+          "source": "SetTokenizer"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.NumberPicker",
+      "output": {
+        "methodArguments": [],
+        "methodName": "NumberPicker",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "MaxValue",
+          "isCollection": false
+        },
+        {
+          "source": "MinValue",
+          "isCollection": false
+        },
+        {
+          "source": "Value",
+          "isCollection": false
+        },
+        {
+          "source": "WrapSelectorWheel",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetDisplayedValues"
+        },
+        {
+          "source": "SetFormatter"
+        },
+        {
+          "source": "SetOnLongPressUpdateInterval"
+        },
+        {
+          "source": "SetOnScrollListener"
+        },
+        {
+          "source": "SetOnValueChangedListener"
+        }
+      ],
+      "events": [
+        {
+          "source": "Scroll"
+        },
+        {
+          "source": "ValueChanged"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.ProgressBar",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ProgressBar",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Indeterminate",
+          "isCollection": false
+        },
+        {
+          "source": "IndeterminateDrawable",
+          "isCollection": false
+        },
+        {
+          "source": "IndeterminateTintList",
+          "isCollection": false
+        },
+        {
+          "source": "IndeterminateTintMode",
+          "isCollection": false
+        },
+        {
+          "source": "Interpolator",
+          "isCollection": false
+        },
+        {
+          "source": "Max",
+          "isCollection": false
+        },
+        {
+          "source": "Min",
+          "isCollection": false
+        },
+        {
+          "source": "Progress",
+          "isCollection": false
+        },
+        {
+          "source": "ProgressBackgroundTintList",
+          "isCollection": false
+        },
+        {
+          "source": "ProgressBackgroundTintMode",
+          "isCollection": false
+        },
+        {
+          "source": "ProgressDrawable",
+          "isCollection": false
+        },
+        {
+          "source": "ProgressTintList",
+          "isCollection": false
+        },
+        {
+          "source": "ProgressTintMode",
+          "isCollection": false
+        },
+        {
+          "source": "SecondaryProgress",
+          "isCollection": false
+        },
+        {
+          "source": "SecondaryProgressTintList",
+          "isCollection": false
+        },
+        {
+          "source": "SecondaryProgressTintMode",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "IncrementProgressBy"
+        },
+        {
+          "source": "IncrementSecondaryProgressBy"
+        },
+        {
+          "source": "OnRestoreInstanceState"
+        },
+        {
+          "source": "SetIndeterminateDrawableTiled"
+        },
+        {
+          "source": "SetInterpolator"
+        },
+        {
+          "source": "SetProgress"
+        },
+        {
+          "source": "SetProgressDrawableTiled"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.QuickContactBadge",
+      "output": {
+        "methodArguments": [],
+        "methodName": "QuickContactBadge",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [
+        {
+          "source": "AssignContactFromEmail"
+        },
+        {
+          "source": "AssignContactFromPhone"
+        },
+        {
+          "source": "AssignContactUri"
+        },
+        {
+          "source": "OnClick"
+        },
+        {
+          "source": "SetExcludeMimes"
+        },
+        {
+          "source": "SetImageToDefault"
+        },
+        {
+          "source": "SetMode"
+        },
+        {
+          "source": "SetOverlay"
+        },
+        {
+          "source": "SetPrioritizedMimeType"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.RadioButton",
+      "output": {
+        "methodArguments": [],
+        "methodName": "RadioButton",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.RadioGroup",
+      "output": {
+        "methodArguments": [],
+        "methodName": "RadioGroup",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [
+        {
+          "source": "Check"
+        },
+        {
+          "source": "ClearCheck"
+        },
+        {
+          "source": "SetOnCheckedChangeListener"
+        }
+      ],
+      "events": [
+        {
+          "source": "CheckedChange"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.RatingBar",
+      "output": {
+        "methodArguments": [],
+        "methodName": "RatingBar",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "IsIndicator",
+          "isCollection": false
+        },
+        {
+          "source": "NumStars",
+          "isCollection": false
+        },
+        {
+          "source": "OnRatingBarChangeListener",
+          "isCollection": false
+        },
+        {
+          "source": "Rating",
+          "isCollection": false
+        },
+        {
+          "source": "StepSize",
+          "isCollection": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "source": "RatingBarChange"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.RelativeLayout",
+      "output": {
+        "methodArguments": [],
+        "methodName": "RelativeLayout",
+        "generationType": "Extension",
+	"template" : "layout"
+      },
+      "properties": [],
+      "methods": [
+        {
+          "source": "SetGravity"
+        },
+        {
+          "source": "SetHorizontalGravity"
+        },
+        {
+          "source": "SetIgnoreGravity"
+        },
+        {
+          "source": "SetVerticalGravity"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.ScrollView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ScrollView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "FillViewport",
+          "isCollection": false
+        },
+        {
+          "source": "SmoothScrollingEnabled",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "Fling"
+        },
+        {
+          "source": "SmoothScrollBy"
+        },
+        {
+          "source": "SmoothScrollTo"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.SearchView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "SearchView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Iconified",
+          "isCollection": false
+        },
+        {
+          "source": "QueryRefinementEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "SubmitButtonEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "SuggestionsAdapter",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "OnActionViewCollapsed"
+        },
+        {
+          "source": "OnActionViewExpanded"
+        },
+        {
+          "source": "SetIconifiedByDefault"
+        },
+        {
+          "source": "SetImeOptions"
+        },
+        {
+          "source": "SetInputType"
+        },
+        {
+          "source": "SetMaxWidth"
+        },
+        {
+          "source": "SetOnCloseListener"
+        },
+        {
+          "source": "SetOnQueryTextFocusChangeListener"
+        },
+        {
+          "source": "SetOnQueryTextListener"
+        },
+        {
+          "source": "SetOnSearchClickListener"
+        },
+        {
+          "source": "SetOnSuggestionListener"
+        },
+        {
+          "source": "SetQuery"
+        },
+        {
+          "source": "SetQueryHint"
+        },
+        {
+          "source": "SetSearchableInfo"
+        }
+      ],
+      "events": [
+        {
+          "source": "Close"
+        },
+        {
+          "source": "QueryTextFocusChange"
+        },
+        {
+          "source": "QueryTextChange"
+        },
+        {
+          "source": "QueryTextSubmit"
+        },
+        {
+          "source": "SearchClick"
+        },
+        {
+          "source": "SuggestionClick"
+        },
+        {
+          "source": "SuggestionSelect"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.SeekBar",
+      "output": {
+        "methodArguments": [],
+        "methodName": "SeekBar",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [
+        {
+          "source": "SetOnSeekBarChangeListener"
+        }
+      ],
+      "events": [
+        {
+          "source": "ProgressChanged"
+        },
+        {
+          "source": "StartTrackingTouch"
+        },
+        {
+          "source": "StopTrackingTouch"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.Space",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Space",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.Spinner",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Spinner",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "DropDownHorizontalOffset",
+          "isCollection": false
+        },
+        {
+          "source": "DropDownVerticalOffset",
+          "isCollection": false
+        },
+        {
+          "source": "DropDownWidth",
+          "isCollection": false
+        },
+        {
+          "source": "PromptFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Prompt",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "OnClick"
+        },
+        {
+          "source": "SetGravity"
+        },
+        {
+          "source": "SetPopupBackgroundDrawable"
+        },
+        {
+          "source": "SetPopupBackgroundResource"
+        },
+        {
+          "source": "SetPromptId"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.Switch",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Switch",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "ShowText",
+          "isCollection": false
+        },
+        {
+          "source": "SplitTrack",
+          "isCollection": false
+        },
+        {
+          "source": "SwitchMinWidth",
+          "isCollection": false
+        },
+        {
+          "source": "SwitchPadding",
+          "isCollection": false
+        },
+        {
+          "source": "TextOffFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "TextOff",
+          "isCollection": false
+        },
+        {
+          "source": "TextOnFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "TextOn",
+          "isCollection": false
+        },
+        {
+          "source": "ThumbDrawable",
+          "isCollection": false
+        },
+        {
+          "source": "ThumbTextPadding",
+          "isCollection": false
+        },
+        {
+          "source": "ThumbTintList",
+          "isCollection": false
+        },
+        {
+          "source": "ThumbTintMode",
+          "isCollection": false
+        },
+        {
+          "source": "TrackDrawable",
+          "isCollection": false
+        },
+        {
+          "source": "TrackTintList",
+          "isCollection": false
+        },
+        {
+          "source": "TrackTintMode",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "OnMeasure"
+        },
+        {
+          "source": "SetSwitchTextAppearance"
+        },
+        {
+          "source": "SetSwitchTypeface"
+        },
+        {
+          "source": "SetThumbResource"
+        },
+        {
+          "source": "SetTrackResource"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.TableLayout",
+      "output": {
+        "methodArguments": [],
+        "methodName": "TableLayout",
+        "generationType": "Extension",
+	"template" : "layout"
+      },
+      "properties": [
+        {
+          "source": "ShrinkAllColumns",
+          "isCollection": false
+        },
+        {
+          "source": "StretchAllColumns",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetColumnCollapsed"
+        },
+        {
+          "source": "SetColumnShrinkable"
+        },
+        {
+          "source": "SetColumnStretchable"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.TextClock",
+      "output": {
+        "methodArguments": [],
+        "methodName": "TextClock",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Format12HourFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Format12Hour",
+          "isCollection": false
+        },
+        {
+          "source": "Format24HourFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Format24Hour",
+          "isCollection": false
+        },
+        {
+          "source": "TimeZone",
+          "isCollection": false
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.TextSwitcher",
+      "output": {
+        "methodArguments": [],
+        "methodName": "TextSwitcher",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [
+        {
+          "source": "SetCurrentText"
+        },
+        {
+          "source": "SetText"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.TimePicker",
+      "output": {
+        "methodArguments": [],
+        "methodName": "TimePicker",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "CurrentHour",
+          "isCollection": false
+        },
+        {
+          "source": "CurrentMinute",
+          "isCollection": false
+        },
+        {
+          "source": "Hour",
+          "isCollection": false
+        },
+        {
+          "source": "Minute",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetIs24HourView"
+        },
+        {
+          "source": "SetOnTimeChangedListener"
+        }
+      ],
+      "events": [
+        {
+          "source": "TimeChanged"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.ToggleButton",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ToggleButton",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "TextOffFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "TextOff",
+          "isCollection": false
+        },
+        {
+          "source": "TextOnFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "TextOn",
+          "isCollection": false
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.Toolbar",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Toolbar",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "ContentInsetEndWithActions",
+          "isCollection": false
+        },
+        {
+          "source": "ContentInsetStartWithNavigation",
+          "isCollection": false
+        },
+        {
+          "source": "Logo",
+          "isCollection": false
+        },
+        {
+          "source": "LogoDescriptionFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "LogoDescription",
+          "isCollection": false
+        },
+        {
+          "source": "NavigationContentDescriptionFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "NavigationContentDescription",
+          "isCollection": false
+        },
+        {
+          "source": "NavigationIcon",
+          "isCollection": false
+        },
+        {
+          "source": "OverflowIcon",
+          "isCollection": false
+        },
+        {
+          "source": "PopupTheme",
+          "isCollection": false
+        },
+        {
+          "source": "SubtitleFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Subtitle",
+          "isCollection": false
+        },
+        {
+          "source": "TitleFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Title",
+          "isCollection": false
+        },
+        {
+          "source": "TitleMarginBottom",
+          "isCollection": false
+        },
+        {
+          "source": "TitleMarginEnd",
+          "isCollection": false
+        },
+        {
+          "source": "TitleMarginStart",
+          "isCollection": false
+        },
+        {
+          "source": "TitleMarginTop",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "CollapseActionView"
+        },
+        {
+          "source": "DismissPopupMenus"
+        },
+        {
+          "source": "InflateMenu"
+        },
+        {
+          "source": "SetContentInsetsAbsolute"
+        },
+        {
+          "source": "SetContentInsetsRelative"
+        },
+        {
+          "source": "SetLogo"
+        },
+        {
+          "source": "SetLogoDescription"
+        },
+        {
+          "source": "SetNavigationContentDescription"
+        },
+        {
+          "source": "SetNavigationIcon"
+        },
+        {
+          "source": "SetNavigationOnClickListener"
+        },
+        {
+          "source": "SetOnMenuItemClickListener"
+        },
+        {
+          "source": "SetSubtitle"
+        },
+        {
+          "source": "SetSubtitleTextAppearance"
+        },
+        {
+          "source": "SetSubtitleTextColor"
+        },
+        {
+          "source": "SetTitle"
+        },
+        {
+          "source": "SetTitleMargin"
+        },
+        {
+          "source": "SetTitleTextAppearance"
+        },
+        {
+          "source": "SetTitleTextColor"
+        }
+      ],
+      "events": [
+        {
+          "source": "NavigationOnClick"
+        },
+        {
+          "source": "MenuItemClick"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.VideoView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "VideoView",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [
+        {
+          "source": "AddSubtitleSource"
+        },
+        {
+          "source": "Pause"
+        },
+        {
+          "source": "Resume"
+        },
+        {
+          "source": "SeekTo"
+        },
+        {
+          "source": "SetAudioAttributes"
+        },
+        {
+          "source": "SetAudioFocusRequest"
+        },
+        {
+          "source": "SetMediaController"
+        },
+        {
+          "source": "SetOnCompletionListener"
+        },
+        {
+          "source": "SetOnErrorListener"
+        },
+        {
+          "source": "SetOnInfoListener"
+        },
+        {
+          "source": "SetOnPreparedListener"
+        },
+        {
+          "source": "SetVideoPath"
+        },
+        {
+          "source": "SetVideoURI"
+        },
+        {
+          "source": "Start"
+        },
+        {
+          "source": "StopPlayback"
+        },
+        {
+          "source": "Suspend"
+        }
+      ],
+      "events": [
+        {
+          "source": "Completion"
+        },
+        {
+          "source": "Error"
+        },
+        {
+          "source": "Info"
+        },
+        {
+          "source": "Prepared"
+        }
+      ]
+    },
+    {
+      "type": "Android.Widget.ViewAnimator",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ViewAnimator",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "DisplayedChild",
+          "isCollection": false
+        },
+        {
+          "source": "InAnimation",
+          "isCollection": false
+        },
+        {
+          "source": "OutAnimation",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetAnimateFirstView"
+        },
+        {
+          "source": "SetInAnimation"
+        },
+        {
+          "source": "SetOutAnimation"
+        },
+        {
+          "source": "ShowNext"
+        },
+        {
+          "source": "ShowPrevious"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.ViewFlipper",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ViewFlipper",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "AutoStart",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetFlipInterval"
+        },
+        {
+          "source": "StartFlipping"
+        },
+        {
+          "source": "StopFlipping"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Widget.ViewSwitcher",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ViewSwitcher",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [
+        {
+          "source": "Reset"
+        },
+        {
+          "source": "SetFactory"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Views.View",
+      "output": {
+        "methodArguments": [],
+        "methodName": "View",
+        "generationType": "Extension",
+	"template" : "abstractExtension"
+      },
+      "properties": [
+        {
+          "source": "AccessibilityHeading",
+          "isCollection": false
+        },
+        {
+          "source": "AccessibilityLiveRegion",
+          "isCollection": false
+        },
+        {
+          "source": "AccessibilityPaneTitleFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "AccessibilityPaneTitle",
+          "isCollection": false
+        },
+        {
+          "source": "AccessibilityTraversalAfter",
+          "isCollection": false
+        },
+        {
+          "source": "AccessibilityTraversalBefore",
+          "isCollection": false
+        },
+        {
+          "source": "Activated",
+          "isCollection": false
+        },
+        {
+          "source": "Alpha",
+          "isCollection": false
+        },
+        {
+          "source": "Animation",
+          "isCollection": false
+        },
+        {
+          "source": "AutofillId",
+          "isCollection": false
+        },
+        {
+          "source": "Background",
+          "isCollection": false
+        },
+        {
+          "source": "BackgroundTintList",
+          "isCollection": false
+        },
+        {
+          "source": "BackgroundTintMode",
+          "isCollection": false
+        },
+        {
+          "source": "Bottom",
+          "isCollection": false
+        },
+        {
+          "source": "Clickable",
+          "isCollection": false
+        },
+        {
+          "source": "ClipBounds",
+          "isCollection": false
+        },
+        {
+          "source": "ClipToOutline",
+          "isCollection": false
+        },
+        {
+          "source": "ContentDescriptionFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "ContentDescription",
+          "isCollection": false
+        },
+        {
+          "source": "ContextClickable",
+          "isCollection": false
+        },
+        {
+          "source": "DefaultFocusHighlightEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "DrawingCacheBackgroundColor",
+          "isCollection": false
+        },
+        {
+          "source": "DrawingCacheEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "DrawingCacheQuality",
+          "isCollection": false
+        },
+        {
+          "source": "DuplicateParentStateEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "Elevation",
+          "isCollection": false
+        },
+        {
+          "source": "Enabled",
+          "isCollection": false
+        },
+        {
+          "source": "FilterTouchesWhenObscured",
+          "isCollection": false
+        },
+        {
+          "source": "Focusable",
+          "isCollection": false
+        },
+        {
+          "source": "FocusableInTouchMode",
+          "isCollection": false
+        },
+        {
+          "source": "FocusedByDefault",
+          "isCollection": false
+        },
+        {
+          "source": "Foreground",
+          "isCollection": false
+        },
+        {
+          "source": "ForegroundTintList",
+          "isCollection": false
+        },
+        {
+          "source": "ForegroundTintMode",
+          "isCollection": false
+        },
+        {
+          "source": "HapticFeedbackEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "HasTransientState",
+          "isCollection": false
+        },
+        {
+          "source": "HorizontalFadingEdgeEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "HorizontalScrollBarEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "Hovered",
+          "isCollection": false
+        },
+        {
+          "source": "Id",
+          "isCollection": false
+        },
+        {
+          "source": "ImportantForAccessibility",
+          "isCollection": false
+        },
+        {
+          "source": "ImportantForAutofill",
+          "isCollection": false
+        },
+        {
+          "source": "KeepScreenOn",
+          "isCollection": false
+        },
+        {
+          "source": "KeyboardNavigationCluster",
+          "isCollection": false
+        },
+        {
+          "source": "LabelFor",
+          "isCollection": false
+        },
+        {
+          "source": "LayoutDirection",
+          "isCollection": false
+        },
+        {
+          "source": "LayoutParameters",
+          "isCollection": false
+        },
+        {
+          "source": "Left",
+          "isCollection": false
+        },
+        {
+          "source": "LongClickable",
+          "isCollection": false
+        },
+        {
+          "source": "NestedScrollingEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "NextClusterForwardId",
+          "isCollection": false
+        },
+        {
+          "source": "NextFocusDownId",
+          "isCollection": false
+        },
+        {
+          "source": "NextFocusForwardId",
+          "isCollection": false
+        },
+        {
+          "source": "NextFocusLeftId",
+          "isCollection": false
+        },
+        {
+          "source": "NextFocusRightId",
+          "isCollection": false
+        },
+        {
+          "source": "NextFocusUpId",
+          "isCollection": false
+        },
+        {
+          "source": "OnFocusChangeListener",
+          "isCollection": false
+        },
+        {
+          "source": "OutlineProvider",
+          "isCollection": false
+        },
+        {
+          "source": "OverScrollMode",
+          "isCollection": false
+        },
+        {
+          "source": "PivotX",
+          "isCollection": false
+        },
+        {
+          "source": "PivotY",
+          "isCollection": false
+        },
+        {
+          "source": "PointerIcon",
+          "isCollection": false
+        },
+        {
+          "source": "Pressed",
+          "isCollection": false
+        },
+        {
+          "source": "RevealOnFocusHint",
+          "isCollection": false
+        },
+        {
+          "source": "Right",
+          "isCollection": false
+        },
+        {
+          "source": "Rotation",
+          "isCollection": false
+        },
+        {
+          "source": "RotationX",
+          "isCollection": false
+        },
+        {
+          "source": "RotationY",
+          "isCollection": false
+        },
+        {
+          "source": "SaveEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "SaveFromParentEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "ScaleX",
+          "isCollection": false
+        },
+        {
+          "source": "ScaleY",
+          "isCollection": false
+        },
+        {
+          "source": "ScreenReaderFocusable",
+          "isCollection": false
+        },
+        {
+          "source": "ScrollBarDefaultDelayBeforeFade",
+          "isCollection": false
+        },
+        {
+          "source": "ScrollBarFadeDuration",
+          "isCollection": false
+        },
+        {
+          "source": "ScrollBarSize",
+          "isCollection": false
+        },
+        {
+          "source": "ScrollBarStyle",
+          "isCollection": false
+        },
+        {
+          "source": "ScrollX",
+          "isCollection": false
+        },
+        {
+          "source": "ScrollY",
+          "isCollection": false
+        },
+        {
+          "source": "ScrollbarFadingEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "Selected",
+          "isCollection": false
+        },
+        {
+          "source": "SoundEffectsEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "StateListAnimator",
+          "isCollection": false
+        },
+        {
+          "source": "SystemUiVisibility",
+          "isCollection": false
+        },
+        {
+          "source": "Tag",
+          "isCollection": false
+        },
+        {
+          "source": "TextAlignment",
+          "isCollection": false
+        },
+        {
+          "source": "TextDirection",
+          "isCollection": false
+        },
+        {
+          "source": "TooltipTextFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "TooltipText",
+          "isCollection": false
+        },
+        {
+          "source": "Top",
+          "isCollection": false
+        },
+        {
+          "source": "TouchDelegate",
+          "isCollection": false
+        },
+        {
+          "source": "TransitionName",
+          "isCollection": false
+        },
+        {
+          "source": "TranslationX",
+          "isCollection": false
+        },
+        {
+          "source": "TranslationY",
+          "isCollection": false
+        },
+        {
+          "source": "TranslationZ",
+          "isCollection": false
+        },
+        {
+          "source": "VerticalFadingEdgeEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "VerticalScrollBarEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "VerticalScrollbarPosition",
+          "isCollection": false
+        },
+        {
+          "source": "Visibility",
+          "isCollection": false
+        },
+        {
+          "source": "ApplyWindowInsets",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "AddChildrenForAccessibility"
+        },
+        {
+          "source": "AddExtraDataToAccessibilityNodeInfo"
+        },
+        {
+          "source": "AddFocusables"
+        },
+        {
+          "source": "AddKeyboardNavigationClusters"
+        },
+        {
+          "source": "AddOnAttachStateChangeListener"
+        },
+        {
+          "source": "AddOnLayoutChangeListener"
+        },
+        {
+          "source": "AddOnUnhandledKeyEventListener"
+        },
+        {
+          "source": "AddTouchables"
+        },
+        {
+          "source": "AnnounceForAccessibility"
+        },
+        {
+          "source": "Autofill"
+        },
+        {
+          "source": "BringToFront"
+        },
+        {
+          "source": "BuildDrawingCache"
+        },
+        {
+          "source": "BuildLayer"
+        },
+        {
+          "source": "CancelDragAndDrop"
+        },
+        {
+          "source": "CancelLongPress"
+        },
+        {
+          "source": "CancelPendingInputEvents"
+        },
+        {
+          "source": "ClearAnimation"
+        },
+        {
+          "source": "ClearFocus"
+        },
+        {
+          "source": "ComputeScroll"
+        },
+        {
+          "source": "CreateContextMenu"
+        },
+        {
+          "source": "DestroyDrawingCache"
+        },
+        {
+          "source": "DispatchConfigurationChanged"
+        },
+        {
+          "source": "DispatchDisplayHint"
+        },
+        {
+          "source": "DispatchDrawableHotspotChanged"
+        },
+        {
+          "source": "DispatchFinishTemporaryDetach"
+        },
+        {
+          "source": "DispatchPointerCaptureChanged"
+        },
+        {
+          "source": "DispatchProvideAutofillStructure"
+        },
+        {
+          "source": "DispatchProvideStructure"
+        },
+        {
+          "source": "DispatchStartTemporaryDetach"
+        },
+        {
+          "source": "DispatchSystemUiVisibilityChanged"
+        },
+        {
+          "source": "DispatchWindowFocusChanged"
+        },
+        {
+          "source": "DispatchWindowSystemUiVisiblityChanged"
+        },
+        {
+          "source": "DispatchWindowVisibilityChanged"
+        },
+        {
+          "source": "Draw"
+        },
+        {
+          "source": "DrawableHotspotChanged"
+        },
+        {
+          "source": "FindViewsWithText"
+        },
+        {
+          "source": "ForceHasOverlappingRendering"
+        },
+        {
+          "source": "ForceLayout"
+        },
+        {
+          "source": "GetDrawingRect"
+        },
+        {
+          "source": "GetFocusedRect"
+        },
+        {
+          "source": "GetHitRect"
+        },
+        {
+          "source": "GetLocationInWindow"
+        },
+        {
+          "source": "GetLocationOnScreen"
+        },
+        {
+          "source": "GetWindowVisibleDisplayFrame"
+        },
+        {
+          "source": "Invalidate"
+        },
+        {
+          "source": "InvalidateDrawable"
+        },
+        {
+          "source": "InvalidateOutline"
+        },
+        {
+          "source": "JumpDrawablesToCurrentState"
+        },
+        {
+          "source": "Layout"
+        },
+        {
+          "source": "Measure"
+        },
+        {
+          "source": "OffsetLeftAndRight"
+        },
+        {
+          "source": "OffsetTopAndBottom"
+        },
+        {
+          "source": "OnCancelPendingInputEvents"
+        },
+        {
+          "source": "OnDrawForeground"
+        },
+        {
+          "source": "OnFinishTemporaryDetach"
+        },
+        {
+          "source": "OnHoverChanged"
+        },
+        {
+          "source": "OnInitializeAccessibilityEvent"
+        },
+        {
+          "source": "OnInitializeAccessibilityNodeInfo"
+        },
+        {
+          "source": "OnPointerCaptureChange"
+        },
+        {
+          "source": "OnPopulateAccessibilityEvent"
+        },
+        {
+          "source": "OnProvideAutofillStructure"
+        },
+        {
+          "source": "OnProvideAutofillVirtualStructure"
+        },
+        {
+          "source": "OnProvideStructure"
+        },
+        {
+          "source": "OnProvideVirtualStructure"
+        },
+        {
+          "source": "OnRtlPropertiesChanged"
+        },
+        {
+          "source": "OnScreenStateChanged"
+        },
+        {
+          "source": "OnStartTemporaryDetach"
+        },
+        {
+          "source": "OnVisibilityAggregated"
+        },
+        {
+          "source": "OnWindowFocusChanged"
+        },
+        {
+          "source": "OnWindowSystemUiVisibilityChanged"
+        },
+        {
+          "source": "PlaySoundEffect"
+        },
+        {
+          "source": "PostInvalidate"
+        },
+        {
+          "source": "PostInvalidateDelayed"
+        },
+        {
+          "source": "PostInvalidateOnAnimation"
+        },
+        {
+          "source": "PostOnAnimation"
+        },
+        {
+          "source": "PostOnAnimationDelayed"
+        },
+        {
+          "source": "RefreshDrawableState"
+        },
+        {
+          "source": "ReleasePointerCapture"
+        },
+        {
+          "source": "RemoveOnAttachStateChangeListener"
+        },
+        {
+          "source": "RemoveOnLayoutChangeListener"
+        },
+        {
+          "source": "RemoveOnUnhandledKeyEventListener"
+        },
+        {
+          "source": "RequestApplyInsets"
+        },
+        {
+          "source": "RequestFitSystemWindows"
+        },
+        {
+          "source": "RequestLayout"
+        },
+        {
+          "source": "RequestPointerCapture"
+        },
+        {
+          "source": "RequestUnbufferedDispatch"
+        },
+        {
+          "source": "ResetPivot"
+        },
+        {
+          "source": "RestoreHierarchyState"
+        },
+        {
+          "source": "SaveHierarchyState"
+        },
+        {
+          "source": "ScheduleDrawable"
+        },
+        {
+          "source": "ScrollBy"
+        },
+        {
+          "source": "ScrollTo"
+        },
+        {
+          "source": "SendAccessibilityEvent"
+        },
+        {
+          "source": "SendAccessibilityEventUnchecked"
+        },
+        {
+          "source": "SetAccessibilityDelegate"
+        },
+        {
+          "source": "SetAutofillHints"
+        },
+        {
+          "source": "SetBackgroundColor"
+        },
+        {
+          "source": "SetBackgroundDrawable"
+        },
+        {
+          "source": "SetBackgroundResource"
+        },
+        {
+          "source": "SetCameraDistance"
+        },
+        {
+          "source": "SetFadingEdgeLength"
+        },
+        {
+          "source": "SetFitsSystemWindows"
+        },
+        {
+          "source": "SetFocusable"
+        },
+        {
+          "source": "SetForegroundGravity"
+        },
+        {
+          "source": "SetLayerPaint"
+        },
+        {
+          "source": "SetLayerType"
+        },
+        {
+          "source": "SetMinimumHeight"
+        },
+        {
+          "source": "SetMinimumWidth"
+        },
+        {
+          "source": "SetOnApplyWindowInsetsListener"
+        },
+        {
+          "source": "SetOnCapturedPointerListener"
+        },
+        {
+          "source": "SetOnClickListener"
+        },
+        {
+          "source": "SetOnContextClickListener"
+        },
+        {
+          "source": "SetOnCreateContextMenuListener"
+        },
+        {
+          "source": "SetOnDragListener"
+        },
+        {
+          "source": "SetOnGenericMotionListener"
+        },
+        {
+          "source": "SetOnHoverListener"
+        },
+        {
+          "source": "SetOnKeyListener"
+        },
+        {
+          "source": "SetOnLongClickListener"
+        },
+        {
+          "source": "SetOnScrollChangeListener"
+        },
+        {
+          "source": "SetOnSystemUiVisibilityChangeListener"
+        },
+        {
+          "source": "SetOnTouchListener"
+        },
+        {
+          "source": "SetOutlineAmbientShadowColor"
+        },
+        {
+          "source": "SetOutlineSpotShadowColor"
+        },
+        {
+          "source": "SetPadding"
+        },
+        {
+          "source": "SetPaddingRelative"
+        },
+        {
+          "source": "SetScrollContainer"
+        },
+        {
+          "source": "SetScrollIndicators"
+        },
+        {
+          "source": "SetTag"
+        },
+        {
+          "source": "SetWillNotCacheDrawing"
+        },
+        {
+          "source": "SetWillNotDraw"
+        },
+        {
+          "source": "SetX"
+        },
+        {
+          "source": "SetY"
+        },
+        {
+          "source": "SetZ"
+        },
+        {
+          "source": "StartAnimation"
+        },
+        {
+          "source": "StopNestedScroll"
+        },
+        {
+          "source": "UnscheduleDrawable"
+        },
+        {
+          "source": "UpdateDragShadow"
+        }
+      ],
+      "events": [
+        {
+          "source": "ViewAttachedToWindow"
+        },
+        {
+          "source": "ViewDetachedFromWindow"
+        },
+        {
+          "source": "LayoutChange"
+        },
+        {
+          "source": "UnhandledKeyEvent"
+        },
+        {
+          "source": "CapturedPointer"
+        },
+        {
+          "source": "Click"
+        },
+        {
+          "source": "ContextClick"
+        },
+        {
+          "source": "ContextMenuCreated"
+        },
+        {
+          "source": "Drag"
+        },
+        {
+          "source": "GenericMotion"
+        },
+        {
+          "source": "Hover"
+        },
+        {
+          "source": "KeyPress"
+        },
+        {
+          "source": "LongClick"
+        },
+        {
+          "source": "ScrollChange"
+        },
+        {
+          "source": "SystemUiVisibilityChange"
+        },
+        {
+          "source": "Touch"
+        },
+        {
+          "source": "FocusChange"
+        }
+      ]
+    },
+    {
+      "type": "Android.Views.SurfaceView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "SurfaceView",
+        "generationType": "Extension"
+      },
+      "properties": [],
+      "methods": [
+        {
+          "source": "SetSecure"
+        },
+        {
+          "source": "SetZOrderMediaOverlay"
+        },
+        {
+          "source": "SetZOrderOnTop"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Android.Views.TextureView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "TextureView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "SurfaceTexture",
+          "isCollection": false
+        },
+        {
+          "source": "SurfaceTextureListener",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "Draw"
+        },
+        {
+          "source": "SetOpaque"
+        },
+        {
+          "source": "SetTransform"
+        },
+        {
+          "source": "UnlockCanvasAndPost"
+        }
+      ],
+      "events": [
+        {
+          "source": "SurfaceTextureAvailable"
+        },
+        {
+          "source": "SurfaceTextureDestroyed"
+        },
+        {
+          "source": "SurfaceTextureSizeChanged"
+        },
+        {
+          "source": "SurfaceTextureUpdated"
+        }
+      ]
+    },
+    {
+      "type": "Android.Views.ViewGroup",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ViewGroup",
+        "generationType": "Extension",
+	"template" : "abstractLayout"
+      },
+      "properties": [
+        {
+          "source": "AlwaysDrawnWithCacheEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "AnimationCacheEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "DescendantFocusability",
+          "isCollection": false
+        },
+        {
+          "source": "LayoutAnimation",
+          "isCollection": false
+        },
+        {
+          "source": "LayoutAnimationListener",
+          "isCollection": false
+        },
+        {
+          "source": "LayoutMode",
+          "isCollection": false
+        },
+        {
+          "source": "LayoutTransition",
+          "isCollection": false
+        },
+        {
+          "source": "MotionEventSplittingEnabled",
+          "isCollection": false
+        },
+        {
+          "source": "PersistentDrawingCache",
+          "isCollection": false
+        },
+        {
+          "source": "TouchscreenBlocksFocus",
+          "isCollection": false
+        },
+        {
+          "source": "TransitionGroup",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "AddView"
+        },
+        {
+          "source": "BringChildToFront"
+        },
+        {
+          "source": "ChildDrawableStateChanged"
+        },
+        {
+          "source": "ChildHasTransientStateChanged"
+        },
+        {
+          "source": "ClearChildFocus"
+        },
+        {
+          "source": "ClearDisappearingChildren"
+        },
+        {
+          "source": "DispatchSetActivated"
+        },
+        {
+          "source": "DispatchSetSelected"
+        },
+        {
+          "source": "EndViewTransition"
+        },
+        {
+          "source": "FocusableViewAvailable"
+        },
+        {
+          "source": "InvalidateChild"
+        },
+        {
+          "source": "Layout"
+        },
+        {
+          "source": "NotifySubtreeAccessibilityStateChanged"
+        },
+        {
+          "source": "OffsetDescendantRectToMyCoords"
+        },
+        {
+          "source": "OffsetRectIntoDescendantCoords"
+        },
+        {
+          "source": "OnDescendantInvalidated"
+        },
+        {
+          "source": "OnNestedPreScroll"
+        },
+        {
+          "source": "OnNestedScroll"
+        },
+        {
+          "source": "OnNestedScrollAccepted"
+        },
+        {
+          "source": "OnStopNestedScroll"
+        },
+        {
+          "source": "OnViewAdded"
+        },
+        {
+          "source": "OnViewRemoved"
+        },
+        {
+          "source": "RecomputeViewAttributes"
+        },
+        {
+          "source": "RemoveAllViews"
+        },
+        {
+          "source": "RemoveAllViewsInLayout"
+        },
+        {
+          "source": "RemoveView"
+        },
+        {
+          "source": "RemoveViewAt"
+        },
+        {
+          "source": "RemoveViewInLayout"
+        },
+        {
+          "source": "RemoveViews"
+        },
+        {
+          "source": "RemoveViewsInLayout"
+        },
+        {
+          "source": "RequestChildFocus"
+        },
+        {
+          "source": "RequestDisallowInterceptTouchEvent"
+        },
+        {
+          "source": "RequestTransparentRegion"
+        },
+        {
+          "source": "ScheduleLayoutAnimation"
+        },
+        {
+          "source": "SetAddStatesFromChildren"
+        },
+        {
+          "source": "SetClipChildren"
+        },
+        {
+          "source": "SetClipToPadding"
+        },
+        {
+          "source": "SetOnHierarchyChangeListener"
+        },
+        {
+          "source": "StartLayoutAnimation"
+        },
+        {
+          "source": "StartViewTransition"
+        },
+        {
+          "source": "UpdateViewLayout"
+        }
+      ],
+      "events": [
+        {
+          "source": "ChildViewAdded"
+        },
+        {
+          "source": "ChildViewRemoved"
+        },
+        {
+          "source": "AnimationEnd"
+        },
+        {
+          "source": "AnimationRepeat"
+        },
+        {
+          "source": "AnimationStart"
+        }
+      ]
+    },
+    {
+      "type": "Android.App.Activity",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Activity",
+        "generationType": "Extension",
+	"template" : "noInstance"
+      },
+      "properties": [
+        {
+          "source": "ContentTransitionManager",
+          "isCollection": false
+        },
+        {
+          "source": "Immersive",
+          "isCollection": false
+        },
+        {
+          "source": "Intent",
+          "isCollection": false
+        },
+        {
+          "source": "MediaController",
+          "isCollection": false
+        },
+        {
+          "source": "RequestedOrientation",
+          "isCollection": false
+        },
+        {
+          "source": "TitleFormatted",
+          "isCollection": false
+        },
+        {
+          "source": "Title",
+          "isCollection": false
+        },
+        {
+          "source": "TitleColor",
+          "isCollection": false
+        },
+        {
+          "source": "VolumeControlStream",
+          "isCollection": false
+        }
+      ],
+      "methods": [
+        {
+          "source": "AddContentView"
+        },
+        {
+          "source": "CloseContextMenu"
+        },
+        {
+          "source": "CloseOptionsMenu"
+        },
+        {
+          "source": "DismissDialog"
+        },
+        {
+          "source": "DismissKeyboardShortcutsHelper"
+        },
+        {
+          "source": "Dump"
+        },
+        {
+          "source": "EnterPictureInPictureMode"
+        },
+        {
+          "source": "Finish"
+        },
+        {
+          "source": "FinishActivity"
+        },
+        {
+          "source": "FinishActivityFromChild"
+        },
+        {
+          "source": "FinishAffinity"
+        },
+        {
+          "source": "FinishAfterTransition"
+        },
+        {
+          "source": "FinishAndRemoveTask"
+        },
+        {
+          "source": "FinishFromChild"
+        },
+        {
+          "source": "InvalidateOptionsMenu"
+        },
+        {
+          "source": "OnActionModeFinished"
+        },
+        {
+          "source": "OnActionModeStarted"
+        },
+        {
+          "source": "OnActivityReenter"
+        },
+        {
+          "source": "OnAttachedToWindow"
+        },
+        {
+          "source": "OnAttachFragment"
+        },
+        {
+          "source": "OnBackPressed"
+        },
+        {
+          "source": "OnConfigurationChanged"
+        },
+        {
+          "source": "OnContentChanged"
+        },
+        {
+          "source": "OnContextMenuClosed"
+        },
+        {
+          "source": "OnCreate"
+        },
+        {
+          "source": "OnCreateContextMenu"
+        },
+        {
+          "source": "OnCreateNavigateUpTaskStack"
+        },
+        {
+          "source": "OnDetachedFromWindow"
+        },
+        {
+          "source": "OnEnterAnimationComplete"
+        },
+        {
+          "source": "OnLocalVoiceInteractionStarted"
+        },
+        {
+          "source": "OnLocalVoiceInteractionStopped"
+        },
+        {
+          "source": "OnLowMemory"
+        },
+        {
+          "source": "OnMultiWindowModeChanged"
+        },
+        {
+          "source": "OnOptionsMenuClosed"
+        },
+        {
+          "source": "OnPanelClosed"
+        },
+        {
+          "source": "OnPictureInPictureModeChanged"
+        },
+        {
+          "source": "OnPostCreate"
+        },
+        {
+          "source": "OnPrepareNavigateUpTaskStack"
+        },
+        {
+          "source": "OnProvideAssistContent"
+        },
+        {
+          "source": "OnProvideAssistData"
+        },
+        {
+          "source": "OnProvideKeyboardShortcuts"
+        },
+        {
+          "source": "OnRequestPermissionsResult"
+        },
+        {
+          "source": "OnRestoreInstanceState"
+        },
+        {
+          "source": "OnSaveInstanceState"
+        },
+        {
+          "source": "OnStateNotSaved"
+        },
+        {
+          "source": "OnTrimMemory"
+        },
+        {
+          "source": "OnUserInteraction"
+        },
+        {
+          "source": "OnVisibleBehindCanceled"
+        },
+        {
+          "source": "OnWindowAttributesChanged"
+        },
+        {
+          "source": "OnWindowFocusChanged"
+        },
+        {
+          "source": "OpenContextMenu"
+        },
+        {
+          "source": "OpenOptionsMenu"
+        },
+        {
+          "source": "OverridePendingTransition"
+        },
+        {
+          "source": "PostponeEnterTransition"
+        },
+        {
+          "source": "Recreate"
+        },
+        {
+          "source": "RegisterForContextMenu"
+        },
+        {
+          "source": "RemoveDialog"
+        },
+        {
+          "source": "ReportFullyDrawn"
+        },
+        {
+          "source": "RequestPermissions"
+        },
+        {
+          "source": "RequestShowKeyboardShortcuts"
+        },
+        {
+          "source": "RunOnUiThread"
+        },
+        {
+          "source": "SetActionBar"
+        },
+        {
+          "source": "SetContentView"
+        },
+        {
+          "source": "SetDefaultKeyMode"
+        },
+        {
+          "source": "SetEnterSharedElementCallback"
+        },
+        {
+          "source": "SetExitSharedElementCallback"
+        },
+        {
+          "source": "SetFeatureDrawable"
+        },
+        {
+          "source": "SetFeatureDrawableAlpha"
+        },
+        {
+          "source": "SetFeatureDrawableResource"
+        },
+        {
+          "source": "SetFeatureDrawableUri"
+        },
+        {
+          "source": "SetFinishOnTouchOutside"
+        },
+        {
+          "source": "SetPersistent"
+        },
+        {
+          "source": "SetPictureInPictureParams"
+        },
+        {
+          "source": "SetProgress"
+        },
+        {
+          "source": "SetProgressBarIndeterminate"
+        },
+        {
+          "source": "SetProgressBarIndeterminateVisibility"
+        },
+        {
+          "source": "SetProgressBarVisibility"
+        },
+        {
+          "source": "SetResult"
+        },
+        {
+          "source": "SetSecondaryProgress"
+        },
+        {
+          "source": "SetShowWhenLocked"
+        },
+        {
+          "source": "SetTaskDescription"
+        },
+        {
+          "source": "SetTitle"
+        },
+        {
+          "source": "SetTurnScreenOn"
+        },
+        {
+          "source": "SetVisible"
+        },
+        {
+          "source": "SetVrModeEnabled"
+        },
+        {
+          "source": "ShowDialog"
+        },
+        {
+          "source": "ShowLockTaskEscapeMessage"
+        },
+        {
+          "source": "StartActivityForResult"
+        },
+        {
+          "source": "StartActivityFromChild"
+        },
+        {
+          "source": "StartActivityFromFragment"
+        },
+        {
+          "source": "StartIntentSenderForResult"
+        },
+        {
+          "source": "StartIntentSenderFromChild"
+        },
+        {
+          "source": "StartLocalVoiceInteraction"
+        },
+        {
+          "source": "StartLockTask"
+        },
+        {
+          "source": "StartManagingCursor"
+        },
+        {
+          "source": "StartPostponedEnterTransition"
+        },
+        {
+          "source": "StartSearch"
+        },
+        {
+          "source": "StopLocalVoiceInteraction"
+        },
+        {
+          "source": "StopLockTask"
+        },
+        {
+          "source": "StopManagingCursor"
+        },
+        {
+          "source": "TakeKeyEvents"
+        },
+        {
+          "source": "TriggerSearch"
+        },
+        {
+          "source": "UnregisterForContextMenu"
+        }
+      ],
+      "events": []
+    }
+  ]
+}

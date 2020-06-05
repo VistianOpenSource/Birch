@@ -1,0 +1,2127 @@
+{
+  "configuration": {
+    "namespace": "Birch.Views",
+    "rootTemplate": "main",
+    "defaultOutputType": "Extension",
+    "outputTypes": [
+      {
+        "name": "Extension",
+        "type": "Birch.Generator.Styles.Extension.ModelFactory",
+        "assembly": "Birch.Generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      }
+    ],
+    "templates": [
+      {
+        "name": "main",
+        "type": "Basic",
+        "source": "File",
+        "path" :  "main.hbs" 
+      },
+      {
+        "name": "abstractExtension",
+        "type": "Partial",
+        "source": "File",
+        "path": "abstractExtension.hbs"
+      },
+      {
+        "name": "abstractLayout",
+        "type": "Partial",
+        "source": "File",
+        "path": "abstractLayout.hbs"
+      },
+      {
+        "name": "attributeByReflection",
+        "type": "Partial",
+        "source": "File",
+        "path": "attributeByReflection.hbs"
+      },
+      {
+        "name": "eventByReflection",
+        "type": "Partial",
+        "source": "File",
+        "path": "eventByReflection.hbs"
+      },
+      {
+        "name": "extension",
+        "type": "Partial",
+        "source": "File",
+        "path": "extension.hbs"
+      },
+      {
+        "name": "layout",
+        "type": "Partial",
+        "source": "File",
+        "path": "layout.hbs"
+      },
+      {
+        "name": "methodByReflection",
+        "type": "Partial",
+        "source": "File",
+        "path": "methodByReflection.hbs"
+      },
+      {
+        "name": "noInstance",
+        "type": "Partial",
+        "source": "File",
+        "path": "noInstance.hbs"
+      }
+    ]
+  },
+  "types": [
+    {
+      "type": "Xamarin.Forms.AbsoluteLayout",
+      "output": {
+        "methodArguments": [],
+        "methodName": "AbsoluteLayout",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.ActivityIndicator",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ActivityIndicator",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Color"
+        },
+        {
+          "source": "IsRunning"
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.BoxView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "BoxView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Color"
+        },
+        {
+          "source": "CornerRadius"
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.Button",
+      "output": {
+        "methodArguments": ["Text?"],
+        "methodName": "Button",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Padding"
+        },
+        {
+          "source": "BorderColor"
+        },
+        {
+          "source": "BorderRadius"
+        },
+        {
+          "source": "CornerRadius"
+        },
+        {
+          "source": "BorderWidth"
+        },
+        {
+          "source": "ContentLayout",
+          "notes": "Xamarin.Forms.Button.ButtonContentLayout doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "Font"
+        },
+        {
+          "source": "Text"
+        },
+        {
+          "source": "TextColor"
+        },
+        {
+          "source": "CharacterSpacing"
+        },
+        {
+          "source": "FontAttributes"
+        },
+        {
+          "source": "FontFamily"
+        },
+        {
+          "source": "FontSize"
+        }
+      ],
+      "methods": [
+        {
+          "source": "SendClicked"
+        },
+        {
+          "source": "SendPressed"
+        },
+        {
+          "source": "SendReleased"
+        }
+      ],
+      "events": [
+        {
+          "source": "Clicked"
+        },
+        {
+          "source": "Pressed"
+        },
+        {
+          "source": "Released"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.Cell",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Cell",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "IsContextActionsLegacyModeEnabled"
+        },
+        {
+          "source": "Height"
+        },
+        {
+          "source": "IsEnabled"
+        }
+      ],
+      "methods": [
+        {
+          "source": "ForceUpdateSize"
+        },
+        {
+          "source": "SendAppearing"
+        },
+        {
+          "source": "SendDisappearing"
+        }
+      ],
+      "events": [
+        {
+          "source": "Appearing"
+        },
+        {
+          "source": "Disappearing"
+        },
+        {
+          "source": "ForceUpdateSizeRequested"
+        },
+        {
+          "source": "Tapped"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.EntryCell",
+      "output": {
+        "methodArguments": [],
+        "methodName": "EntryCell",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "HorizontalTextAlignment"
+        },
+        {
+          "source": "VerticalTextAlignment"
+        },
+        {
+          "source": "Keyboard",
+          "notes": "Xamarin.Forms.Keyboard doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "Label"
+        },
+        {
+          "source": "LabelColor"
+        },
+        {
+          "source": "Placeholder"
+        },
+        {
+          "source": "Text"
+        },
+        {
+          "source": "XAlign"
+        }
+      ],
+      "methods": [
+        {
+          "source": "SendCompleted"
+        }
+      ],
+      "events": [
+        {
+          "source": "Completed"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.ImageCell",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ImageCell",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "ImageSource",
+          "notes": "Xamarin.Forms.ImageSource doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.SwitchCell",
+      "output": {
+        "methodArguments": ["On"],
+        "methodName": "SwitchCell",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "OnColor"
+        },
+        {
+          "source": "On"
+        },
+        {
+          "source": "Text"
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "source": "OnChanged"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.TextCell",
+      "output": {
+        "methodArguments": [
+          "Text"
+        ],
+        "methodName": "TextCell",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Command",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "CommandParameter",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "Detail"
+        },
+        {
+          "source": "DetailColor"
+        },
+        {
+          "source": "Text"
+        },
+        {
+          "source": "TextColor"
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.ViewCell",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ViewCell",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "View",
+          "notes": "Xamarin.Forms.View doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.CheckBox",
+      "output": {
+        "methodArguments": ["IsChecked"],
+        "methodName": "CheckBox",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Color"
+        },
+        {
+          "source": "IsChecked"
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "source": "CheckedChanged"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.ContentPage",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ContentPage",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Content",
+          "notes": "Xamarin.Forms.View doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.ContentView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ContentView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Content",
+          "notes": "Xamarin.Forms.View doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.DatePicker",
+      "output": {
+        "methodArguments": [],
+        "methodName": "DatePicker",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Date"
+        },
+        {
+          "source": "Format"
+        },
+        {
+          "source": "MaximumDate"
+        },
+        {
+          "source": "MinimumDate"
+        },
+        {
+          "source": "TextColor"
+        },
+        {
+          "source": "CharacterSpacing"
+        },
+        {
+          "source": "FontAttributes"
+        },
+        {
+          "source": "FontFamily"
+        },
+        {
+          "source": "FontSize"
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "source": "DateSelected"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.Editor",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Editor",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "AutoSize"
+        },
+        {
+          "source": "FontAttributes"
+        },
+        {
+          "source": "IsTextPredictionEnabled"
+        },
+        {
+          "source": "FontFamily"
+        },
+        {
+          "source": "FontSize"
+        }
+      ],
+      "methods": [
+        {
+          "source": "SendCompleted"
+        }
+      ],
+      "events": [
+        {
+          "source": "Completed"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.Element",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Element",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "AutomationId"
+        },
+        {
+          "source": "ClassId"
+        },
+        {
+          "source": "StyleId"
+        },
+        {
+          "source": "Parent",
+          "notes": "Xamarin.Forms.Element doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "EffectControlProvider",
+          "notes": "Xamarin.Forms.IEffectControlProvider doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "Platform",
+          "notes": "Xamarin.Forms.Internals.IPlatform doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [
+        {
+          "source": "RemoveDynamicResource"
+        },
+        {
+          "source": "SetDynamicResource"
+        },
+        {
+          "source": "SetValueFromRenderer"
+        }
+      ],
+      "events": [
+        {
+          "source": "ChildAdded"
+        },
+        {
+          "source": "ChildRemoved"
+        },
+        {
+          "source": "DescendantAdded"
+        },
+        {
+          "source": "DescendantRemoved"
+        },
+        {
+          "source": "PlatformSet"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.Entry",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Entry",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "HorizontalTextAlignment"
+        },
+        {
+          "source": "VerticalTextAlignment"
+        },
+        {
+          "source": "IsPassword"
+        },
+        {
+          "source": "FontAttributes"
+        },
+        {
+          "source": "FontFamily"
+        },
+        {
+          "source": "FontSize"
+        },
+        {
+          "source": "IsTextPredictionEnabled"
+        },
+        {
+          "source": "ReturnType"
+        },
+        {
+          "source": "CursorPosition"
+        },
+        {
+          "source": "SelectionLength"
+        },
+        {
+          "source": "ReturnCommand",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "ReturnCommandParameter",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "ClearButtonVisibility"
+        }
+      ],
+      "methods": [
+        {
+          "source": "SendCompleted"
+        }
+      ],
+      "events": [
+        {
+          "source": "Completed"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.FlexLayout",
+      "output": {
+        "methodArguments": [
+          "Children"
+        ],
+        "methodName": "FlexLayout",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "Direction"
+        },
+        {
+          "source": "JustifyContent"
+        },
+        {
+          "source": "AlignContent"
+        },
+        {
+          "source": "AlignItems"
+        },
+        {
+          "source": "Position"
+        },
+        {
+          "source": "Wrap"
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.Frame",
+      "output": {
+        "methodArguments": [
+          "Content"
+        ],
+        "methodName": "Frame",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "HasShadow"
+        },
+        {
+          "source": "OutlineColor"
+        },
+        {
+          "source": "BorderColor"
+        },
+        {
+          "source": "CornerRadius"
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.Grid",
+      "output": {
+        "methodArguments": [
+          "Children"
+        ],
+        "methodName": "Grid",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "ColumnDefinitions",
+          "notes": "Collection.\r\nXamarin.Forms.ColumnDefinitionCollection doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "ColumnSpacing"
+        },
+        {
+          "source": "RowDefinitions",
+          "notes": "Collection.\r\nXamarin.Forms.RowDefinitionCollection doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "RowSpacing"
+        }
+      ],
+      "methods": [
+        {
+          "source": "InvalidateMeasureInernalNonVirtual"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.HtmlWebViewSource",
+      "output": {
+        "methodArguments": [],
+        "methodName": "HtmlWebViewSource",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "BaseUrl"
+        },
+        {
+          "source": "Html"
+        }
+      ],
+      "methods": [
+        {
+          "source": "Load"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.Image",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Image",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Aspect"
+        },
+        {
+          "source": "IsOpaque"
+        },
+        {
+          "source": "IsAnimationPlaying"
+        },
+        {
+          "source": "Source",
+          "notes": "Xamarin.Forms.ImageSource doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetIsLoading"
+        }
+      ],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.ImageButton",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ImageButton",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "BorderColor"
+        },
+        {
+          "source": "CornerRadius"
+        },
+        {
+          "source": "BorderWidth"
+        },
+        {
+          "source": "Aspect"
+        },
+        {
+          "source": "IsOpaque"
+        },
+        {
+          "source": "Command",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "CommandParameter",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "Source",
+          "notes": "Xamarin.Forms.ImageSource doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "Padding"
+        }
+      ],
+      "methods": [
+        {
+          "source": "PropagateUpClicked"
+        },
+        {
+          "source": "PropagateUpPressed"
+        },
+        {
+          "source": "PropagateUpReleased"
+        },
+        {
+          "source": "RaiseImageSourcePropertyChanged"
+        },
+        {
+          "source": "SendClicked"
+        },
+        {
+          "source": "SendPressed"
+        },
+        {
+          "source": "SendReleased"
+        },
+        {
+          "source": "SetIsLoading"
+        },
+        {
+          "source": "SetIsPressed"
+        }
+      ],
+      "events": [
+        {
+          "source": "Clicked"
+        },
+        {
+          "source": "Pressed"
+        },
+        {
+          "source": "Released"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.IndicatorView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "IndicatorView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "IndicatorsShape"
+        },
+        {
+          "source": "IndicatorLayout",
+          "notes": "Xamarin.Forms.Layout doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "Position"
+        },
+        {
+          "source": "Count"
+        },
+        {
+          "source": "MaximumVisible"
+        },
+        {
+          "source": "IndicatorTemplate",
+          "notes": "Xamarin.Forms.DataTemplate doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "HideSingle"
+        },
+        {
+          "source": "IndicatorColor"
+        },
+        {
+          "source": "SelectedIndicatorColor"
+        },
+        {
+          "source": "IndicatorSize"
+        },
+        {
+          "source": "ItemsSource",
+          "notes": "Collection.\r\nSystem.Collections.IEnumerable doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.InputView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "InputView",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "MaxLength"
+        },
+        {
+          "source": "Text"
+        },
+        {
+          "source": "Keyboard",
+          "notes": "Xamarin.Forms.Keyboard doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "IsSpellCheckEnabled"
+        },
+        {
+          "source": "IsReadOnly"
+        },
+        {
+          "source": "Placeholder"
+        },
+        {
+          "source": "PlaceholderColor"
+        },
+        {
+          "source": "TextColor"
+        },
+        {
+          "source": "CharacterSpacing"
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "source": "TextChanged"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.ItemsView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ItemsView",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "EmptyView",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "EmptyViewTemplate",
+          "notes": "Xamarin.Forms.DataTemplate doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "ItemsSource",
+          "notes": "Collection.\r\nSystem.Collections.IEnumerable doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "RemainingItemsThresholdReachedCommand",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "RemainingItemsThresholdReachedCommandParameter",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "HorizontalScrollBarVisibility"
+        },
+        {
+          "source": "VerticalScrollBarVisibility"
+        },
+        {
+          "source": "RemainingItemsThreshold"
+        },
+        {
+          "source": "ItemTemplate",
+          "notes": "Xamarin.Forms.DataTemplate doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "ItemsUpdatingScrollMode"
+        }
+      ],
+      "methods": [
+        {
+          "source": "AddLogicalChild"
+        },
+        {
+          "source": "RemoveLogicalChild"
+        },
+        {
+          "source": "ScrollTo"
+        },
+        {
+          "source": "SendRemainingItemsThresholdReached"
+        },
+        {
+          "source": "SendScrolled"
+        }
+      ],
+      "events": [
+        {
+          "source": "ScrollToRequested"
+        },
+        {
+          "source": "Scrolled"
+        },
+        {
+          "source": "RemainingItemsThresholdReached"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.CarouselView",
+      "output": {
+        "methodArguments": [
+          "Children"
+        ],
+        "methodName": "CarouselView",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "PeekAreaInsets"
+        },
+        {
+          "source": "IsBounceEnabled"
+        },
+        {
+          "source": "IsSwipeEnabled"
+        },
+        {
+          "source": "IsScrollAnimated"
+        },
+        {
+          "source": "CurrentItem",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "CurrentItemChangedCommand",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "CurrentItemChangedCommandParameter",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "Position"
+        },
+        {
+          "source": "PositionChangedCommand",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "PositionChangedCommandParameter",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "ItemsLayout",
+          "notes": "Xamarin.Forms.LinearItemsLayout doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "IsScrolling"
+        }
+      ],
+      "methods": [
+        {
+          "source": "SetIsDragging"
+        }
+      ],
+      "events": [
+        {
+          "source": "CurrentItemChanged"
+        },
+        {
+          "source": "PositionChanged"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.CollectionView",
+      "output": {
+        "methodArguments": [
+          "Children"
+        ],
+        "methodName": "CollectionView",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.GroupableItemsView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "GroupableItemsView",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "IsGrouped"
+        },
+        {
+          "source": "GroupHeaderTemplate",
+          "notes": "Xamarin.Forms.DataTemplate doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "GroupFooterTemplate",
+          "notes": "Xamarin.Forms.DataTemplate doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.SelectableItemsView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "SelectableItemsView",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "SelectedItem",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "SelectedItems",
+          "notes": "Collection.\r\nSystem.Collections.Generic.IList doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "SelectionChangedCommand",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "SelectionChangedCommandParameter",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "SelectionMode"
+        }
+      ],
+      "methods": [
+        {
+          "source": "UpdateSelectedItems"
+        }
+      ],
+      "events": [
+        {
+          "source": "SelectionChanged"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.Label",
+      "output": {
+        "methodArguments": [
+          "Text"
+        ],
+        "methodName": "Label",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Font"
+        },
+        {
+          "source": "FormattedText",
+          "notes": "Xamarin.Forms.FormattedString doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "HorizontalTextAlignment"
+        },
+        {
+          "source": "LineBreakMode"
+        },
+        {
+          "source": "Text"
+        },
+        {
+          "source": "TextColor"
+        },
+        {
+          "source": "CharacterSpacing"
+        },
+        {
+          "source": "VerticalTextAlignment"
+        },
+        {
+          "source": "XAlign"
+        },
+        {
+          "source": "YAlign"
+        },
+        {
+          "source": "FontAttributes"
+        },
+        {
+          "source": "TextDecorations"
+        },
+        {
+          "source": "FontFamily"
+        },
+        {
+          "source": "FontSize"
+        },
+        {
+          "source": "LineHeight"
+        },
+        {
+          "source": "MaxLines"
+        },
+        {
+          "source": "Padding"
+        },
+        {
+          "source": "TextType"
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.Layout",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Layout",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "IsClippedToBounds"
+        },
+        {
+          "source": "Padding"
+        },
+        {
+          "source": "CascadeInputTransparent"
+        }
+      ],
+      "methods": [
+        {
+          "source": "ForceLayout"
+        },
+        {
+          "source": "LowerChild"
+        },
+        {
+          "source": "RaiseChild"
+        }
+      ],
+      "events": [
+        {
+          "source": "LayoutChanged"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.ListView",
+      "output": {
+        "methodArguments": [
+          "Children"
+        ],
+        "methodName": "ListView",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "Footer",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "FooterTemplate",
+          "notes": "Xamarin.Forms.DataTemplate doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "GroupDisplayBinding",
+          "notes": "Xamarin.Forms.BindingBase doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "GroupHeaderTemplate",
+          "notes": "Xamarin.Forms.DataTemplate doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "GroupShortNameBinding",
+          "notes": "Xamarin.Forms.BindingBase doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "HasUnevenRows"
+        },
+        {
+          "source": "Header",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "HeaderTemplate",
+          "notes": "Xamarin.Forms.DataTemplate doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "IsGroupingEnabled"
+        },
+        {
+          "source": "IsPullToRefreshEnabled"
+        },
+        {
+          "source": "IsRefreshing"
+        },
+        {
+          "source": "RefreshCommand",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "RowHeight"
+        },
+        {
+          "source": "SelectedItem",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "SelectionMode"
+        },
+        {
+          "source": "SeparatorColor"
+        },
+        {
+          "source": "RefreshControlColor"
+        },
+        {
+          "source": "SeparatorVisibility"
+        },
+        {
+          "source": "HorizontalScrollBarVisibility"
+        },
+        {
+          "source": "VerticalScrollBarVisibility"
+        },
+        {
+          "source": "RefreshAllowed"
+        }
+      ],
+      "methods": [
+        {
+          "source": "BeginRefresh"
+        },
+        {
+          "source": "EndRefresh"
+        },
+        {
+          "source": "NotifyRowTapped"
+        },
+        {
+          "source": "ScrollTo"
+        },
+        {
+          "source": "SendCellAppearing"
+        },
+        {
+          "source": "SendCellDisappearing"
+        },
+        {
+          "source": "SendRefreshing"
+        },
+        {
+          "source": "SendScrolled"
+        }
+      ],
+      "events": [
+        {
+          "source": "ItemAppearing"
+        },
+        {
+          "source": "ItemDisappearing"
+        },
+        {
+          "source": "ItemSelected"
+        },
+        {
+          "source": "ItemTapped"
+        },
+        {
+          "source": "Scrolled"
+        },
+        {
+          "source": "Refreshing"
+        },
+        {
+          "source": "ScrollToRequested"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.MediaElement",
+      "output": {
+        "methodArguments": [],
+        "methodName": "MediaElement",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Aspect"
+        },
+        {
+          "source": "AutoPlay"
+        },
+        {
+          "source": "IsLooping"
+        },
+        {
+          "source": "KeepScreenOn"
+        },
+        {
+          "source": "ShowsPlaybackControls"
+        },
+        {
+          "source": "Position"
+        },
+        {
+          "source": "Source",
+          "notes": "Xamarin.Forms.MediaSource doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "Volume"
+        }
+      ],
+      "methods": [
+        {
+          "source": "Pause"
+        },
+        {
+          "source": "Play"
+        },
+        {
+          "source": "Stop"
+        }
+      ],
+      "events": [
+        {
+          "source": "SeekRequested"
+        },
+        {
+          "source": "StateRequested"
+        },
+        {
+          "source": "PositionRequested"
+        },
+        {
+          "source": "VolumeRequested"
+        },
+        {
+          "source": "MediaEnded"
+        },
+        {
+          "source": "MediaFailed"
+        },
+        {
+          "source": "MediaOpened"
+        },
+        {
+          "source": "SeekCompleted"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.OpenGLView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "OpenGLView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "HasRenderLoop"
+        }
+      ],
+      "methods": [
+        {
+          "source": "Display"
+        }
+      ],
+      "events": [
+        {
+          "source": "DisplayRequested"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.Picker",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Picker",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "FontAttributes"
+        },
+        {
+          "source": "FontFamily"
+        },
+        {
+          "source": "FontSize"
+        },
+        {
+          "source": "ItemsSource",
+          "notes": "System.Collections.IList doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "SelectedIndex"
+        },
+        {
+          "source": "SelectedItem",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "TextColor"
+        },
+        {
+          "source": "CharacterSpacing"
+        },
+        {
+          "source": "Title"
+        },
+        {
+          "source": "TitleColor"
+        },
+        {
+          "source": "ItemDisplayBinding",
+          "notes": "Xamarin.Forms.BindingBase doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "source": "SelectedIndexChanged"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.ProgressBar",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ProgressBar",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "ProgressColor"
+        },
+        {
+          "source": "Progress"
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.RefreshView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "RefreshView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "IsRefreshing"
+        },
+        {
+          "source": "Command",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "CommandParameter",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "RefreshColor"
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "source": "Refreshing"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.RelativeLayout",
+      "output": {
+        "methodArguments": [
+          "Children"
+        ],
+        "methodName": "RelativeLayout",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.ScrollView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "ScrollView",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "LayoutAreaOverride"
+        },
+        {
+          "source": "Content",
+          "notes": "Xamarin.Forms.View doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "Orientation"
+        },
+        {
+          "source": "HorizontalScrollBarVisibility"
+        },
+        {
+          "source": "VerticalScrollBarVisibility"
+        }
+      ],
+      "methods": [
+        {
+          "source": "SendScrollFinished"
+        },
+        {
+          "source": "SetScrolledPosition"
+        }
+      ],
+      "events": [
+        {
+          "source": "ScrollToRequested"
+        },
+        {
+          "source": "Scrolled"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.SearchBar",
+      "output": {
+        "methodArguments": [],
+        "methodName": "SearchBar",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "CancelButtonColor"
+        },
+        {
+          "source": "HorizontalTextAlignment"
+        },
+        {
+          "source": "VerticalTextAlignment"
+        },
+        {
+          "source": "SearchCommand",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "SearchCommandParameter",
+          "notes": "System.Object doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "FontAttributes"
+        },
+        {
+          "source": "FontFamily"
+        },
+        {
+          "source": "FontSize"
+        }
+      ],
+      "methods": [
+        {
+          "source": "OnSearchButtonPressed"
+        }
+      ],
+      "events": [
+        {
+          "source": "SearchButtonPressed"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.Slider",
+      "output": {
+        "methodArguments": [],
+        "methodName": "Slider",
+        "generationType": "Extension",
+        "template": "noInstance" 
+      },
+      "properties": [
+        {
+          "source": "MinimumTrackColor"
+        },
+        {
+          "source": "MaximumTrackColor"
+        },
+        {
+          "source": "ThumbColor"
+        },
+        {
+          "source": "DragStartedCommand",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "DragCompletedCommand",
+          "notes": "System.Windows.Input.ICommand doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "Maximum"
+        },
+        {
+          "source": "Minimum"
+        },
+        {
+          "source": "Value"
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "source": "ValueChanged"
+        },
+        {
+          "source": "DragStarted"
+        },
+        {
+          "source": "DragCompleted"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.StackLayout",
+      "output": {
+        "methodArguments": [
+          "Children"
+        ],
+        "methodName": "StackLayout",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "Orientation"
+        },
+        {
+          "source": "Spacing"
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.SwipeView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "SwipeView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "LeftItems",
+          "notes": "Collection.\r\nXamarin.Forms.SwipeItems doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "RightItems",
+          "notes": "Collection.\r\nXamarin.Forms.SwipeItems doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "TopItems",
+          "notes": "Collection.\r\nXamarin.Forms.SwipeItems doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "BottomItems",
+          "notes": "Collection.\r\nXamarin.Forms.SwipeItems doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [
+        {
+          "source": "Close"
+        }
+      ],
+      "events": [
+        {
+          "source": "SwipeStarted"
+        },
+        {
+          "source": "SwipeChanging"
+        },
+        {
+          "source": "SwipeEnded"
+        },
+        {
+          "source": "CloseRequested"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.Switch",
+      "output": {
+        "methodArguments": ["IsToggled"],
+        "methodName": "Switch",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "OnColor"
+        },
+        {
+          "source": "ThumbColor"
+        },
+        {
+          "source": "IsToggled"
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "source": "Toggled"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.TableView",
+      "output": {
+        "methodArguments": [
+          "Children"
+        ],
+        "methodName": "TableView",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "HasUnevenRows"
+        },
+        {
+          "source": "Intent"
+        },
+        {
+          "source": "Root",
+          "notes": "Collection.\r\nXamarin.Forms.TableRoot doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "RowHeight"
+        },
+        {
+          "source": "Model",
+          "notes": "Xamarin.Forms.Internals.TableModel doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "source": "ModelChanged"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.TimePicker",
+      "output": {
+        "methodArguments": [],
+        "methodName": "TimePicker",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Format"
+        },
+        {
+          "source": "TextColor"
+        },
+        {
+          "source": "CharacterSpacing"
+        },
+        {
+          "source": "Time"
+        },
+        {
+          "source": "FontAttributes"
+        },
+        {
+          "source": "FontFamily"
+        },
+        {
+          "source": "FontSize"
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.View",
+      "output": {
+        "methodArguments": [],
+        "methodName": "View",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "HorizontalOptions"
+        },
+        {
+          "source": "Margin"
+        },
+        {
+          "source": "VerticalOptions"
+        }
+      ],
+      "methods": [],
+      "events": []
+    },
+    {
+      "type": "Xamarin.Forms.VisualElement",
+      "output": {
+        "methodArguments": [],
+        "methodName": "VisualElement",
+        "generationType": "Extension",
+        "template": "noInstance"
+      },
+      "properties": [
+        {
+          "source": "Visual",
+          "notes": "Xamarin.Forms.IVisual doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        },
+        {
+          "source": "FlowDirection"
+        },
+        {
+          "source": "AnchorX"
+        },
+        {
+          "source": "AnchorY"
+        },
+        {
+          "source": "BackgroundColor"
+        },
+        {
+          "source": "HeightRequest"
+        },
+        {
+          "source": "InputTransparent"
+        },
+        {
+          "source": "IsEnabled"
+        },
+        {
+          "source": "IsVisible"
+        },
+        {
+          "source": "MinimumHeightRequest"
+        },
+        {
+          "source": "MinimumWidthRequest"
+        },
+        {
+          "source": "Opacity"
+        },
+        {
+          "source": "Rotation"
+        },
+        {
+          "source": "RotationX"
+        },
+        {
+          "source": "RotationY"
+        },
+        {
+          "source": "Scale"
+        },
+        {
+          "source": "ScaleX"
+        },
+        {
+          "source": "ScaleY"
+        },
+        {
+          "source": "TabIndex"
+        },
+        {
+          "source": "IsTabStop"
+        },
+        {
+          "source": "TranslationX"
+        },
+        {
+          "source": "TranslationY"
+        },
+        {
+          "source": "WidthRequest"
+        },
+        {
+          "source": "DisableLayout"
+        },
+        {
+          "source": "IsInNativeLayout"
+        },
+        {
+          "source": "IsNativeStateConsistent"
+        },
+        {
+          "source": "IsPlatformEnabled"
+        },
+        {
+          "source": "Resources",
+          "notes": "Xamarin.Forms.ResourceDictionary doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [
+        {
+          "source": "BatchBegin"
+        },
+        {
+          "source": "BatchCommit"
+        },
+        {
+          "source": "InvalidateMeasureNonVirtual"
+        },
+        {
+          "source": "Layout"
+        },
+        {
+          "source": "NativeSizeChanged"
+        },
+        {
+          "source": "Unfocus"
+        }
+      ],
+      "events": [
+        {
+          "source": "ChildrenReordered"
+        },
+        {
+          "source": "Focused"
+        },
+        {
+          "source": "MeasureInvalidated"
+        },
+        {
+          "source": "SizeChanged"
+        },
+        {
+          "source": "Unfocused"
+        },
+        {
+          "source": "BatchCommitted"
+        },
+        {
+          "source": "FocusChangeRequested"
+        }
+      ]
+    },
+    {
+      "type": "Xamarin.Forms.WebView",
+      "output": {
+        "methodArguments": [],
+        "methodName": "WebView",
+        "generationType": "Extension"
+      },
+      "properties": [
+        {
+          "source": "Source",
+          "notes": "Xamarin.Forms.WebViewSource doesn't have an implementation of IEquatable, use a field or a static to hold its value to reduce updates."
+        }
+      ],
+      "methods": [
+        {
+          "source": "Eval"
+        },
+        {
+          "source": "GoBack"
+        },
+        {
+          "source": "GoForward"
+        },
+        {
+          "source": "Reload"
+        },
+        {
+          "source": "SendNavigated"
+        },
+        {
+          "source": "SendNavigating"
+        }
+      ],
+      "events": [
+        {
+          "source": "Navigated"
+        },
+        {
+          "source": "Navigating"
+        },
+        {
+          "source": "EvalRequested"
+        },
+        {
+          "source": "GoBackRequested"
+        },
+        {
+          "source": "GoForwardRequested"
+        },
+        {
+          "source": "ReloadRequested"
+        }
+      ]
+    }
+  ]
+}

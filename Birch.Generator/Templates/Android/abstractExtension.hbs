@@ -1,0 +1,16 @@
+    {{! Template expects content to be defined by a ExtensionMethodModel instance}}
+
+    {{! For each attribute, write out the attributes content}}
+    {{#each Attributes}}
+    {{> (lookup Template) }}
+    {{/each}}
+
+    {{! For each event, write out the event content}}
+    {{#each Events}}
+    {{> (lookup Template) }}
+    {{/each}}
+
+    {{! For each method, write out the method content}}
+    {{#each Methods}}
+    {{> (lookup Template) }}
+    {{/each}}

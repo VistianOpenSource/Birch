@@ -1,0 +1,26 @@
+{{! Template expects content to be defined by a AttributePropertyModel instance}}
+    public static partial class {{nameTidy DefiningType}}_Extensions
+    {
+        private static readonly Attribute<{{{FullTypeName}}}> Attribute_{{nameTidy ShortTypeName}}_{{Name}} = AttributeReflectionHelper.ResolveFor<{{DefiningType}}, {{{FullTypeName}}}>
+        (v => v.{{Name}});
+
+        {{#if Notes}}
+        ///<remarks>
+        /// {{singleLine Notes}}
+        ///</remarks>
+        {{/if}}
+        {{#if Obsolete}}
+        [Obsolete("{{{Obsolete}}}")]
+        {{/if}}
+        public static TControl {{Name}}<TControl>(this TControl component, {{{FullTypeName}}} p{{Name}})  where TControl:IReflectedPrimitive<{{DefiningType}}>
+        {
+            if (Components.Primitives.NeverInclude)   
+            {
+                {{DefiningType}} t = default;
+                t.{{Name}} = default;
+            }
+
+            component.Attributes.SetAttribute(Attribute_{{nameTidy ShortTypeName}}_{{Name}},p{{Name}});
+            return component;
+        }
+    }

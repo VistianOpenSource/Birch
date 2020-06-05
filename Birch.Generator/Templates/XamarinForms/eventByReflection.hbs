@@ -1,0 +1,20 @@
+﻿public static partial class {{nameTidy DefiningType}}_Extensions
+{
+    public static TControl On{{EventName}}<TControl>(this TControl control,Action{{#if FullTypeName}}<{{FullTypeName}}>{{/if}} action) where TControl:IReflectedPrimitive<{{DefiningType}}>
+    {
+        if (Components.Primitives.NeverInclude)
+        {
+            static void handler(object sender, EventArgs e)
+            {
+            }
+
+            {{DefiningType}} tv = null;
+
+            tv.{{EventName}} += handler;
+            tv.{{EventName}} -= handler;
+        }
+
+        control.Event(x => nameof(x.{{EventName}}),action);
+        return control;
+    }
+}

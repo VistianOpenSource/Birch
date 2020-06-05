@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Birch.Generator": {
+      "commandName": "Project",
+      "commandLineArgs": "code --assembly \"C:\\Users\\jamie\\.nuget\\packages\\xamarin.forms\\4.5.0.530\\lib\\netstandard2.0\\Xamarin.Forms.Core.dll\" --o xamarin.forms.4.5.0.530.generated.cs --s  xamarin.forms.4.5.0.530.specification.json"
+    }
+  }
+}
