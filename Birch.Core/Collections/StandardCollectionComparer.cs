@@ -17,18 +17,20 @@ namespace Birch.Collections
     /// <summary>
     /// <see cref="ICollectionComparer{T}"/> implementation utilizing a provided function to perform array comparisons.
     /// </summary>
-    public abstract class StandardCollectionComparer<TItem>:ICollectionComparer<TItem> where TItem : IEquatable<TItem>
+    public abstract class StandardCollectionComparer<TItem>:ICollectionComparer<TItem> 
     {
         private readonly Comparer<TItem> _comparer;
+        private readonly IEqualityComparer<TItem> _equalityComparer;
 
         private static readonly IEqualityComparer<TItem> DefaultEqualityComparer = EqualityComparer<TItem>.Default;
 
         // TODO: move to another base non generic class to avoid multiple instances?
-        private static readonly Lazy<bool> IsLoggingEnabled = new Lazy<bool>(() => LoggingRules.For(Categories.Collections).Any);
+        private static readonly bool IsLoggingEnabled = LoggingRules.For(Categories.Collections).Any;
 
-        protected StandardCollectionComparer(Comparer<TItem> comparer)
+        protected StandardCollectionComparer(Comparer<TItem> comparer,IEqualityComparer<TItem> equalityComparer=default)
         {
             _comparer = comparer;
+            _equalityComparer = equalityComparer??DefaultEqualityComparer;
         }
         /// <summary>
         /// Compare two arrays of <see cref="IPrimitive"/> performing the appropriate operations depending upon
@@ -53,7 +55,7 @@ namespace Birch.Collections
             }
 
             // if they are identical
-            if (newList?.Length == originalList?.Length && newList?.Length > 0 && newList.SequenceEqual(originalList,DefaultEqualityComparer))
+            if (newList?.Length == originalList?.Length && newList?.Length > 0 && newList.SequenceEqual(originalList,_equalityComparer))
             {
                 return;
             }
@@ -62,7 +64,7 @@ namespace Birch.Collections
             CompareImpl(originalList, newList, insert, delete, move, update);                
         }
 
-        private static List<Operation<TItem>> Empty = new List<Operation<TItem>>();
+        private static readonly List<Operation<TItem>> Empty = new List<Operation<TItem>>();
 
         public IReadOnlyList<Operation<TItem>> Compare(TItem[] originalList, TItem[] newList)
         {
@@ -77,7 +79,7 @@ namespace Birch.Collections
             }
 
             // if they are identical
-            if (newList?.Length == originalList?.Length && newList?.Length > 0 && newList.SequenceEqual(originalList,DefaultEqualityComparer))
+            if (newList?.Length == originalList?.Length && newList?.Length > 0 && newList.SequenceEqual(originalList,_equalityComparer))
             {
                 return Empty;
             }
@@ -111,17 +113,17 @@ namespace Birch.Collections
             // the duration of the compare , only used when logging
             long compareDuration = 0;
 
-            if (IsLoggingEnabled.Value)
+            if (IsLoggingEnabled)
             {
                 using var _ = Benchmark.Create((d, _) =>
                 {
                     compareDuration = d;
                 });
-                differences = _comparer(originalList, newList, DefaultEqualityComparer);
+                differences = _comparer(originalList, newList, _equalityComparer);
             }
             else
             {
-                differences = _comparer(originalList, newList, DefaultEqualityComparer);
+                differences = _comparer(originalList, newList, _equalityComparer);
             }
 
             return differences;
@@ -155,17 +157,17 @@ namespace Birch.Collections
             // the duration of the compare , only used when logging
             long compareDuration = 0;
 
-            if (IsLoggingEnabled.Value)
+            if (IsLoggingEnabled)
             {
                 using var _ = Benchmark.Create((d, _) =>
                 {
                     compareDuration = d;
                 });
-                differences = _comparer(originalList, newList, DefaultEqualityComparer);
+                differences = _comparer(originalList, newList, _equalityComparer);
             }
             else
             {
-                differences = _comparer(originalList, newList, DefaultEqualityComparer);
+                differences = _comparer(originalList, newList, _equalityComparer);
             }
 
             // counters used when we are ONLY logging
@@ -183,7 +185,7 @@ namespace Birch.Collections
                         // this is an insert operation, need to create the views at the specified place...
                         insert(op.Index, op.Item);
 
-                        if (IsLoggingEnabled.Value)
+                        if (IsLoggingEnabled)
                         {
                             Array.Resize(ref inserts, inserts.Length + 1);
                             inserts[^1] = op.Index;
@@ -194,7 +196,7 @@ namespace Birch.Collections
 
                         delete(op.Index, op.Item);
 
-                        if (IsLoggingEnabled.Value)
+                        if (IsLoggingEnabled)
                         {
                             Array.Resize(ref deletes, deletes.Length + 1);
                             deletes[^1] = op.Index;
@@ -207,7 +209,7 @@ namespace Birch.Collections
 
                         move(op.From, op.To,op.Item);
 
-                        if (IsLoggingEnabled.Value)
+                        if (IsLoggingEnabled)
                         {
                             Array.Resize(ref moves, moves.Length + 1);
                             moves[^1] = op.From;
@@ -218,7 +220,7 @@ namespace Birch.Collections
                     case UpdateOp<TItem> op:
                         update(op.Index, op.FromItem, op.ToItem);
 
-                        if (IsLoggingEnabled.Value)
+                        if (IsLoggingEnabled)
                         {
                             Array.Resize(ref updates, updates.Length + 1);
                             updates[^1] = op.Index;
@@ -228,7 +230,7 @@ namespace Birch.Collections
                 }
             }
 
-            if (IsLoggingEnabled.Value)
+            if (IsLoggingEnabled)
             {
                 Logging.Instance.LogInformation(
                     "Collection Compare type:{type} from:{oldLength} to:{newLength} changes:{changeCount} duration:{duration}ms inserts:[{inserts}] updates:[{updates}] moves:[{moves}] deletes:[{deletes}]",

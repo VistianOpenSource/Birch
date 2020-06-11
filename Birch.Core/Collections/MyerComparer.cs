@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Birch.Collections
 {
@@ -9,11 +10,11 @@ namespace Birch.Collections
     /// This comparer does a full comparison between two lists and can quite easily generate a
     /// minimal set of updates to transition one list to another. 
     /// </remarks>
-    public class MyerComparer<T> : StandardCollectionComparer<T> where T : IEquatable<T>
+    public class MyerComparer<T> : StandardCollectionComparer<T> 
     {
         public static MyerComparer<T> Default = new MyerComparer<T>();
 
-        public MyerComparer() : base(Comparers.Myers.Implementation.Diff)
+        public MyerComparer(IEqualityComparer<T> equalityComparer=default) : base(Comparers.Myers.Implementation.Diff,equalityComparer)
         {
         }
     }

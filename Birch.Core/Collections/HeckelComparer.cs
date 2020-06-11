@@ -6,7 +6,7 @@ using Birch.Collections.Comparers.Heckel;
 
 namespace Birch.Collections
 {
-    public delegate IReadOnlyList<Operation<T>> Comparer<T>(T[] old, T[] @new, IEqualityComparer<T> comparer) where T : IEquatable<T>;
+    public delegate IReadOnlyList<Operation<T>> Comparer<T>(T[] old, T[] @new, IEqualityComparer<T> comparer);
 
     /// <summary>
     /// An implementation of <see cref="ICollectionComparer{T}"/> using the heckel diff algorithm.
