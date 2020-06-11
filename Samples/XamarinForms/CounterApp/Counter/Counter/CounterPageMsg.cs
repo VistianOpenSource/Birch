@@ -69,12 +69,13 @@ namespace Counter
         public override Model InitState() => _model = new Model() {Count = 0, Step = 1, TimerOn = false};
 
         protected override IPrimitive PerformLayout(LayoutContext layoutContext, Model model) =>
-            StackLayout(Label($"{model.Count}").HorizontalOptions(LayoutOptions.Center).WidthRequest(200.0).HorizontalTextAlignment(TextAlignment.Center),
+            StackLayout(
+                Label($"{model.Count}").HorizontalOptions(LayoutOptions.Center).WidthRequest(200.0).HorizontalTextAlignment(TextAlignment.Center),
                     Button("Increment").OnClicked(() => Dispatch(new Increment())),
                     Button("Decrement").OnClicked(() => Dispatch(new Decrement())),
-                    StackLayout(Label("Timer"),
-                        Switch(model.TimerOn).OnToggled((t) => Dispatch(new Toggle{Content=t.Value}))
-                    ).Orientation(StackOrientation.Horizontal).HorizontalOptions(LayoutOptions.Center),
+                    StackLayout(
+                        Label("Timer"), Switch(model.TimerOn).OnToggled((t) => Dispatch(new Toggle{Content=t.Value}))).
+                    Orientation(StackOrientation.Horizontal).HorizontalOptions(LayoutOptions.Center),
                     Slider(0, 10).Value(model.Step).OnValueChanged((x) => Dispatch(new SetStep{Content = x.NewValue})),
                     Label($"Step size {model.Step}").HorizontalOptions(LayoutOptions.Center),
                     Button("Reset").HorizontalOptions(LayoutOptions.Center).OnClicked(() => Dispatch(new Reset()))

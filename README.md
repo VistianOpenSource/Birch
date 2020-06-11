@@ -47,7 +47,7 @@ An implementation of a simple counter app in Xamarin Forms
 ~~~~
 public class CounterPageMsg : BaseContentPage<CounterPageMsg.Model>
 {
-    private readonly Timer _timer = new Timer(100) {Enabled = false, AutoReset = true};
+    private readonly Timer _timer = new Timer(10) {Enabled = false, AutoReset = true};
     private Model _model;
 
     public class Model
@@ -72,22 +72,17 @@ public class CounterPageMsg : BaseContentPage<CounterPageMsg.Model>
     public override Model InitState() => _model = new Model() {Count = 0, Step = 1, TimerOn = false};
 
     protected override IPrimitive PerformLayout(LayoutContext layoutContext, Model model) =>
-        StackLayout(new IPrimitive[]
-            {
+        StackLayout(
                 Label($"{model.Count}").HorizontalOptions(LayoutOptions.Center).WidthRequest(200.0).HorizontalTextAlignment(TextAlignment.Center),
                 Button("Increment").OnClicked(() => Dispatch(new Increment())),
                 Button("Decrement").OnClicked(() => Dispatch(new Decrement())),
-                StackLayout(new IPrimitive[]
-                {
-                    Label("Timer"),
-                    Switch(model.TimerOn).OnToggled((t) => Dispatch(new Toggle{Content=t.Value}))
-                }).Orientation(StackOrientation.Horizontal).HorizontalOptions(LayoutOptions.Center),
+                StackLayout(
+                    Label("Timer"), Switch(model.TimerOn).OnToggled((t) => Dispatch(new Toggle{Content=t.Value}))).
+                Orientation(StackOrientation.Horizontal).HorizontalOptions(LayoutOptions.Center),
                 Slider(0, 10).Value(model.Step).OnValueChanged((x) => Dispatch(new SetStep{Content = x.NewValue})),
                 Label($"Step size {model.Step}").HorizontalOptions(LayoutOptions.Center),
                 Button("Reset").HorizontalOptions(LayoutOptions.Center).OnClicked(() => Dispatch(new Reset()))
-            }
         ).Padding(new Thickness(30.0)).VerticalOptions(LayoutOptions.Center);
-
 
     private void Dispatch(Msg msg) => Update(msg);
 
