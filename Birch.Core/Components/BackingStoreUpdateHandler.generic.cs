@@ -67,7 +67,7 @@ namespace Birch.Components
             {
                 using var _ = Benchmark.Create((d, __) =>
                 {
-                    Logging.Instance.LogInformation("CollectionUpdate:Duration:{duration}ms, algorithm:{algorithm}",d,_collectionComparer.GetType().FriendlyName());
+                    Logging.Instance.LogInformation("CollectionUpdate:Timings {id} duration:{duration}ms, algorithm:{algorithm}",loggingId,d,_collectionComparer.GetType().FriendlyName());
                 });
 
                 comparisonOperations = _collectionComparer.Compare(currentList, nextList);
@@ -79,7 +79,7 @@ namespace Birch.Components
 
             if (IsLoggingEnabled.Value)
             {
-                Logging.Instance.LogInformation("CollectionUpdate:Raw change count:{count}",comparisonOperations.Count);
+                Logging.Instance.LogInformation("CollectionUpdate:Raw {id} change count:{count}",loggingId,comparisonOperations.Count);
             }
 
 

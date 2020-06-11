@@ -53,21 +53,15 @@ namespace Counter
         protected override IPrimitive PerformLayout(LayoutContext layoutContext, CounterPage.Model model)
         {
             return StackLayout(
-                new IPrimitive[]
-                {
-                    Label($"{model.Count}").HorizontalOptions(LayoutOptions.Center).WidthRequest(200.0)
-                        .HorizontalTextAlignment(TextAlignment.Center),
-                    Button("Increment").OnClicked(Increment),
-                    Button("Decrement").OnClicked(Decrement),
-                    StackLayout(new IPrimitive[]
-                    {
-                        Label("Timer"),
-                        Switch(model.TimerOn).OnToggled((t) => Toggled(t.Value))
-                    }).Orientation(StackOrientation.Horizontal).HorizontalOptions(LayoutOptions.Center),
-                    Slider(0, 10).Value(model.Step).OnValueChanged(x => SetStep(x.NewValue)),
-                    Label($"Step size {model.Step}").HorizontalOptions(LayoutOptions.Center),
-                    Button("Reset").HorizontalOptions(LayoutOptions.Center).OnClicked(IssueReset)
-                }
+                Label($"{model.Count}").HorizontalOptions(LayoutOptions.Center).WidthRequest(200.0).HorizontalTextAlignment(TextAlignment.Center),
+                                Button("Increment").OnClicked(Increment),
+                                Button("Decrement").OnClicked(Decrement),
+                                StackLayout(Label("Timer"),
+                                Switch(model.TimerOn).OnToggled(t => Toggled(t.Value))
+                ).Orientation(StackOrientation.Horizontal).HorizontalOptions(LayoutOptions.Center),
+                Slider(0, 10).Value(model.Step).OnValueChanged(x => SetStep(x.NewValue)),
+                Label($"Step size {model.Step}").HorizontalOptions(LayoutOptions.Center),
+                Button("Reset").HorizontalOptions(LayoutOptions.Center).OnClicked(IssueReset)
             ).Padding(new Thickness(30.0)).VerticalOptions(LayoutOptions.Center);
         }
 

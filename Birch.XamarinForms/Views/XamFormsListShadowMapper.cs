@@ -11,7 +11,7 @@ namespace Birch.Views
     /// </summary>
     /// <typeparam name="TView"></typeparam>
     /// <typeparam name="TElement"></typeparam>
-    public abstract class XamFormsListShadowMapper<TView,TElement> : BasePrimitiveShadowMapper<XamFormsContext,TView,TElement> where TElement : BasePrimitive<TView> where TView : class
+    public abstract class XamFormsListShadowMapper<TView,TElement> : BasePrimitiveShadowMapper<XamFormsContext,TView,TElement> where TElement : BasePrimitive<TView> where TView : Xamarin.Forms.View
     {
         private readonly Func<XamFormsContext,IShadow<TView>, IDataConnector<IPrimitive>> _connector;
 

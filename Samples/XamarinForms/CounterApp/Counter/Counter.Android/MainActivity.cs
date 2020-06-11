@@ -33,7 +33,8 @@ namespace Counter.Droid
             var loggerFactory = LoggerFactory.Create(b => b.AddProvider(new Microsoft.Extensions.Logging.Debug.DebugLoggerProvider()));
             var logger = loggerFactory.CreateLogger("Birch");
 
-            builder.With(Settings.Logging, logger);
+            //builder.With(Settings.Logging, logger);
+            //builder.With(Settings.LoggingRules,new LoggingRulesList() {Rule.For(Categories.Collections), Rule.For(Categories.Reflection)});
 
             builder.Create();
 

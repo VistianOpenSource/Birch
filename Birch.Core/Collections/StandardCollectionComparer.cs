@@ -98,8 +98,10 @@ namespace Birch.Collections
             // we don't have new values, but we have prior ones
             if ((newList?.Length == 0) && (originalList?.Length > 0))
             {
-                var deletions = Enumerable.Range(originalList.Length - 1, 0)
-                    .Select(i => new DeleteOp<TItem>(i, originalList[i])).ToList();
+                var originalLength = originalList.Length;
+
+                var deletions = Enumerable.Range(0,originalList.Length)
+                    .Select(i => new DeleteOp<TItem>(originalLength-i-1, originalList[originalLength-i-1])).ToList();
 
                 return deletions;
             }

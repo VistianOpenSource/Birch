@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Text;
 using Birch.Collections;
 using Birch.Components;
 using Birch.Compose;
 using Birch.Shadows;
 using Birch.Transactions;
-using Xamarin.Forms;
 
 namespace Birch.Views
 {
     [ShadowMapper(typeof(ShadowMapper))]
-    public class CollectionView : XamFormsVisualElement<Xamarin.Forms.CollectionView>
+    public class CarouselView : XamFormsVisualElement<Xamarin.Forms.CarouselView>
     {
-        public CollectionView(IPrimitive[] children):base()
+        public CarouselView(IPrimitive[] children):base()
         {
             this.Attributes.SetAttribute(XamLayoutGroup.ChildrenAttribute, children);
         }
@@ -23,15 +21,15 @@ namespace Birch.Views
         /// <summary>
         /// Shadow mapper for <see cref="Xamarin.Forms.CollectionView"/>
         /// </summary>
-        public class ShadowMapper:XamFormsItemsViewShadowMapper<Xamarin.Forms.CollectionView, CollectionView>
+        public class ShadowMapper:XamFormsItemsViewShadowMapper<Xamarin.Forms.CarouselView, CarouselView>
         {
             internal class CollectionViewConnector:IDataConnector<IPrimitive>
             {
-                public IShadow<Xamarin.Forms.CollectionView> Shadow { get; }
+                public IShadow<Xamarin.Forms.CarouselView> Shadow { get; }
 
                 private readonly ObservableCollection<PrimitiveHolder> _items;
 
-                public CollectionViewConnector(IShadow<Xamarin.Forms.CollectionView> shadow)
+                public CollectionViewConnector(IShadow<Xamarin.Forms.CarouselView> shadow)
                 {
                     Shadow = shadow;
                     // create the backing store ...
@@ -63,15 +61,16 @@ namespace Birch.Views
                 }
             }
 
-            private static IDataConnector<IPrimitive> ConnectorFactory(IShadowContext context,IShadow<Xamarin.Forms.CollectionView> shadow)
+            private static IDataConnector<IPrimitive> ConnectorFactory(IShadowContext context,IShadow<Xamarin.Forms.CarouselView> shadow)
             {
                 return new CollectionViewConnector(shadow);
             }
+
             public ShadowMapper() : base(ConnectorFactory)
             {
             }
 
-            protected override Xamarin.Forms.CollectionView CreateItem(XamFormsContext context, CollectionView element)
+            protected override Xamarin.Forms.CarouselView CreateItem(XamFormsContext context, CarouselView element)
             {
                 var control = base.CreateItem(context, element);
 
@@ -81,5 +80,4 @@ namespace Birch.Views
             }
         }
     }
-
 }
