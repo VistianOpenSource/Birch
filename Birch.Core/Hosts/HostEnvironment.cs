@@ -42,14 +42,20 @@ namespace Birch.Hosts
         /// </summary>
         public LayoutEngineOptions LayoutEngineOptions { get; set; }
 
+        /// <summary>
+        /// The options used for the layout hosts
+        /// </summary>
+        public LayoutHostSettings HostSettings { get; set; }
+
         public HostEnvironment(ShadowMapperFactory shadowMapperFactory, IBuildErrorPolicy errorPolicy, ILayoutMonitor layoutMonitor,
-            LayoutResolver layoutResolver, LayoutEngineOptions layoutEngineOptions)
+            LayoutResolver layoutResolver, LayoutEngineOptions layoutEngineOptions,LayoutHostSettings hostSettings)
         {
             ShadowMapperFactory = shadowMapperFactory;
             ErrorPolicy = errorPolicy;
             LayoutMonitor = layoutMonitor;
             LayoutResolver = layoutResolver;
             LayoutEngineOptions = layoutEngineOptions;
+            HostSettings = hostSettings;
         }
     }
 }

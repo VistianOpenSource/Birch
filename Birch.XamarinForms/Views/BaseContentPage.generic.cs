@@ -8,6 +8,7 @@ using Birch.Hosts;
 using Birch.Reflection;
 using Birch.XamarinForms.Hosts;
 using Xamarin.Forms;
+using static Birch.Views.Primitives;
 
 namespace Birch.Views
 {
@@ -20,18 +21,13 @@ namespace Birch.Views
         /// <summary>
         /// The associated build host instance
         /// </summary>
-        private readonly XamFormsBuildHostInstance _host;
-
-        /// <summary>
-        /// Disposable created as a result of spinning up a host instance
-        /// </summary>
-        private IDisposable _hostDisposable;
+        protected readonly XamFormsBuildHostInstance Host;
 
         private IStatefulContainer<TModel> _statefulContainer;
 
         protected BaseContentPage()
         {
-            _host = BuildHost.Create(this,(buildEnvironment,layoutContext) =>
+            Host = BuildHost.Create(this,(buildEnvironment,layoutContext) =>
             {
                 var statefulContainer = CreateStateContainer(buildEnvironment);
 
@@ -42,8 +38,9 @@ namespace Birch.Views
                 return statefulContainer;
             });
 
+
             // now start the host
-            _hostDisposable = _host.Start();
+            Host.Start();
         }
 
         protected void SetModel(TModel model)
@@ -54,15 +51,14 @@ namespace Birch.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _host.Enabled = true;
+            Host.Enabled = true;
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            _host.Enabled = false;
+            Host.Enabled = false;
         }
-
 
         /// <summary>
         /// Invoked when the environment has been created.
@@ -95,7 +91,7 @@ namespace Birch.Views
         /// <returns></returns>
         protected virtual IPrimitive PerformContentLayout(LayoutContext layoutContext, TModel model)
         {
-            return new Birch.Views.ContentPage(this,PerformLayout(layoutContext,model));
+            return ContentPage(this,PerformLayout(layoutContext,model));
         }
 
         /// <summary>

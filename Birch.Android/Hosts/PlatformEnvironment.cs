@@ -42,7 +42,7 @@ namespace Birch.Hosts
 
             var environmentBuilder = new EnvironmentBuilder().With<AndroidHostEnvironmentBuilder,HostEnvironment>(
                 new HostEnvironment(new ShadowMapperFactory(), new DefaultErrorPolicy(), null, new LayoutResolver(),
-                    layoutEngineOptions));
+                    layoutEngineOptions,LayoutHostSettings.Default));
 
             return environmentBuilder;
         }

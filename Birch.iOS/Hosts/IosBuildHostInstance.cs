@@ -11,7 +11,7 @@ using UIKit;
 
 namespace Birch.iOS.Hosts
 {
-    class IosBuildHostInstance: BuildHostInstance
+    public class IosBuildHostInstance: BuildHostInstance
     {
         /// <summary>
         /// The environment for hosted instances
@@ -25,34 +25,16 @@ namespace Birch.iOS.Hosts
         }
 
         /// <summary>
-        /// The layout engine has had a fatal error, pass it on to the error policy.
-        /// </summary>
-        /// <param name="exception"></param>
-        protected override void FatalError(Exception exception)
-        {
-            _hostEnvironment.ErrorPolicy.FatalError(this,exception);
-        }
-
-        /// <summary>
-        /// The layout engine has had an error which it wants to try and show an error message for.
-        /// </summary>
-        /// <param name="layoutContext"></param>
-        /// <param name="exception"></param>
-        /// <param name="current"></param>
-        /// <returns></returns>
-        protected override ElementShadowTransition DefaultLayoutError(LayoutContext layoutContext, Exception exception, ElementShadowPair current)
-        {
-            var errorLayout= _hostEnvironment.ErrorPolicy.LayoutErrorFormat(this,exception).Layout(layoutContext);
-
-            var mst = CreateChangeTransactionalSet(current, errorLayout);
-            return mst;
-        }
-
-        /// <summary>
-        /// Create the context for an iOS build.
+        /// Get the error policy to be used, currently null.
         /// </summary>
         /// <returns></returns>
-        protected override IShadowContext CreateContext()
+        protected override IBuildErrorPolicy ErrorPolicy() => null;
+
+        /// <summary>
+        /// Create the shadow context for an iOS build.
+        /// </summary>
+        /// <returns></returns>
+        protected override IShadowContext CreateShadowContext()
         {
             return new IosContext(HostEnvironment.ShadowMapperFactory,BuildOwner);;
         }

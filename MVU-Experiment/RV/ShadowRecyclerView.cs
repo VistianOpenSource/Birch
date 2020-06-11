@@ -25,7 +25,6 @@ namespace MVU_Experiment.RV
             {
                 var rv = new RecyclerView(null);
             }
-            /* children source */
         }
     }
 

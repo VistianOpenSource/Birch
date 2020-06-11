@@ -14,7 +14,7 @@ namespace Counter
 {
     public class CounterPageMsg : BaseContentPage<CounterPageMsg.Model>
     {
-        private readonly Timer _timer = new Timer(100) {Enabled = false, AutoReset = true};
+        private readonly Timer _timer = new Timer(10) {Enabled = false, AutoReset = true};
         private Model _model;
 
         public class Model

@@ -46,7 +46,7 @@ namespace Birch.Views
                 new ShadowGroupConnector<Android.Views.View>(context, new AndroidViewGroupConnection(shadow));
 
             // get the collection comparer, which the user may have overridden from the default one
-            var comparer = initial.Attributes.GetAttributeOrDefault(Group.ComparerAttribute);
+            var comparer = initial.Attributes.GetAttributeOrDefault(Group.ComparerAttribute) ?? PrimitiveCollectionComparer.Default;
 
             // create the update handler which connects the comparer with the connector
             var dataUpdateHandler = new BackingStoreUpdateHandler<AndroidContext, TView,IPrimitive>(groupConnector,Group.ChildrenAttribute, comparer);

@@ -43,7 +43,7 @@ namespace CodedUIExperiment.Views
 
         protected override IPrimitive PerformLayout(LayoutContext layoutContext)
         {
-            return new Birch.Views.ContentPage(this,_lists.PerformLayout(layoutContext));
+            return _lists.PerformLayout(layoutContext);
         }
     }
 
@@ -52,7 +52,10 @@ namespace CodedUIExperiment.Views
     {
         public Lists(BuildEnvironment environment) : base(environment)
         {
-            Observable.Interval(TimeSpan.FromSeconds(1)).Take(100).Do(x => this.SetModel((int)x)).Subscribe();
+            Observable.Interval(TimeSpan.FromSeconds(1)).Take(100).Do(x => 
+
+                this.SetModel((int)x)).
+                Subscribe();
         }
 
         public override int InitState()

@@ -13,22 +13,13 @@ namespace Birch.Hosts
     /// </summary>
     public class DefaultErrorPolicy:BuildErrorPolicy<AndroidBuildHostInstance>
     {
-        protected override IElement LayoutErrorFormat(AndroidBuildHostInstance buildHostInstance, Exception exception)
+        public override IElement LayoutErrorFormat(AndroidBuildHostInstance buildHostInstance, Exception exception)
         {
-            Diagnostics.Logging.Instance.LogError(exception,"Recoverable Error during layout");
-           
             var exceptions = exception.GetInnerExceptions().Select(e => TextView(e.Message)).ToList();
 
             exceptions.AddRange(exception.GetInnerExceptions().Select(e => TextView(e.StackTrace)));
 
             return new Activity(buildHostInstance.Activity, LinearLayout(exceptions).Orientation(Android.Widget.Orientation.Vertical));
-        }
-
-        protected override void FatalError(AndroidBuildHostInstance buildHostInstance, Exception exception)
-        {
-            Diagnostics.Logging.Instance.LogError(exception,"Error during layout");
-
-            throw exception;
         }
     }
 }

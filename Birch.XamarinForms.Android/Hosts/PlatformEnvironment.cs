@@ -36,7 +36,7 @@ namespace Birch.XamarinForms.Android.Hosts
 
             var builder = new EnvironmentBuilder().With<AndroidXamFormsHostEnvironmentBuilder, HostEnvironment>(
                 new HostEnvironment(new ShadowMapperFactory(), new Birch.XamarinForms.Hosts.DefaultErrorPolicy(),  null, new LayoutResolver(),
-                    layoutEngineOptions));
+                    layoutEngineOptions,LayoutHostSettings.Default));
 
             return builder;
         }

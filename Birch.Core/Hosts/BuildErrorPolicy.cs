@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Birch.Components;
+using Birch.Compose;
 
 namespace Birch.Hosts
 {
@@ -9,20 +10,20 @@ namespace Birch.Hosts
     /// Abstract base of <see cref="IBuildErrorPolicy"/>
     /// </summary>
     /// <typeparam name="TInstance"></typeparam>
-    public abstract class BuildErrorPolicy<TInstance> : IBuildErrorPolicy where TInstance:BuildHostInstance
+    public abstract class BuildErrorPolicy<TInstance> : IBuildErrorPolicy where TInstance : BuildHostInstance
     {
-        public IElement LayoutErrorFormat(BuildHostInstance buildHostInstance, Exception exception)
+        public void Handle(BuildHostInstance buildHostInstance, Exception exception)
         {
-            return LayoutErrorFormat((TInstance) buildHostInstance, exception);
+            // reset the host
+            buildHostInstance.Reset();
+
+            // and now create an error host and assign that to the build host
+            var errorHost = new DefaultErrorHost<TInstance>(buildHostInstance,LayoutErrorFormat,exception,
+                LayoutContext.Create(buildHostInstance.BuildOwner.ModelBag, buildHostInstance.HostEnvironment.LayoutResolver),buildHostInstance.HostEnvironment.HostSettings);
+
+            buildHostInstance.SetHost(errorHost);
         }
 
-        public void FatalError(BuildHostInstance buildHostInstance, Exception exception)
-        {
-            FatalError((TInstance) buildHostInstance, exception);
-        }
-
-        protected abstract IElement LayoutErrorFormat(TInstance hostInstance, Exception exception);
-
-        protected abstract void FatalError(TInstance hostInstance, Exception exception);
+        public abstract IElement LayoutErrorFormat(TInstance buildHostInstance, Exception exception);
     }
 }

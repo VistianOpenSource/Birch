@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reactive.Concurrency;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Threading;
@@ -9,60 +11,47 @@ using Birch.Compose;
 using Birch.Diagnostics;
 using Birch.Metrics;
 using Birch.Metrics.Layout;
+using Birch.Reflection;
 using Birch.Transactions;
 using Microsoft.Extensions.Logging;
 
 namespace Birch.Hosts
 {
-    public abstract class BuildHostInstance
+    public abstract class BuildHostInstance:IDisposable
     {
-        /// <summary>
-        /// Helper class for the reactive extensions observable
-        /// </summary>
-        internal class MutationLayoutPair
-        {
-            public int MutationId { get; }
+        public static readonly bool IsLoggingEnabled = LoggingRules.For(Categories.Host).Any;
 
-            public MutationElementShadowPair Current { get; }
+        private readonly RootContainerFactory _rootState;
 
-            public ElementShadowTransition Next { get; }
-
-            public MutationLayoutPair(int mutationId,MutationElementShadowPair current, ElementShadowTransition next)
-            {
-                MutationId = mutationId;
-                Current = current;
-                Next = next;
-            }
-        }
         /// <summary>
         /// The 'owner' of the build
         /// </summary>
-        protected BuildOwner BuildOwner;
-
-        /// <summary>
-        /// Observable for changes to stateful changes
-        /// </summary>
-        private IObservable<ModelChange> _modelChangeObservable;
-
-        /// <summary>
-        /// Is the layout engine enabled
-        /// </summary>
-        private bool _enabled = true;
-
-        /// <summary>
-        /// A backing subject used to control the layout engine
-        /// </summary>
-        private readonly ISubject<bool> _enabledSubject = Subject.Synchronize(new BehaviorSubject<bool>(true));
+        public BuildOwner BuildOwner { get; private set; }
 
         /// <summary>
         /// The root stateful container.
         /// </summary>
-        private readonly IStatefulContainer _rootContainer;
+        public IStatefulContainer RootContainer { get; private set; }
 
         /// <summary>
-        /// Is this class enabled as a source of logging information 
+        /// The current state
         /// </summary>
-        private static readonly Lazy<bool> IsLoggingEnabled = new Lazy<bool>(() => LoggingRules.For(Categories.Host).Any);
+        public MutationElementShadowPair CurrentState=MutationElementShadowPair.Empty;
+
+        /// <summary>
+        /// Our active <see cref="IJobHostNew"/>
+        /// </summary>
+        private IJobHostNew _jobHost;
+
+        /// <summary>
+        /// The environment under which this host instance will operate
+        /// </summary>
+        public  HostEnvironment HostEnvironment;
+
+        /// <summary>
+        /// Is the host enabled or not
+        /// </summary>
+        private bool _enabled;
 
         /// <summary>
         /// Enable or disable to functioning of layout processing
@@ -72,149 +61,165 @@ namespace Birch.Hosts
             get => _enabled;
             set
             {
+
                 _enabled = value;
-                _enabledSubject.OnNext(_enabled);
+
+                if (_jobHost != null)
+                {
+                    _jobHost.Enabled = _enabled;
+                }
             }
         }
 
+
         protected BuildHostInstance(HostEnvironment hostEnvironment,RootContainerFactory rootState)
         {
-            Initialize(hostEnvironment);
+            _rootState = rootState;
 
-            _rootContainer = rootState(new BuildEnvironment(BuildOwner),new LayoutContext(BuildOwner.ModelBag,hostEnvironment.LayoutResolver));
+            Initialize(hostEnvironment);
         }
 
-        private readonly ISubject<ModelChange> _modelChangeSubject = Subject.Synchronize(new Subject<ModelChange>());
-
+        /// <summary>
+        /// Initialize the environment, creating the state container related items.
+        /// </summary>
+        /// <param name="hostEnvironment"></param>
         private void Initialize(HostEnvironment hostEnvironment)
         {
             HostEnvironment = hostEnvironment;
 
-            _modelChangeObservable = _modelChangeSubject.AsObservable();
             // create the owner of the build, this will include all of the state for stateful containers
             BuildOwner = new BuildOwner();
 
-            // when ever a model changes then push it to a model which will potentially perform a new layout
-            BuildOwner.Changed += (sender, args) => _modelChangeSubject.OnNext(args.Change);
+            CurrentState = MutationElementShadowPair.Empty;
+
+            RootContainer = _rootState(new BuildEnvironment(BuildOwner),new LayoutContext(BuildOwner.ModelBag,hostEnvironment.LayoutResolver));
         }
 
-        private readonly ISubject<MutationElementShadowPair> _currentStateSubject = Subject.Synchronize(new BehaviorSubject<MutationElementShadowPair>(MutationElementShadowPair.Empty));
+        /// <summary>
+        /// Set the <see cref="IJobHostNew"/> current instance
+        /// </summary>
+        /// <param name="host"></param>
+        public void SetHost(IJobHostNew host)
+        {
+            // dispose of any active job host
+            _jobHost?.Dispose();
+
+            _jobHost = host;
+
+            _jobHost.Error += OnLayoutException;
+
+            OnHostChanged(_jobHost);
+
+            _jobHost.Start();
+        }
+
+        protected void OnHostChanged(IJobHostNew jobHost)
+        {
+            HostChanged?.Invoke(this,jobHost);
+        }
+
+        public event EventHandler<IJobHostNew> HostChanged;
+
+        /// <summary>
+        /// Resets the current environment.
+        /// </summary>
+        public void Reset()
+        {
+            CurrentState.ElementShadow?.Shadow.Dispose();
+
+            // re-initialize the environment
+            Initialize(HostEnvironment);
+        }
 
         /// <summary>
         /// Start the build host.
         /// </summary>
         /// <returns></returns>
-        public IDisposable Start()
+        public void Start()
         {
-            return _modelChangeObservable.
-                ObserveOn(HostEnvironment.LayoutEngineOptions.LayoutScheduler).
-                Do(change=> {BuildOwner.ModelBag.SetModel(change.Container,change.Model,change.MutationId);}).
-                Do(change => Record(new ModelChangedEvent(change))).
-                Select(change => change.MutationId).
-                StartWith(0).
-                CombineLatest(_enabledSubject,_currentStateSubject, (mutationId,enabled,currentState) => (MutationId: mutationId,CurrentState:currentState, Enabled: enabled)).
-                Where(ce => ce.Enabled && (!HostEnvironment.LayoutEngineOptions.IgnoreOldMutations || BuildOwner.IsLatestMutation(ce.MutationId)) && (ce.CurrentState == null || ce.CurrentState.MutationId < ce.MutationId) ).
-                Select(ce =>
-                {
-                    var (mutationId, currentState, _) = ce;
 
-                    if (IsLoggingEnabled.Value)
-                    {
-                        Logging.Instance.LogDebug(
-                            "BuildHostInstance Building , Mutation:{mutationId},IsCurrent:{isCurrentMutation},current Element:{current}",
-                            mutationId, BuildOwner.IsLatestMutation(mutationId),
-                            currentState?.ElementShadow?.Element);
-                    }
+            // create the default layout host...
+            var host = new DefaultLayoutHost(this,HostEnvironment.HostSettings);
 
-                    // create a new context which will contain a snapshot of the current stateful containers state
-                    var context = LayoutContext.Create(BuildOwner.ModelBag,HostEnvironment.LayoutResolver);
+            SetHost(host);
 
-                    try
-                    {
-                        var layout = Layout(context, currentState?.ElementShadow);
-                        return new MutationLayoutPair(mutationId,currentState,layout);
-                    }
-                    catch (Exception exception)
-                    {
-                        throw new LayoutException(context,currentState,mutationId, exception);
-                    }
-                }).
-                Do(_ => { }, (exception) => { Record(new LayoutExceptionEvent(exception)); }).
-                Where(c => BuildOwner.IsLatestMutation(c.MutationId)).
-                ObserveOn(HostEnvironment.LayoutEngineOptions.CommitScheduler).
-                CombineLatest(_currentStateSubject,(c,cs) => (Proposed:c,CurrentState:cs)).
-                Where(c => ReferenceEquals(c.Proposed.Current.ElementShadow,c.CurrentState.ElementShadow) && c.CurrentState.MutationId != c.Proposed.MutationId && BuildOwner.IsLatestMutation(c.Proposed.MutationId)).
-                Select(c => c.Proposed).
-                Catch<MutationLayoutPair,LayoutException>(exception => Observable.Return(new MutationLayoutPair(exception.MutationId,exception.CurrentState,DefaultLayoutError(exception.Context,exception,exception.CurrentState.ElementShadow)))).
-                Do(r =>
-                {
-                    try
-                    {
-                        Commit(r.Next);
-                    }
-                    catch (Exception exception)
-                    {
-                        Logging.Instance.LogError(exception,"BuildHostInstance:Commit failure {element}, Mutation:{mutationId}",r.Next.Next.Element,r.MutationId);
-                        throw new CommitException(exception);
-                    }
-
-                    if (IsLoggingEnabled.Value)
-                    {
-                        Logging.Instance.LogDebug("BuildHostInstance Changing, Mutation:{mutationId},IsCurrent:{isCurrentMutation},Current {current}",r.MutationId,BuildOwner.IsLatestMutation(r.MutationId),r.Next.Next.Element);
-                    }
-
-                    _currentStateSubject.OnNext(new MutationElementShadowPair(r.Next.Next,r.MutationId));
-                }).
-                Do(_ => { }, (exception) => { Record(new LayoutExceptionEvent(exception)); }).
-                Do(_ => { },FatalError).
-                Subscribe();
+            // possibly need to inform that the host has been assigned...
+            // we need to create 
         }
 
         /// <summary>
-        /// Invoked when we have a fatal error during the commit phase
+        /// We have seen an exception on layout.
         /// </summary>
+        /// <param name="sender"></param>
         /// <param name="exception"></param>
-        protected abstract void FatalError(Exception exception);
-
-        /// <summary>
-        /// Invoked when we have a recoverable error during the build phase, typically
-        /// used to resolve the layout to be used to show the error.
-        /// </summary>
-        /// <param name="layoutContext"></param>
-        /// <param name="exception"></param>
-        /// <param name="current"></param>
-        /// <returns></returns>
-        protected abstract ElementShadowTransition DefaultLayoutError(LayoutContext layoutContext, Exception exception, ElementShadowPair current);
-
-        protected abstract IShadowContext CreateContext();
-
-        /// <summary>
-        /// Get the current changes
-        /// </summary>
-        /// <param name="layoutContext"></param>
-        /// <param name="current"></param>
-        /// <returns></returns>
-        private ElementShadowTransition Layout(LayoutContext layoutContext,ElementShadowPair current)
+        private void OnLayoutException(object sender, Exception exception)
         {
-            long elapsed = 0;
+            // at this point we need to invoke the appropriate error policy...
+            var errorPolicy = ErrorPolicy();
 
-            ElementShadowTransition mst;
-
-            using (var _ = Benchmark.Create((t, _) => elapsed = t))
+            if (errorPolicy == null && IsLoggingEnabled)
             {
-                mst = GetChanges(current, layoutContext);
+                Logging.Instance.LogWarning(exception, "BuildHostInstance:No error policy for Host Instance:{name}",
+                    this.GetType().FriendlyName());
             }
 
-            Record(new ChangeSetBuildEvent(elapsed, false, mst));
+            errorPolicy?.Handle(this, exception);
+        }
 
-            return mst;
+        /// <summary>
+        /// Create the <see cref="IShadowContext"/> used during the compare phase.
+        /// </summary>
+        /// <returns></returns>
+        protected abstract IShadowContext CreateShadowContext();
+
+        /// <summary>
+        /// Get the <see cref="IBuildErrorPolicy"/> instance.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual IBuildErrorPolicy ErrorPolicy() => null;
+
+        /// <summary>
+        /// Given a specified current and next state, create the transactions to perform the required changes.
+        /// </summary>
+        /// <param name="current"></param>
+        /// <param name="next"></param>
+        /// <returns></returns>
+        public ElementShadowTransition Compare(ElementShadowPair current,IPrimitive next)
+        {
+            _transactionLock.EnterReadLock();
+
+            try
+            {
+                using var transaction = Transaction.Create();
+
+                var context = CreateShadowContext();
+
+                var rootShadow = current.Shadow;
+
+                if (current.Shadow == null)
+                {
+                    rootShadow = HostEnvironment.ShadowMapperFactory.Create(context, next);
+                }
+                else
+                {
+                    HostEnvironment.ShadowMapperFactory.Update(context, rootShadow, current.Element, next);
+                }
+            
+                // and return the transactions - note that we don't commit the transactions, but rather but get what is currently there
+                return new ElementShadowTransition(current, transaction.TransactionsList, new ElementShadowPair(rootShadow, next));
+            }
+            finally
+            {
+                _transactionLock.ExitReadLock();                
+            }
         }
 
         /// <summary>
         /// Commit the outstanding transaction to the UI
         /// </summary>
         /// <param name="elementShadowTransition"></param>
-        public void Commit(ElementShadowTransition elementShadowTransition)
+        /// <param name="mutationId"></param>
+        public void Commit(ElementShadowTransition elementShadowTransition, int mutationId)
         {
             using var benchmark = Benchmark.Create((t,_) =>
             {
@@ -230,6 +235,7 @@ namespace Birch.Hosts
             try
             {
                 transaction.Commit();
+                CurrentState = new MutationElementShadowPair(elementShadowTransition.Next,mutationId);
             }
             finally
             {
@@ -237,32 +243,6 @@ namespace Birch.Hosts
             }
         }
 
-        /// <summary>
-        /// Given a specified current and next state, create the transactions to perform the required changes.
-        /// </summary>
-        /// <param name="current"></param>
-        /// <param name="next"></param>
-        /// <returns></returns>
-        protected ElementShadowTransition CreateChangeTransactionalSet(ElementShadowPair current,IPrimitive next)
-        {
-            using var transaction = Transaction.Create();
-
-            var context = CreateContext();
-
-            var rootShadow = current.Shadow;
-
-            if (current.Shadow == null)
-            {
-                rootShadow = HostEnvironment.ShadowMapperFactory.Create(context, next);
-            }
-            else
-            {
-                HostEnvironment.ShadowMapperFactory.Update(context, rootShadow, current.Element, next);
-            }
-            
-            // and return the transactions - note that we don't commit the transactions, but rather but get what is currently there
-            return new ElementShadowTransition(current, transaction.TransactionsList, new ElementShadowPair(rootShadow, next));
-        }
 
         /// <summary>
         /// Record <see cref="ILayoutEvent"/> to the layout monitor.
@@ -296,35 +276,26 @@ namespace Birch.Hosts
         /// </remarks>
         private readonly ReaderWriterLockSlim _transactionLock = new ReaderWriterLockSlim();
 
-        protected HostEnvironment HostEnvironment;
 
-        /// <summary>
-        /// Given a current state , perform a layout and create the transactional change set to transaction to the new layout
-        /// </summary>
-        /// <param name="current"></param>
-        /// <param name="layoutContext"></param>
-        /// <returns></returns>
-        private ElementShadowTransition GetChanges(ElementShadowPair current, LayoutContext layoutContext)
+        public virtual void Dispose()
         {
-            var layout = _rootContainer.Layout(layoutContext);
-
-            // lock the state so that read consistency can be maintained
-            _transactionLock.EnterReadLock();
-
-            try
-            {
-                var mst = CreateChangeTransactionalSet(current, layout);
-
-                return mst;
-            }
-            finally
-            {
-                _transactionLock.ExitReadLock();                
-            }
+            RootContainer?.Dispose();
+            _jobHost?.Dispose();
+            _transactionLock?.Dispose();
+            BuildOwner?.Dispose();
         }
     }
 
-    internal class MutationElementShadowPair
+    public interface IJobHostNew:IDisposable
+    {
+        public void Start();
+
+        event EventHandler<Exception> Error;
+
+        bool Enabled { get; set; }
+    }
+
+    public class MutationElementShadowPair
     {
         public ElementShadowPair ElementShadow { get; }
 

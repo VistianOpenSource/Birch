@@ -90,7 +90,7 @@ namespace MVU_Experiment.RV
             // If the item is currently being shown
             if (Shadow != null)
             {
-                if (Current.CanUpdateTo(next))
+                if (!Current.CanUpdateTo(next))
                 {
                     throw new ArgumentException($"Type Mismatch {Current.GetType().Name}:{next.GetType().Name}");
                 }

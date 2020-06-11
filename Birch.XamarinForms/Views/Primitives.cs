@@ -30,5 +30,9 @@ namespace Birch.Views
         public static ScrollView ScrollView(IPrimitive content) => new ScrollView(content);
 
         public static StackLayout StackLayout(IEnumerable<IPrimitive> children) => new StackLayout(children.ToArray());
+
+        public static ContentPage ContentPage(Xamarin.Forms.ContentPage contentPage, IPrimitive content) => new ContentPage(contentPage, content);
+
+        public static ViewCell ViewCell(IPrimitive content) => new ViewCell(content);
     }
 }

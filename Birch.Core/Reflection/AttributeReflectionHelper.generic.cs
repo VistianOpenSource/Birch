@@ -103,7 +103,7 @@ namespace Birch.Reflection
         /// <param name="name"></param>
         private void ProcessMethods(IEnumerable<MethodInfo> methods,string name=default)
         {
-            if (string.IsNullOrEmpty(name))
+            if (!string.IsNullOrEmpty(name))
             {
                 methods = methods.Where(m => m.Name == name);
             }
@@ -149,6 +149,7 @@ namespace Birch.Reflection
         public Attribute GetAttributeForMethod(string name, params Type[] paramTypes)
         {
             var fullName = MethodHelper.Name(name, paramTypes);
+
             var attribute = _propertyAttributeMap.GetValueOrDefault(fullName);
 
             if (attribute == null && AttributeReflectionHelper.ReflectOnDemand)

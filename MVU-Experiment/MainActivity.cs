@@ -160,11 +160,11 @@ namespace MVU_Experiment
             }
             else
             {
-                if (baseIndex == 1)
-                {
-                    Observable.Interval(TimeSpan.FromMilliseconds(1000)).Do(t => { this.SetModel((int)(t % 1000)); })
-                        .Subscribe();
-                }
+                //if (baseIndex == 1)
+                //{
+                //    Observable.Interval(TimeSpan.FromMilliseconds(30000)).Do(t => { this.SetModel((int)(t % 1000)); })
+                //        .Subscribe();
+                //}
             }
         }
 
@@ -208,7 +208,7 @@ namespace MVU_Experiment
             }
         }
 
-        private static IElement DependsOnCall(int baseIndex,int model) => TextView($"User:{baseIndex}:{model}").Dimensions(Dimensions.WrapWrap);
+       // private static IElement DependsOnCall(int baseIndex,int model) => TextView($"User:{baseIndex}:{model}").Dimensions(Dimensions.WrapWrap);
     }
 
 
@@ -247,16 +247,15 @@ namespace MVU_Experiment
         {
             IEnumerable<IPrimitive> ItemsOdd()
             {
-                yield return EditText(model.Name).
-                    OnCreate((Shadow<EditText> s) => { s.Item.RequestFocus(); }).
-                    //OnTextChanged((x) =>
-                    //{
-                    //    _currentModel.Name = x.Text.ToString();
+                yield return EditText(model.Name).OnCreate((Shadow<EditText> s) => { s.Item.RequestFocus(); })
+                    .OnTextChanged((x) =>
+                    {
+                        _currentModel.Name = x.Text.ToString();
 
-                    //    this.SetState(_currentModel);
+                        this.SetModel(_currentModel);
 
-                    //}).
-                    Event(x => nameof(x.TextChanged),(TextChangedEventArgs args) => _currentModel.Name = args.Text.ToString())
+                    });
+                    //Event(x => nameof(x.TextChanged),(TextChangedEventArgs args) => _currentModel.Name = args.Text.ToString())
                     ;
 
                 if (!model.IsNameValid)
@@ -547,7 +546,7 @@ namespace MVU_Experiment
 
             var host = BuildHost.Create(this, (c, lc) => new AppStatefulContainer(this, c));
 
-            _dis = host.Start();
+            host.Start();
         }
 
 

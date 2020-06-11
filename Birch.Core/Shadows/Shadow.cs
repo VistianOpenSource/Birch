@@ -1,6 +1,9 @@
 ﻿using System;
 using Birch.Components;
 using Birch.Compose;
+using Birch.Diagnostics;
+using Birch.Reflection;
+using Microsoft.Extensions.Logging;
 
 namespace Birch.Shadows
 {
@@ -26,38 +29,48 @@ namespace Birch.Shadows
             // current != null && next != null implies -> update/change
             // current != null && next == null, implies -> remove
 
-            // now, we do have a problem in that the shadow may not exist...// 
-            // if so then its a create
-            if (shadow != null)
+            try
             {
-                // the shadow could well change...
-                // in this case, we need to ...
-
-                var sameElementType = current.AreSameType(next);
-
-                if (!sameElementType)
+                // now, we do have a problem in that the shadow may not exist...// 
+                // if so then its a create
+                if (shadow != null)
                 {
-                    if (current != null)
+                    // the shadow could well change...
+                    // in this case, we need to ...
+
+                    var sameElementType = current.AreSameType(next);
+
+                    if (!sameElementType)
                     {
-                        // this isn't right, since the layout hasn't been retained
-                        context.MapperFactory.Remove(context, shadow, current);
-                        // we could want to 'drop' the content view here, how would we do that ?
-                        removed?.Invoke(shadow);
-                        shadow = default;
+                        if (current != null)
+                        {
+                            // this isn't right, since the layout hasn't been retained
+                            context.MapperFactory.Remove(context, shadow, current);
+                            // we could want to 'drop' the content view here, how would we do that ?
+                            removed?.Invoke(shadow);
+                            shadow = default;
+                        }
+                    }
+                    else
+                    {
+                        context.MapperFactory.Update(context,shadow,current,next);
                     }
                 }
-                else
-                {
-                    context.MapperFactory.Update(context,shadow,current,next);
-                }
-            }
 
-            if (shadow == null)
+                if (shadow == null)
+                {
+                    var baseShadow = context.MapperFactory.Create(context, next);
+
+                    shadow = (IShadow<TItem>) baseShadow;
+        
+                    added?.Invoke(shadow);
+                }
+
+            }
+            catch (Exception exception)
             {
-                var baseShadow = context.MapperFactory.Create(context, next);
-                shadow = (IShadow<TItem>) baseShadow;
-            
-                added?.Invoke(shadow);
+                Logging.Instance.LogError(exception,"Shadow:Update Current:{current} Next:{next} ShadowType:{shadowType}",current,next,shadow?.GetType().FriendlyName());
+                throw;
             }
         }
 

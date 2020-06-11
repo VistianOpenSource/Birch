@@ -4,36 +4,36 @@ using System.Text;
 using Birch.Components;
 using Birch.Diagnostics;
 using Birch.Hosts;
+using Birch.Reflection;
+using Birch.Views;
 using Microsoft.Extensions.Logging;
-using Logging = Birch.Diagnostics.Logging;
+using Xamarin.Forms;
+using static Birch.Views.Primitives;
+
 
 namespace Birch.XamarinForms.Hosts
 {
     /// <summary>
     /// Default Xamarin Forms <see cref="IBuildErrorPolicy"/> implementation.
     /// </summary>
-    public class DefaultErrorPolicy:BuildErrorPolicy<XamFormsBuildHostInstance>
+    public class DefaultErrorPolicy : BuildErrorPolicy<XamFormsBuildHostInstance>
     {
-
-        protected override IElement LayoutErrorFormat(XamFormsBuildHostInstance buildHostInstance, Exception exception)
+        public override IElement LayoutErrorFormat(XamFormsBuildHostInstance buildHostInstance, Exception exception)
         {
-            Logging.Instance.LogError(exception,"Recoverable Error during layout");
-     
-            throw new NotImplementedException();
+            var list = ListView(new IReflectedPrimitive<Cell>[]{ViewCell(
+                Label(exception.ToString()).LineBreakMode(LineBreakMode.CharacterWrap))}).
+                HasUnevenRows(true);
 
+            var resetButton = Button("Reset").OnClicked(() =>
+            {
+                buildHostInstance.Reset();
+                buildHostInstance.Start();
+            });
 
-            //var exceptions = GetInnerExceptions(exception).Select(e => Xa(e.Message)).ToList();
+            var stackLayout = StackLayout(new IPrimitive[] {list,resetButton}).Orientation(StackOrientation.Vertical);
 
-            //exceptions.AddRange(GetInnerExceptions(exception).Select(e => TextView(e.StackTrace)));
-
-            //return new Activity(buildHostInstance.Activity, LinearLayout(exceptions).Orientation(Android.Widget.Orientation.Vertical));
-        }
-
-        protected override void FatalError(XamFormsBuildHostInstance buildHostInstance, Exception exception)
-        {
-            Logging.Instance.LogError(exception,"Error during layout");
-
-            throw exception;
+            return ContentPage(buildHostInstance.ContentPage,stackLayout);
         }
     }
+
 }

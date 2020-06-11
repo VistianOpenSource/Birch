@@ -51,6 +51,8 @@ namespace MVU_Experiment
                 //.LoggingRules(Rule.For(Categories.Primitives,true));
                 ;
 
+                builder.With(Settings.Logging, logger);
+                builder.With(Settings.LoggingRules,new LoggingRulesList(){Rule.For(Categories.Collections),Rule.For(Categories.Reflection),Rule.For(Categories.Host)});
 
             builder.Create();
             //pe.Init(builder);

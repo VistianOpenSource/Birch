@@ -30,7 +30,7 @@ namespace CodedUIExperiment.Droid
 
             var builder = new EnvironmentBuilder().With<AndroidXamFormsHostEnvironmentBuilder, HostEnvironment>(
                 new HostEnvironment(new ShadowMapperFactory(), new DefaultErrorPolicy(), null, new LayoutResolver(),
-                    layoutEngineOptions));
+                    layoutEngineOptions,LayoutHostSettings.Default));
 
             return builder;
         }

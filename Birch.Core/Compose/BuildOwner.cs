@@ -43,7 +43,11 @@ namespace Birch.Compose
         /// <summary>
         /// The counter used to identify model changes with a mutation id.
         /// </summary>
-        private int _mutationId;
+        private int _mutationId = StartMutationId;
+
+        public const int StartMutationId = 0;
+
+        public const int NeverUsedMutationId = -1;
 
         /// <summary>
         /// Create an instance of the build owner
@@ -84,10 +88,12 @@ namespace Birch.Compose
         /// <returns></returns>
         public bool IsLatestMutation(int mutationId)
         {
-            var currentMutationId = Interlocked.CompareExchange(ref _mutationId, 0, -1);
+            var currentMutationId = Interlocked.CompareExchange(ref _mutationId, 0, NeverUsedMutationId);
 
             return currentMutationId == mutationId;
         }
+
+        public int MutationId => _mutationId;
 
         /// <summary>
         /// Get the current model for a specified stateful container.

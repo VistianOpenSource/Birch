@@ -8,6 +8,9 @@ namespace Birch.Hosts
     /// </summary>
     public class BuildEnvironment
     {
+        /// <summary>
+        /// Get the associated <see cref="BuildOwner"/>
+        /// </summary>
         public BuildOwner BuildOwner { get;  }
 
         public BuildEnvironment(BuildOwner buildOwner)
@@ -24,7 +27,9 @@ namespace Birch.Hosts
         public BuildContext CreateContext<TModel>(IStatefulContainer<TModel> statefulContainer) 
         {
             var context =  BuildContext.Create(BuildOwner);
+
             BuildOwner.ModelBag.Register<IStatefulContainer<TModel>,TModel>(statefulContainer,context);
+
             return context;
         }
     }

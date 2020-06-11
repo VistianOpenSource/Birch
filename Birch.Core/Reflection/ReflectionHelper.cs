@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace Birch.Reflection
     /// </summary>
     public abstract class ReflectionHelper
     {
-        protected static readonly Dictionary<Type,Attribute> ExpressionCache = new Dictionary<Type, Attribute>();
+        protected static readonly ConcurrentDictionary<Type,Attribute> ExpressionCache = new ConcurrentDictionary<Type, Attribute>();
     }
     /// <summary>
     /// Utility class to set attribute values based using expressions to resolve to attributes.
@@ -269,6 +270,10 @@ namespace Birch.Reflection
 
                     attribute = (Attribute<object[]>)AttributeReflectionHelper.GetAttributeForMethod(methodName,typeof(TParam));
 
+                    if (attribute == null)
+                    {
+
+                    }
                     ExpressionCache[Key(methodCallExpression)] = attribute;
                 }
                 else

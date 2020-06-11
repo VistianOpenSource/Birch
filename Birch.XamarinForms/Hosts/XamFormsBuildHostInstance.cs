@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Birch.Components;
 using Birch.Compose;
+using Birch.XamarinForms.Hosts;
 using Xamarin.Forms;
 
 namespace Birch.Hosts
@@ -25,20 +26,11 @@ namespace Birch.Hosts
             _hostEnvironment = hostEnvironment;
         }
 
-        protected override void FatalError(Exception exception)
-        {
-            _hostEnvironment.ErrorPolicy.FatalError(this,exception);
-        }
+        protected override IBuildErrorPolicy ErrorPolicy() => new DefaultErrorPolicy();
+        
 
-        protected override ElementShadowTransition DefaultLayoutError(LayoutContext layoutContext, Exception exception, ElementShadowPair current)
-        {
-            var errorLayout= _hostEnvironment.ErrorPolicy.LayoutErrorFormat(this,exception).Layout(layoutContext);
 
-            var mst = CreateChangeTransactionalSet(current, errorLayout);
-            return mst;
-        }
-
-        protected override IShadowContext CreateContext()
+        protected override IShadowContext CreateShadowContext()
         {
             return new XamFormsContext(_hostEnvironment.ShadowMapperFactory, BuildOwner);
         }

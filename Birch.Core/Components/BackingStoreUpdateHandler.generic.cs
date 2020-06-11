@@ -54,7 +54,7 @@ namespace Birch.Components
             if (IsLoggingEnabled.Value)
             {
                 loggingId = Interlocked.Increment(ref LoggingId);
-                Logging.Instance.LogInformation("CollectionUpdate:Begin {id} {currentLength}->{nextLength}",loggingId,currentList?.Length??0,nextList?.Length??0);
+                Logging.Instance.LogInformation("CollectionUpdate:Begin {id} current Length:{currentLength} next Length:{nextLength}",loggingId,currentList?.Length??0,nextList?.Length??0);
             }
 
             IEnumerable<Operation<TTarget>> operations;
@@ -77,10 +77,20 @@ namespace Birch.Components
                 comparisonOperations = _collectionComparer.Compare(currentList, nextList);
             }
 
+            if (IsLoggingEnabled.Value)
+            {
+                Logging.Instance.LogInformation("CollectionUpdate:Raw change count:{count}",comparisonOperations.Count);
+            }
+
 
             // only perform an attempt at a compaction if there is an insert and a delete both in existence
             if (comparisonOperations.Count >= 2 && comparisonOperations.Any(f => f.GetType() == typeof(DeleteOp<IPrimitive>)) && comparisonOperations.Any(f => f.GetType() == typeof(InsertOp<IPrimitive>)))
             {
+                if (IsLoggingEnabled.Value)
+                {
+                    Logging.Instance.LogInformation("CollectionUpdate:Compacting Changes");
+                }
+
                 // create our collection change compactor which will look to reduce the number of updates made
 
                 var collectionChangeCompactor = new CollectionChangeCompactor<TTarget>(currentList??nextList);
@@ -115,7 +125,7 @@ namespace Birch.Components
                 operations = comparisonOperations;
             }
             
-            // now apply the compacted changes
+            // now apply changes
 
             foreach (var operation in operations)
             {

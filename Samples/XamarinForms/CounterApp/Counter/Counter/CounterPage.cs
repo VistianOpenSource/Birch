@@ -31,9 +31,24 @@ namespace Counter
                 _model.Count += _model.Step;
                 this.SetModel(_model);
             };
+
+            Host.HostChanged += Host_HostChanged;
         }
 
-        public override Model InitState() => _model = new Model() {Count = 0, Step = 1, TimerOn = false};
+        /// <summary>
+        /// When the actual host implementation changes, shut down any long running things
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Host_HostChanged(object sender, IJobHostNew e)
+        {
+            _timer.Enabled = false;
+        }
+
+        public override Model InitState()
+        {
+            return _model = new Model() {Count = 0, Step = 1, TimerOn = false};
+        }
 
         protected override IPrimitive PerformLayout(LayoutContext layoutContext, CounterPage.Model model)
         {
@@ -51,7 +66,7 @@ namespace Counter
                     }).Orientation(StackOrientation.Horizontal).HorizontalOptions(LayoutOptions.Center),
                     Slider(0, 10).Value(model.Step).OnValueChanged(x => SetStep(x.NewValue)),
                     Label($"Step size {model.Step}").HorizontalOptions(LayoutOptions.Center),
-                    Button("Reset").HorizontalOptions(LayoutOptions.Center).OnClicked(Reset)
+                    Button("Reset").HorizontalOptions(LayoutOptions.Center).OnClicked(IssueReset)
                 }
             ).Padding(new Thickness(30.0)).VerticalOptions(LayoutOptions.Center);
         }
@@ -63,7 +78,7 @@ namespace Counter
             this.SetModel(_model);
         }
 
-        private void Reset()
+        private void IssueReset()
         {
             _timer.Enabled = false;
             _ = InitState();

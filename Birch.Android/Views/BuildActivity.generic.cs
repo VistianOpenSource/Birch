@@ -18,10 +18,6 @@ namespace Birch.Views
         /// </summary>
         private AndroidBuildHostInstance _host;
 
-        /// <summary>
-        /// Disposable created as a result of spinning up a host instance
-        /// </summary>
-        private IDisposable _hostDisposable;
 
         /// <summary>
         /// Create the environment to allow for Model View Update to operate for this activity.
@@ -41,8 +37,9 @@ namespace Birch.Views
                 return statefulContainer;
             });
 
+
             // now start the host
-            _hostDisposable = _host.Start();
+            _host.Start();
         }
 
         /// <summary>
@@ -68,7 +65,7 @@ namespace Birch.Views
         /// </summary>
         protected override void OnDestroy()
         {
-            _hostDisposable?.Dispose();
+            _host?.Dispose();
             base.OnDestroy();
         }
 
