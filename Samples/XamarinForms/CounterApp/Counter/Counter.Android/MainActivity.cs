@@ -9,6 +9,7 @@ using Android.OS;
 using Birch.Diagnostics;
 using Birch.Hosts;
 using Birch.Metrics;
+using Birch.Transactions;
 using Birch.XamarinForms.Android.Hosts;
 using Microsoft.Extensions.Logging;
 

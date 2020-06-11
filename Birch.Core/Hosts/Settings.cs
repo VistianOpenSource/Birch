@@ -2,6 +2,7 @@
 using Birch.Components;
 using Birch.Diagnostics;
 using Birch.Metrics;
+using Birch.Transactions;
 using Microsoft.Extensions.Logging;
 
 namespace Birch.Hosts
@@ -46,9 +47,19 @@ namespace Birch.Hosts
             {
                 Metrics.LayoutMetrics.LayoutCompleted += settings;
             }
-
         }
+
+        /// <summary>
+        /// Specify the transactional model to be used.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <remarks>
+        /// Typically you wouldn't need to do this at all.</remarks>
+        public static void TransactionModel(ITransactionModel model)
+        {
+            Birch.Transactions.TransactionModel.Current = model??new Threaded();
+        }
+
+
     }
-
-
 }

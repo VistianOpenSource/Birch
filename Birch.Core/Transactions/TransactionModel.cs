@@ -10,6 +10,6 @@ namespace Birch.Transactions
         /// <remarks>
         /// The way in which transactions are handled can be changed by setting this value PRIOR to any transactions being created.
         /// </remarks>
-        public static ITransactionModel Current = new Threaded();
+        public static ITransactionModel Current { get; set; } = new Threaded();
     }
 }
