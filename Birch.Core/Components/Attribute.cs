@@ -77,6 +77,17 @@ namespace Birch.Components
             // check it doesn't already exist
             var attribute = AttributeStore.Default.GetAttribute<TValue>(name);
 
+            if (equalityComparer == null)
+            {
+                // see if there are any custom comparers.
+                var (comparerExists, comparer) = CustomEqualityComparer.TryGetValue(typeof(TValue));
+
+                if (comparerExists)
+                {
+                    equalityComparer = (IEqualityComparer<TValue>) comparer;
+                }
+            }
+
             if (attribute != null)
             {
                 // it already exists, now just check if the equality comparer specified is non null, if so, update the existing registration
@@ -122,8 +133,11 @@ namespace Birch.Components
             var baseType = typeof(Attribute<>);
             var genType = baseType.MakeGenericType(attributeType);
 
+            // see if there are any custom comparers.
+            var (comparerExists, comparer) = CustomEqualityComparer.TryGetValue(attributeType);
+
             // create the instance
-            attribute = (Attribute)Activator.CreateInstance(genType, id, containsDescendents,null);
+            attribute = (Attribute)Activator.CreateInstance(genType, id, containsDescendents,comparerExists ? comparer : null);
 
             // and register
             AttributeStore.Default.Register(name,attribute);

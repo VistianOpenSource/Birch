@@ -61,8 +61,7 @@ namespace Counter
                 ).Orientation(StackOrientation.Horizontal).HorizontalOptions(LayoutOptions.Center),
                 Slider(0, 10).Value(model.Step).OnValueChanged(x => SetStep(x.NewValue)),
                 Label($"Step size {model.Step}").HorizontalOptions(LayoutOptions.Center),
-                Button("Reset").HorizontalOptions(LayoutOptions.Center).OnClicked(IssueReset),
-                BoxView(Color.Black)
+                Button("Reset").HorizontalOptions(LayoutOptions.Center).OnClicked(IssueReset)
             ).Padding(new Thickness(30.0)).VerticalOptions(LayoutOptions.Center);
         }
 

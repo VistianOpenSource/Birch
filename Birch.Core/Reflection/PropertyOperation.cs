@@ -24,7 +24,7 @@ namespace Birch.Reflection
         /// <summary>
         /// The comparer to see whether property values have changed
         /// </summary>
-        private static readonly EqualityComparer<TAttribute> EqualityComparer = EqualityComparer<TAttribute>.Default;
+        private static readonly IEqualityComparer<TAttribute> EqualityComparer = CustomEqualityComparer.GetOrDefault<TAttribute>();
 
         /// <summary>
         /// Create an instance 
@@ -48,7 +48,7 @@ namespace Birch.Reflection
 
                 if (!EqualityComparer.Equals(current, attribute))
                 {
-                    if (PropertyOperation.IsLoggingEnabled.Value)
+                    if (PropertyOperation.IsLoggingEnabled)
                     {
                         Logging.Instance.LogInformation("Property Set:{name} on:{object} value:{attribute} was:{original}",_property.Name,shadow.Item.GetType().Name,attribute,current);
                     }
@@ -78,7 +78,7 @@ namespace Birch.Reflection
                 // if the property hasn't changed, then don't update
                 if (!EqualityComparer.Equals(currentValue, next))
                 {
-                    if (PropertyOperation.IsLoggingEnabled.Value)
+                    if (PropertyOperation.IsLoggingEnabled)
                     {
                         Logging.Instance.LogInformation("Property Update:{name} on:{object} from:'{current}' to:'{next}'",_property.Name,shadow.Item.GetType().Name,current,next);
                     }
@@ -122,6 +122,6 @@ namespace Birch.Reflection
 
     internal class PropertyOperation
     {
-        public static Lazy<bool> IsLoggingEnabled = new Lazy<bool>(() => LoggingRules.For(Categories.Reflection).Any);
+        public static bool IsLoggingEnabled = LoggingRules.For(Categories.Reflection).Any;
     }
 }

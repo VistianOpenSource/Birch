@@ -52,7 +52,7 @@ namespace MVU_Experiment
                 ;
 
                 builder.With(Settings.Logging, logger);
-                builder.With(Settings.LoggingRules,new LoggingRulesList(){Rule.For(Categories.Collections),Rule.For(Categories.Reflection),Rule.For(Categories.Host)});
+                builder.With(Settings.LoggingRules,new LoggingRulesList(){Rule.For(Categories.Reflection),Rule.For(Categories.Host)});
 
             builder.Create();
             //pe.Init(builder);
