@@ -117,7 +117,7 @@ namespace Birch.Generator.Styles.Extension
 
                     var obsolete = (obsoleteAttribute != null) ? (string)obsoleteAttribute.FixedArguments[0].Value : string.Empty;
                     
-                    var attrModel = new AttributePropertyModel(property.Source,shortTypeName, fullTypeName,propertyDefinition.DeclaringTypeDefinition.FullName,Template(property.Template,DefaultPropertyTemplate),property.Notes,obsolete);
+                    var attrModel = new AttributePropertyModel(property.Source,shortTypeName, fullTypeName,propertyDefinition.DeclaringTypeDefinition.FullName,Template(property.Template,DefaultPropertyTemplate),property.Notes,obsolete,property.CustomComparer);
 
                     attributeModels.Add(attrModel);
                 }

@@ -32,7 +32,7 @@ namespace Birch.Generator.Specification
             _rootDir = rootDir;
         }
 
-        public Job Generate(TypeStore typeStore,Func<ITypeDefinition,bool> includeType=default,Func<IMethod,bool> includeMethod=default,string templateStyles=default)
+        public Job Generate(TypeStore typeStore,Func<ITypeDefinition,bool> includeType=default,Func<IMethod,bool> includeMethod=default,string templateStyles=default,TemplateExportStyle embedTemplatesExport=TemplateExportStyle.File)
         {
             //
             const string voidTypeName = "System.Void";
@@ -118,7 +118,7 @@ namespace Birch.Generator.Specification
             {
                 templates.AddRange(Directory.EnumerateFiles(Path.Join(_rootDir, templateStyles), $"*{TemplateExtension}").
                     Where(file => Path.GetFileNameWithoutExtension(file) != RootTemplateName).
-                    Select(file => new Template(Path.GetFileNameWithoutExtension(file), TemplateType.Partial, TemplateLocation.File) {Content = File.ReadAllText(file)}));
+                    Select(file => new Template(Path.GetFileNameWithoutExtension(file), TemplateType.Partial, TemplateLocation.Inline) {Content = File.ReadAllText(file)}));
             }
             var generation = new Configuration("Enter your namespace here", RootTemplateName, templates
                     , Style.Type,

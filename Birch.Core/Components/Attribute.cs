@@ -79,6 +79,11 @@ namespace Birch.Components
 
             if (attribute != null)
             {
+                // it already exists, now just check if the equality comparer specified is non null, if so, update the existing registration
+                if (equalityComparer != null)
+                {
+                    attribute.EqualityComparer = equalityComparer;
+                }
                 return attribute;
             }
 
@@ -100,7 +105,6 @@ namespace Birch.Components
         /// <param name="attributeType"></param>
         /// <param name="containsDescendents"></param>
         /// <returns></returns>
-
         public static Attribute Register(string name, Type attributeType,bool containsDescendents = false)
         {
             // first check that we don't have it already
@@ -179,10 +183,6 @@ namespace Birch.Components
             var baseType = typeof(EventAttribute<>);
             var actualType = baseType.MakeGenericType(attributeType);
 
-            //var equalityComparerType = typeof(ActionEqualityComparer<>).MakeGenericType(attributeType);
-
-            //var equalityComparer = Activator.CreateInstance(equalityComparerType);
-
             attribute = (Attribute)Activator.CreateInstance(actualType, id,equalityComparer);
 
             AttributeStore.Default.Register(name,attribute);
@@ -225,8 +225,6 @@ namespace Birch.Components
     [Preserve(AllMembers = true)]
     public class Attribute<TValue>:Attribute
     {
-        private readonly IEqualityComparer<TValue> _equalityComparer;
-
         /// <summary>
         /// 
         /// </summary>
@@ -235,8 +233,13 @@ namespace Birch.Components
         /// <param name="equalityComparer"></param>
         public Attribute(int id, bool containsDescendents=false, IEqualityComparer<TValue> equalityComparer=default):base(id,containsDescendents)
         {
-            _equalityComparer = equalityComparer??EqualityComparer<TValue>.Default;
+            EqualityComparer = equalityComparer??EqualityComparer<TValue>.Default;
         }
+
+        /// <summary>
+        /// Get or set the equality comparer
+        /// </summary>
+        public IEqualityComparer<TValue> EqualityComparer { get; set; }
 
         public override bool CompareValues(object x, object y)
         {
@@ -245,12 +248,12 @@ namespace Birch.Components
 
         public override int CalculateHashCode(object instance)
         {
-            return instance == null ? 0 : _equalityComparer.GetHashCode((TValue) instance);
+            return instance == null ? 0 : EqualityComparer.GetHashCode((TValue) instance);
         }
 
         private bool CompareValue(TValue x, TValue y)
         {
-            return _equalityComparer.Equals(x,y);
+            return EqualityComparer.Equals(x,y);
         }
     }
 }

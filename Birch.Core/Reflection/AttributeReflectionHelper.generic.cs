@@ -40,7 +40,7 @@ namespace Birch.Reflection
                 ProcessMembers();
             }
             
-            if (AttributeReflectionHelper.IsLoggingEnabled.Value)
+            if (AttributeReflectionHelper.IsLoggingEnabled)
             {
                 Logging.Instance.LogInformation("{When} Reflected attributes for:{type} total:{total}",DateTimeOffset.Now.Ticks,typeof(T).Name,_propertyAttributeMap.Count);
             }

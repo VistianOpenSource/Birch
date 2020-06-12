@@ -101,7 +101,7 @@
     {
       "type": "Xamarin.Forms.BoxView",
       "output": {
-        "methodArguments": [],
+        "methodArguments": ["Color?"],
         "methodName": "BoxView",
         "generationType": "Extension"
       },

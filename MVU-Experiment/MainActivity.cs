@@ -256,7 +256,6 @@ namespace MVU_Experiment
 
                     });
                     //Event(x => nameof(x.TextChanged),(TextChangedEventArgs args) => _currentModel.Name = args.Text.ToString())
-                    ;
 
                 if (!model.IsNameValid)
                 {

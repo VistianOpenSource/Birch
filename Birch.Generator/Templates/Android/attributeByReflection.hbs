@@ -1,7 +1,7 @@
 {{! Template expects content to be defined by a AttributePropertyModel instance}}
     public static partial class {{nameTidy DefiningType}}_Extensions
     {
-        private static readonly Attribute<{{{FullTypeName}}}> Attribute_{{nameTidy ShortTypeName}}_{{Name}} = AttributeReflectionHelper.ResolveFor<{{DefiningType}}, {{{FullTypeName}}}>
+        private static readonly Attribute<{{{FullTypeName}}}> Attribute_{{nameTidy ShortTypeName}}_{{Name}} = AttributeReflectionHelper.ResolveFor<{{DefiningType}}, {{{FullTypeName}}}{{#if CustomComparer}},equalityComparer:{{{CustomComparer}}}{{/if}}>
         (v => v.{{Name}});
 
         {{#if Notes}}
@@ -24,3 +24,4 @@
             return component;
         }
     }
+

@@ -30,19 +30,22 @@
         /// </summary>
         public string Template { get;  }
 
-
         /// <summary>
         /// Any notes that need to be published
         /// </summary>
         public string Notes { get; }
-
 
         /// <summary>
         /// If non null, implies the property is obsolete
         /// </summary>
         public string Obsolete { get; }
 
-        public AttributePropertyModel(string name, string shortTypeName,string fullTypeName, string definingType,string template,string notes,string obsolete)
+        /// <summary>
+        /// If non empty, a custom comparer to be used for this type of attr
+        /// </summary>
+        public string CustomComparer { get; }
+
+        public AttributePropertyModel(string name, string shortTypeName,string fullTypeName, string definingType,string template,string notes,string obsolete,string customComparer)
         {
             Name = name;
             ShortTypeName = shortTypeName;
@@ -51,6 +54,7 @@
             Template = template;
             Notes = notes;
             Obsolete = obsolete;
+            CustomComparer = customComparer;
         }
     }
 }

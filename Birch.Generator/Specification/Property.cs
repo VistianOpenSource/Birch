@@ -30,5 +30,11 @@ namespace Birch.Generator.Specification
         /// </summary>
         [JsonProperty("notes", DefaultValueHandling = DefaultValueHandling.Ignore,NullValueHandling = NullValueHandling.Ignore)]
         public string Notes { get; set; }
+
+        /// <summary>
+        /// A custom type comparer
+        /// </summary>
+        [JsonProperty("customComparer", DefaultValueHandling = DefaultValueHandling.Ignore,NullValueHandling = NullValueHandling.Ignore)]
+        public string CustomComparer { get; set; }
     }
 }

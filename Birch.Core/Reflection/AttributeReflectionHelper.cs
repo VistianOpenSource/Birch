@@ -17,12 +17,13 @@ namespace Birch.Reflection
         /// <typeparam name="TControl"></typeparam>
         /// <typeparam name="TType"></typeparam>
         /// <param name="expression"></param>
+        /// <param name="equalityComparer"></param>
         /// <returns></returns>
-        public static Attribute<TType> ResolveFor<TControl, TType>(Expression<Func<TControl, TType>> expression)
+        public static Attribute<TType> ResolveFor<TControl, TType>(Expression<Func<TControl, TType>> expression,IEqualityComparer<TType> equalityComparer=default)
         {
             var propertyExpression = ExpressionChainExtractor.Default.Decode(expression.Body).ToArray();
 
-            var attribute = Components.Attribute.Register<TType>(AttributeReflectionHelper<TControl>.FullName((propertyExpression[0] as PropertyMemberDetails).PropertyInfo));
+            var attribute = Components.Attribute.Register(AttributeReflectionHelper<TControl>.FullName((propertyExpression[0] as PropertyMemberDetails).PropertyInfo),equalityComparer:equalityComparer);
 
             return attribute;
         }
@@ -30,7 +31,7 @@ namespace Birch.Reflection
         /// <summary>
         /// Is logging enabled ?
         /// </summary>
-        public static readonly Lazy<bool> IsLoggingEnabled = new Lazy<bool>(() => LoggingRules.For(Categories.Reflection).Any);
+        public static readonly bool IsLoggingEnabled = LoggingRules.For(Categories.Reflection).Any;
 
 
         /// <summary>

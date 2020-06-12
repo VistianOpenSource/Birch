@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Generator\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Birch.Core\Birch.Core.csproj" />
   </ItemGroup>
 

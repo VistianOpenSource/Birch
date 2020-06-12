@@ -62,7 +62,7 @@ namespace Birch.Views
 
     public static partial class Primitives
     {
-        public static XamFormsVisualElement<Xamarin.Forms.BoxView> BoxView()
+        public static XamFormsVisualElement<Xamarin.Forms.BoxView> BoxView(Xamarin.Forms.Color pColor=default)
         {
             if (Components.Primitives.NeverInclude)   
             {
@@ -70,15 +70,16 @@ namespace Birch.Views
             }
 
             var control = new XamFormsVisualElement<Xamarin.Forms.BoxView>();
+            if(pColor != default)
+                control.Color(pColor);
             return control;
         }    
     }
 
     public static partial class Xamarin_Forms_BoxView_Extensions
     {
-        private static readonly Attribute<Xamarin.Forms.Color> Attribute_Color_Color = AttributeReflectionHelper.ResolveFor<Xamarin.Forms.BoxView, Xamarin.Forms.Color>
-        (v => v.Color);
-
+        private static readonly Attribute<Xamarin.Forms.Color> Attribute_Color_Color = AttributeReflectionHelper.ResolveFor<Xamarin.Forms.BoxView, Xamarin.Forms.Color>(v => v.Color,equalityComparer:EqualityComparer<Xamarin.Forms.Color>.Default);
+    
         public static TControl Color<TControl>(this TControl component, Xamarin.Forms.Color pColor)  where TControl:IReflectedPrimitive<Xamarin.Forms.BoxView>
         {
             if (Components.Primitives.NeverInclude)   
@@ -86,16 +87,14 @@ namespace Birch.Views
                 Xamarin.Forms.BoxView t = default;
                 t.Color = default;
             }
-
+    
             component.Attributes.SetAttribute(Attribute_Color_Color,pColor);
             return component;
         }
-    }
-    public static partial class Xamarin_Forms_BoxView_Extensions
+    }    public static partial class Xamarin_Forms_BoxView_Extensions
     {
-        private static readonly Attribute<Xamarin.Forms.CornerRadius> Attribute_CornerRadius_CornerRadius = AttributeReflectionHelper.ResolveFor<Xamarin.Forms.BoxView, Xamarin.Forms.CornerRadius>
-        (v => v.CornerRadius);
-
+        private static readonly Attribute<Xamarin.Forms.CornerRadius> Attribute_CornerRadius_CornerRadius = AttributeReflectionHelper.ResolveFor<Xamarin.Forms.BoxView, Xamarin.Forms.CornerRadius>(v => v.CornerRadius);
+    
         public static TControl CornerRadius<TControl>(this TControl component, Xamarin.Forms.CornerRadius pCornerRadius)  where TControl:IReflectedPrimitive<Xamarin.Forms.BoxView>
         {
             if (Components.Primitives.NeverInclude)   
@@ -103,12 +102,11 @@ namespace Birch.Views
                 Xamarin.Forms.BoxView t = default;
                 t.CornerRadius = default;
             }
-
+    
             component.Attributes.SetAttribute(Attribute_CornerRadius_CornerRadius,pCornerRadius);
             return component;
         }
     }
-
 
     public static partial class Primitives
     {

@@ -66,6 +66,12 @@ namespace Birch.Generator
                     Required = false, Argument = new Argument<string>("templates")
                 };
 
+                var templateExportOption = new Option(new string[] {"--templateExport"},
+                    "The way in which templates are exported, either 'Embed' or 'File'. NOT currently used, defaults to Embed.")
+                {
+                    Required = false,
+                    Argument = new Argument<TemplateExportStyle>("templateExportStyle")
+                };
 
                 codeCommand.Add(assemblyOption);
                 codeCommand.Add(outputOption);
@@ -77,15 +83,16 @@ namespace Birch.Generator
                 specificationCommand.Add(typeFilterOption);
                 specificationCommand.Add(methodFilterOption);
                 specificationCommand.Add(templatesStyleOption);
+                specificationCommand.Add(templateExportOption);
 
                 codeCommand.Handler = CommandHandler.Create((FileInfo assembly,string output,FileInfo specification) =>
                 {
                     GenerateCode(specification,assembly,output);
                 }); 
 
-                specificationCommand.Handler = CommandHandler.Create((FileInfo assembly,string output,string typeFilter,string methodFilter,string templates) =>
+                specificationCommand.Handler = CommandHandler.Create((FileInfo assembly,string output,string typeFilter,string methodFilter,string templates,TemplateExportStyle templateExportStyle) =>
                 {
-                    GenerateSpecification(assembly,output,typeFilter,methodFilter,templates);
+                    GenerateSpecification(assembly,output,typeFilter,methodFilter,templates,templateExportStyle);
                 }); 
 
                 return await rootCommand.InvokeAsync(args);
@@ -99,7 +106,10 @@ namespace Birch.Generator
         /// <param name="typeFilter"></param>
         /// <param name="methodFilter"></param>
         /// <param name="templatesStyle"></param>
-        public static void GenerateSpecification(FileInfo assembly, string outputPath = default,string typeFilter=default,string methodFilter=default,string templatesStyle=default)
+        /// <param name="templateExportStyle"></param>
+        public static void GenerateSpecification(FileInfo assembly, string outputPath = default,
+            string typeFilter = default, string methodFilter = default, string templatesStyle = default,
+            TemplateExportStyle templateExportStyle=TemplateExportStyle.Embed)
         {
             var typeStore = new TypeStore();
 
