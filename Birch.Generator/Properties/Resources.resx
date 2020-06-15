@@ -129,4 +129,47 @@
   <data name="NoRegisteredIModelFactoryInstance" xml:space="preserve">
     <value>No registered IModelFactory instance for {0}</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="abstractExtension" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\xamarinforms\abstractextension.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="abstractLayout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\xamarinforms\abstractlayout.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="attributeByReflection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\xamarinforms\attributebyreflection.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="eventByReflection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\xamarinforms\eventbyreflection.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="extension.Android" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\android\extension.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="extension.XamarinForms" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\xamarinforms\extension.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="layout.Android" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\android\layout.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="layout.XamarinForms" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\xamarinforms\layout.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="main.Android" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\android\main.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="main.XamarinForms" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\xamarinforms\main.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="methodByReflection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\xamarinforms\methodbyreflection.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="noInstance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\xamarinforms\noinstance.hbs;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Templates.Android" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\android\templates.android.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Templates.XamarinForms" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\templates\xamarinforms\templates.xamarinforms.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

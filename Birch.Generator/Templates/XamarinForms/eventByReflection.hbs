@@ -1,5 +1,8 @@
 ﻿public static partial class {{nameTidy DefiningType}}_Extensions
 {
+    {{#if Obsolete}}
+    [Obsolete("{{{Obsolete}}}")]
+    {{/if}}
     public static TControl On{{EventName}}<TControl>(this TControl control,Action{{#if FullTypeName}}<{{FullTypeName}}>{{/if}} action) where TControl:IReflectedPrimitive<{{DefiningType}}>
     {
         if (Components.Primitives.NeverInclude)

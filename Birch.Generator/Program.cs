@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.IO;
@@ -16,6 +17,11 @@ namespace Birch.Generator
 {
     internal class Program
     {
+        /// <summary>
+        /// The file extension for the handle bar templates.
+        /// </summary>
+        private const string TemplateExtension = "hbs";
+
         /// <summary>
         /// Create either specification or code files based upon user specified parameters.
         /// </summary>
@@ -60,17 +66,16 @@ namespace Birch.Generator
                     Required = false, Argument = new Argument<string>("methodFilter")
                 };
 
-                var templatesStyleOption = new Option(new string[] {"--templates", "--tem"},
+                var templatesStyleOption = new Option(new string[] {"--templates"},
                     "The default platform templates to be included in the specification file: Android,iOS or XamarinForms.")
                 {
                     Required = false, Argument = new Argument<string>("templates")
                 };
 
-                var templateExportOption = new Option(new string[] {"--templateExport"},
-                    "The way in which templates are exported, either 'Embed' or 'File'. NOT currently used, defaults to Embed.")
+                var templateExportOption = new Option(new string[] {"--templateExport","--te"},
+                    "The way in which templates are exported, either 'Embed' or 'File'.")
                 {
-                    Required = false,
-                    Argument = new Argument<TemplateExportStyle>("templateExportStyle")
+                    Required = false, Argument = new Argument<TemplateExportStyle>("templateExport")
                 };
 
                 codeCommand.Add(assemblyOption);
@@ -82,17 +87,19 @@ namespace Birch.Generator
                 specificationCommand.Add(outputOption);
                 specificationCommand.Add(typeFilterOption);
                 specificationCommand.Add(methodFilterOption);
+                specificationCommand.AddOption(templateExportOption);
                 specificationCommand.Add(templatesStyleOption);
-                specificationCommand.Add(templateExportOption);
+
 
                 codeCommand.Handler = CommandHandler.Create((FileInfo assembly,string output,FileInfo specification) =>
                 {
                     GenerateCode(specification,assembly,output);
                 }); 
 
-                specificationCommand.Handler = CommandHandler.Create((FileInfo assembly,string output,string typeFilter,string methodFilter,string templates,TemplateExportStyle templateExportStyle) =>
+                specificationCommand.Handler = CommandHandler.Create((FileInfo assembly,string output,string typeFilter,string methodFilter,TemplateExportStyle templateExport,string templates) =>
                 {
-                    GenerateSpecification(assembly,output,typeFilter,methodFilter,templates,templateExportStyle);
+
+                    GenerateSpecification(assembly,output,typeFilter,methodFilter,templates,templateExport);
                 }); 
 
                 return await rootCommand.InvokeAsync(args);
@@ -173,6 +180,28 @@ namespace Birch.Generator
 
 
             var r = g.Generate(typeStore, typeFilterFunc,methodFilterFunc,templatesStyle);
+
+            // if the user specified they want their templates to be individually saved, then we need to do that as well...
+            if (templateExportStyle == TemplateExportStyle.File)
+            {
+                var outputDirectory = Path.GetDirectoryName(outputPath);
+
+                var revisedTemplates = new List<Template>();
+
+                foreach (var template in r.Configuration.Templates)
+                {
+                    var fileName = $"{template.Name}.{TemplateExtension}";
+
+                    var fullPath = Path.Join(outputDirectory, fileName);
+
+                    File.WriteAllText(fullPath,template.Content);
+
+                    revisedTemplates.Add(new Template(template.Name,template.Type,TemplateLocation.File){Path=fileName});
+                }
+
+                r.Configuration.Templates = revisedTemplates;
+            }
+
             var f = new JsonFormatter();
             var output = f.Format(r);
 

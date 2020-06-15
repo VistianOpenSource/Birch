@@ -61,11 +61,131 @@ namespace Birch.Generator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] abstractExtension {
+            get {
+                object obj = ResourceManager.GetObject("abstractExtension", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] abstractLayout {
+            get {
+                object obj = ResourceManager.GetObject("abstractLayout", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] attributeByReflection {
+            get {
+                object obj = ResourceManager.GetObject("attributeByReflection", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code written to {0}.
         /// </summary>
         internal static string CodeWrittenTo {
             get {
                 return ResourceManager.GetString("CodeWrittenTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] eventByReflection {
+            get {
+                object obj = ResourceManager.GetObject("eventByReflection", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] extension_Android {
+            get {
+                object obj = ResourceManager.GetObject("extension.Android", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] extension_XamarinForms {
+            get {
+                object obj = ResourceManager.GetObject("extension.XamarinForms", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] layout_Android {
+            get {
+                object obj = ResourceManager.GetObject("layout.Android", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] layout_XamarinForms {
+            get {
+                object obj = ResourceManager.GetObject("layout.XamarinForms", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] main_Android {
+            get {
+                object obj = ResourceManager.GetObject("main.Android", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] main_XamarinForms {
+            get {
+                object obj = ResourceManager.GetObject("main.XamarinForms", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] methodByReflection {
+            get {
+                object obj = ResourceManager.GetObject("methodByReflection", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] noInstance {
+            get {
+                object obj = ResourceManager.GetObject("noInstance", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -93,6 +213,26 @@ namespace Birch.Generator.Properties {
         internal static string SpecificationFileWritten {
             get {
                 return ResourceManager.GetString("SpecificationFileWritten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Templates_Android {
+            get {
+                object obj = ResourceManager.GetObject("Templates.Android", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Templates_XamarinForms {
+            get {
+                object obj = ResourceManager.GetObject("Templates.XamarinForms", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

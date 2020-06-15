@@ -1,0 +1,47 @@
+[
+  {
+    "resourceName": "main.XamarinForms",
+    "TemplateName": "main",
+    "type": "Basic"
+  },
+  {
+    "resourceName": "abstractExtension",
+    "TemplateName": "abstractExtension",
+    "type": "Partial"
+  },
+  {
+    "resourceName": "abstractLayout",
+    "TemplateName": "abstractLayout",
+    "type": "Partial"
+  },
+  {
+    "resourceName": "attributeByReflection",
+    "TemplateName": "attributeByReflection",
+    "type": "Partial"
+  },
+  {
+    "resourceName": "eventByReflection",
+    "TemplateName": "eventByReflection",
+    "type": "Partial"
+  },
+  {
+    "resourceName": "extension.XamarinForms",
+    "TemplateName": "extension",
+    "type": "Partial"
+  },
+  {
+    "resourceName": "layout.XamarinForms",
+    "TemplateName": "layout",
+    "type": "Partial"
+  },
+  {
+    "resourceName": "methodByReflection",
+    "TemplateName": "methodByReflection",
+    "type": "Partial"
+  },
+  {
+    "resourceName": "noInstance",
+    "TemplateName": "noInstance",
+    "type": "Partial"
+  }
+]

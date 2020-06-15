@@ -1,14 +1,14 @@
-    {{! Template expects content to be defined by a ExtensionMethodModel instance}}
+﻿    {{! Template expects content to be defined by a ExtensionMethodModel instance}}
     public static partial class Primitives
     {
-        public static XamFormsVisualElement{{Type}}> {{Name}}(IEnumerable<IPrimitive> children,{{#each Arguments}}{{Type}} {{argumentCase Name}}{{#if DefaultValue}}={{DefaultValue}}{{/if}}{{#unless @last}}, {{/unless}}{{/each}})
+        public static AndroidViewGroup<{{Type}}> {{Name}}(IEnumerable<IPrimitive> children,{{#each Arguments}}{{Type}} {{argumentCase Name}}{{#if DefaultValue}}={{DefaultValue}}{{/if}}, {{/each}}Dimensions dimensions=default,int?id=default)
         {
             if (Components.Primitives.NeverInclude)   
             {
-                var instance = new {{Type}}();
+                var instance = new {{Type}}(default);
             }
 
-            var control = new XamFormsVisualElement<{{Type}}>(children);
+            var control = ViewGroup<{{Type}}>(children,(dimensions) => new {{Type}}.LayoutParams(dimensions.Width, dimensions.Height), dimensions, id);
             {{#each Arguments}}
             control.{{Name}}({{argumentCase name}});
             {{/each}}

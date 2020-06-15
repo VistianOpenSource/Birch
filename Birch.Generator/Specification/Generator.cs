@@ -105,21 +105,9 @@ namespace Birch.Generator.Specification
                 typesToProcess.Add(typeToProcess);
             }
 
-            var templates = new List<Template>();
+            // if template style specified, load up the templates
+            var templates = string.IsNullOrEmpty(templateStyles) ? new List<Template> (): ResourceTemplateLoader.ReadFor(templateStyles);
 
-            // always do the root !
-            var rootTemplate = new Template(RootTemplateName, TemplateType.Basic, TemplateLocation.Inline)
-                {Content = File.ReadAllText(Path.Join(Path.Join(_rootDir,templateStyles),$"{RootTemplateName}.{TemplateExtension}"))};
-            
-            templates.Add(rootTemplate);
-
-
-            if (templateStyles != null)
-            {
-                templates.AddRange(Directory.EnumerateFiles(Path.Join(_rootDir, templateStyles), $"*{TemplateExtension}").
-                    Where(file => Path.GetFileNameWithoutExtension(file) != RootTemplateName).
-                    Select(file => new Template(Path.GetFileNameWithoutExtension(file), TemplateType.Partial, TemplateLocation.Inline) {Content = File.ReadAllText(file)}));
-            }
             var generation = new Configuration("Enter your namespace here", RootTemplateName, templates
                     , Style.Type,
                 new List<CodeOutputType>()
@@ -131,5 +119,7 @@ namespace Birch.Generator.Specification
 
             return generatedRoot;
         }
+
+
     }
 }
