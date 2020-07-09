@@ -22,7 +22,7 @@ namespace MVU_Experiment.RV
         /// <summary>
         /// Static to determine whether we should log or not
         /// </summary>
-        private static readonly Lazy<bool> IsLoggingEnabled = new Lazy<bool>(() => LoggingRules.For(Categories.Collections).Any);
+        private static readonly bool IsLoggingEnabled = LoggingRules.For(Categories.Collections).Any;
 
         /// <summary>
         /// The actual adapter.
@@ -36,18 +36,26 @@ namespace MVU_Experiment.RV
 
         public void Insert(int index, IPrimitive item)
         {
-            if (IsLoggingEnabled.Value)
+            if (IsLoggingEnabled)
             {
-                Logging.Instance.LogDebug("RecyclerViewAdapterConnector:Insert {index},item:{item}",index,item);
+                Logging.Instance.LogInformation("RecyclerViewAdapterConnector:Insert {index},item:{item}",index,item);
             }
-            Transaction.Current.Add(() => { Adapter.Insert(index, item); });
+            Transaction.Current.Add(() =>
+            {
+                if (IsLoggingEnabled)
+                {
+                    Logging.Instance.LogInformation("RecyclerViewAdapterConnector:Insert Transaction {index},item:{item}",index,item);
+                }
+
+                Adapter.Insert(index, item);
+            });
         }
 
         public void Move(int oldIndex, int newIndex)
         {
-            if (IsLoggingEnabled.Value)
+            if (IsLoggingEnabled)
             {
-                Logging.Instance.LogDebug("RecyclerViewAdapterConnector:Move {from} to {to}",oldIndex,newIndex);
+                Logging.Instance.LogInformation("RecyclerViewAdapterConnector:Move {from} to {to}",oldIndex,newIndex);
             }
 
             Transaction.Current.Add(() => { Adapter.Move(oldIndex, newIndex); });
@@ -55,9 +63,9 @@ namespace MVU_Experiment.RV
 
         public void Remove(int index,IPrimitive item)
         {
-            if (IsLoggingEnabled.Value)
+            if (IsLoggingEnabled)
             {
-                Logging.Instance.LogDebug("RecyclerViewAdapterConnector:Remove {index}",index);
+                Logging.Instance.LogInformation("RecyclerViewAdapterConnector:Remove {index}",index);
             }
             Transaction.Current.Add(() => {Adapter.Remove(index);});
         }
@@ -65,9 +73,9 @@ namespace MVU_Experiment.RV
        
         public void Update(int index, IPrimitive current, IPrimitive next)
         {
-            if (IsLoggingEnabled.Value)
+            if (IsLoggingEnabled)
             {
-                Logging.Instance.LogDebug("RecyclerViewAdapterConnector:Update {index},from:{current} to {next}",index,current,next);
+                Logging.Instance.LogInformation("RecyclerViewAdapterConnector:Update {index},from:{current} to {next}",index,current,next);
             }
 
             Transaction.Current.Add(() => { Adapter.Update(index, current, next); });

@@ -44,7 +44,7 @@ namespace MVU_Experiment.RV
         /// <summary>
         /// Is logging enabled
         /// </summary>
-        private static readonly Lazy<bool> IsLoggingEnabled = new Lazy<bool>(() => LoggingRules.For(Categories.Collections).Any);
+        private static readonly bool IsLoggingEnabled = LoggingRules.For(Categories.Collections).Any;
 
         /// <summary>
         /// Create a new instance with a unique view type
@@ -64,9 +64,9 @@ namespace MVU_Experiment.RV
         /// <param name="context"></param>
         public void Create(AndroidContext context)
         {
-            if (IsLoggingEnabled.Value)
+            if (IsLoggingEnabled)
             {
-                Logging.Instance.LogDebug("ComponentShadowPair:Create {item}",Current);
+                Logging.Instance.LogInformation("ComponentShadowPair:Create Item:{item} ViewType:{viewType}",Current,ViewType);
             }
 
             // use an isolated transaction to ensure the shadow is property populated by the time of the commit and also
@@ -82,9 +82,9 @@ namespace MVU_Experiment.RV
 
         public void Update(AndroidContext context, IPrimitive next)
         {
-            if (IsLoggingEnabled.Value)
+            if (IsLoggingEnabled)
             {
-                Logging.Instance.LogDebug("ComponentShadowPair:Update {from} to {to}",Current,next);
+                Logging.Instance.LogInformation("ComponentShadowPair:Update From:{from} to:{to} ViewType:{viewType}",Current,next,ViewType);
             }
 
             // If the item is currently being shown
@@ -121,9 +121,15 @@ namespace MVU_Experiment.RV
             // we have been unbound...this means that the view has been binned off
             // BUT this doesn't mean that the primitive element backing the view doesn't exist either
 
-            if (IsLoggingEnabled.Value)
+            if (IsLoggingEnabled)
             {
-                Logging.Instance.LogDebug("ComponentShadowPair:Unbind {item}",Current);
+                Logging.Instance.LogInformation("ComponentShadowPair:Unbind Item:{item} ViewType:{viewType}",Current,ViewType);
+            }
+
+
+            if (Shadow == null)
+            {
+
             }
 
             using var transaction = Transaction.Create(isolated: true);

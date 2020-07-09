@@ -31,7 +31,7 @@ namespace Birch.Hosts
         protected readonly TransformBlock<TRequest,(TRequest request,IPrimitive layout)> LayoutBlock;
 
         /// <summary>
-        /// Settings which dicttate how the layout host will operate
+        /// Settings which dictate how the layout host will operate
         /// </summary>
         protected LayoutHostSettings Settings { get; }
 
@@ -48,11 +48,12 @@ namespace Birch.Hosts
             settings ??= LayoutHostSettings.Default;
             Settings = settings;
 
-            var backgroundBlockOptions = new ExecutionDataflowBlockOptions() {TaskScheduler = settings.Layout};
+            var backgroundBlockOptions = new ExecutionDataflowBlockOptions() {TaskScheduler = settings.Layout,EnsureOrdered = true};
+            var foregroundBlockOptions = new ExecutionDataflowBlockOptions(){TaskScheduler = settings.Commit,EnsureOrdered = true};
 
             LayoutBlock = new TransformBlock<TRequest, (TRequest request,IPrimitive layout)>(Layout, backgroundBlockOptions);
             var compareBlock = new TransformBlock<(TRequest request,IPrimitive layout), (TRequest request,ElementShadowTransition est)>(Compare, backgroundBlockOptions);
-            var commitBlock = new ActionBlock<(TRequest request,ElementShadowTransition est)>(Commit, new ExecutionDataflowBlockOptions() {TaskScheduler = settings.Commit});
+            var commitBlock = new ActionBlock<(TRequest request,ElementShadowTransition est)>(Commit, foregroundBlockOptions);
 
             LayoutBlock.LinkTo(compareBlock, new DataflowLinkOptions() {PropagateCompletion = true},(r) => ShouldPropagate(r.request));
             LayoutBlock.LinkTo(DataflowBlock.NullTarget< (TRequest,IPrimitive)>());
@@ -104,7 +105,7 @@ namespace Birch.Hosts
 
             using (var _ = Benchmark.Create((t, __) => elapsed = t))
             {
-                est = BuildHostInstance.Compare(BuildHostInstance.CurrentState?.ElementShadow,compare.layout);
+                est = BuildHostInstance.Compare(compare.layout);
             }
 
             Record(new ChangeSetBuildEvent(elapsed, false,est));
@@ -113,15 +114,26 @@ namespace Birch.Hosts
         }
 
 
+        /// <summary>
+        /// Commit changes.
+        /// </summary>
+        /// <param name="commit"></param>
         protected void Commit((TRequest request,ElementShadowTransition est) commit)
         {
+            // if we shouldn't propagate then we don't
+            var (request, elementShadowTransition) = commit;
+            if (!ShouldPropagate(request))
+            {
+                return;
+            }
+
             using var benchmark = Benchmark.Create((t,_) =>
             {
-                Record(new TransactionsCommittedEvent(t, commit.est));
+                Record(new TransactionsCommittedEvent(t, elementShadowTransition));
             });
 
 
-            BuildHostInstance.Commit(commit.est,commit.request.MutationId);
+            BuildHostInstance.Commit(elementShadowTransition,request.MutationId);
         }
 
 

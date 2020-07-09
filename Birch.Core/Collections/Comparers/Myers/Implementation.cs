@@ -8,7 +8,7 @@ namespace Birch.Collections.Comparers.Myers
     {
         public static IReadOnlyList<Operation<T>> Diff<T>(T[] old, T[] @new, IEqualityComparer<T> comparer)
         {
-            var diff = new MyersDiff<T>(old,@new,true);
+            var diff = new MyersDiffArraySegment<T>(old,@new,true);
 
             var result = diff.Execute();
 

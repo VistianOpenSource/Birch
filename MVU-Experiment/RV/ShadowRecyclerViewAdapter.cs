@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using Android.Support.V7.Widget;
+using Android.Util;
 using Android.Views;
 using Birch.Components;
 using Birch.Compose;
+using Birch.Diagnostics;
 using Birch.Shadows;
+using Microsoft.Extensions.Logging;
 using Object = Java.Lang.Object;
 
 namespace MVU_Experiment.RV
@@ -24,6 +27,13 @@ namespace MVU_Experiment.RV
         /// Given a view type (an integer) get the associated element
         /// </summary>
         private readonly Dictionary<int,PrimitiveShadowPair> _viewTypeItemMap = new Dictionary<int, PrimitiveShadowPair>();
+
+
+        /// <summary>
+        /// Is logging enabled
+        /// </summary>
+        private static readonly bool IsLoggingEnabled = LoggingRules.For(Categories.Collections).Any;
+
 
         public ShadowRecyclerViewAdapter(AndroidContext context)
         {
@@ -95,6 +105,13 @@ namespace MVU_Experiment.RV
         {
             var actualViewHolder = (ShadowViewHolder)holder;
 
+            if (IsLoggingEnabled)
+            {
+                Logging.Instance.LogInformation(
+                    "OnBindViewHolder position:{position} ViewHolderPosition:{adapterPosition}", position,
+                    actualViewHolder.AdapterPosition);
+            }
+
             var item = _items[position];
 
             item.Bind(actualViewHolder.ItemView,_context);
@@ -112,6 +129,12 @@ namespace MVU_Experiment.RV
             base.OnViewDetachedFromWindow(holder);
 
             var viewHolder = (ShadowViewHolder)holder;
+
+            if (IsLoggingEnabled)
+            {
+                Logging.Instance.LogInformation("OnViewDetached AdapterPosition:{adapterPosition}",
+                    viewHolder.AdapterPosition);
+            }
 
             if (viewHolder.AdapterPosition >= 0 && viewHolder.AdapterPosition < _items.Count)
             {
@@ -138,6 +161,12 @@ namespace MVU_Experiment.RV
 
             var viewHolder = (ShadowViewHolder)holder;
 
+            if (IsLoggingEnabled)
+            {
+                Logging.Instance.LogInformation("OnViewRecycled AdapterPosition:{adapterPosition}",
+                    viewHolder.AdapterPosition);
+            }
+
             if (viewHolder.AdapterPosition >= 0 && viewHolder.AdapterPosition < _items.Count)
             {
                 var item = _items[viewHolder.AdapterPosition];
@@ -150,6 +179,11 @@ namespace MVU_Experiment.RV
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(Android.Views.ViewGroup parent, int viewType)
         {
+            if (IsLoggingEnabled)
+            {
+                Logging.Instance.LogInformation($"OnCreateViewHolder ViewType:{viewType}");
+            }
+
             // create the view - given the view type we need to...
             var item = _viewTypeItemMap[viewType];
 
@@ -167,6 +201,12 @@ namespace MVU_Experiment.RV
         /// <returns></returns>
         public override int GetItemViewType(int position)
         {
+            if (IsLoggingEnabled)
+            {
+                Logging.Instance.LogInformation("GetItemViewType Position:{position} ViewType:{viewType}", position,
+                    _items[position].ViewType);
+            }
+
             return _items[position].ViewType;
         }
     }

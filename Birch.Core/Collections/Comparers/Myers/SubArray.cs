@@ -8,7 +8,7 @@ namespace Birch.Collections.Comparers.Myers
     /// <summary>
     /// Allows 1..M access for a selected portion of an int array.
     /// </summary>
-    internal sealed class SubArray<T>
+    internal struct SubArray<T>
     {
         private readonly IList<T> _data;
 

@@ -179,18 +179,19 @@ namespace Birch.Hosts
         protected virtual IBuildErrorPolicy ErrorPolicy() => null;
 
         /// <summary>
-        /// Given a specified current and next state, create the transactions to perform the required changes.
+        /// Given a specified next state, create the transactions to perform the required changes.
         /// </summary>
-        /// <param name="current"></param>
         /// <param name="next"></param>
         /// <returns></returns>
-        public ElementShadowTransition Compare(ElementShadowPair current,IPrimitive next)
+        public ElementShadowTransition Compare(IPrimitive next)
         {
             _transactionLock.EnterReadLock();
 
             try
             {
                 using var transaction = Transaction.Create();
+
+                var current = CurrentState?.ElementShadow;
 
                 var context = CreateShadowContext();
 
