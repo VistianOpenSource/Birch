@@ -42,11 +42,6 @@ namespace MVU_Experiment.RV
             }
             Transaction.Current.Add(() =>
             {
-                if (IsLoggingEnabled)
-                {
-                    Logging.Instance.LogInformation("RecyclerViewAdapterConnector:Insert Transaction {index},item:{item}",index,item);
-                }
-
                 Adapter.Insert(index, item);
             });
         }
